@@ -1,0 +1,100 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <div class="sub-card-header">
+                            <mat-form-field appearance="outline" class="specific-border">
+                                <input class="black-font"
+                                       placeholder="{{ 'CUSTOMER_NAME' | translate }}"
+                                       name="customerName"
+                                       type="text"
+                                       matInput
+                                       required
+                                       (input)="customerFilter($event)">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="specific-border">
+                                <input class="black-font"
+                                       placeholder="{{ 'PRODUCT_NAME' | translate }}"
+                                       name="productName"
+                                       type="text"
+                                       matInput
+                                       required
+                                       (input)="productFilter($event)">
+                            </mat-form-field>
+
+                            <button mat-fab class="clear-button" (click)="clearFilter()">
+                                {{ 'CLEAR_FILTER' | translate }}
+                            </button>
+                        </div>
+
+                        <button mat-fab class="add-button" (click)="add()">
+                            <mat-icon>add</mat-icon>
+                            {{ 'ADD' | translate }}
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+                                <ng-container matColumnDef="id">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'ID' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['id']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="discount">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'DISCOUNT' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['discount']}}%</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="customerName">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'CUSTOMER' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['customerName']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="productName">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'PRODUCT' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['productName']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef>{{ 'ACTIONS' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">
+                                        <button (click)="edit(row)"
+                                                mat-raised-button
+                                                type="button"
+                                                matTooltip="{{ 'EDIT' | translate }}"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button (click)="remove(row)"
+                                                mat-raised-button
+                                                type="button"
+                                                matTooltip="{{ 'REMOVE' | translate }}"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="header"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: header"></mat-row>
+                            </mat-table>
+
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                           showFirstLastButtons (page)="pageChange($event)">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

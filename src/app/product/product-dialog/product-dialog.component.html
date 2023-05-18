@@ -1,0 +1,38 @@
+<h1 mat-dialog-title *ngIf="!isEdit">{{ 'ADD_PRODUCT' | translate }}</h1>
+
+<h1 mat-dialog-title *ngIf="isEdit">{{ 'EDIT_PRODUCT' | translate }}</h1>
+
+<mat-dialog-content>
+    <form #form class="form">
+
+        <div>
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'NAME' | translate }}</mat-label>
+                <input [(ngModel)]="product.name"
+                       name="name"
+                       matInput
+                       required>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'PRICE' | translate }}</mat-label>
+                <input [(ngModel)]="product.price"
+                       name="price"
+                       pattern="^[0-9]\d*(\.\d+)?$"
+                       matInput
+                       required>
+            </mat-form-field>
+        </div>
+
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()"
+                [disabled]="!form.checkValidity() || product.name.trim().length === 0 || product.price === null">
+            {{ 'SAVE' | translate }}
+        </button>
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+    </div>
+</mat-dialog-content>

@@ -1,0 +1,12 @@
+<h3 mat-dialog-title>{{data.title}}</h3>
+
+<mat-dialog-content>
+    <p>{{data.body}}</p>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()">
+            {{ 'YES' | translate }}
+        </button>
+        <button mat-button (click)="cancel()">{{ 'NO' | translate }}</button>
+    </div>
+</mat-dialog-content>

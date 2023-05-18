@@ -1,0 +1,93 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <div class="sub-card-header">
+                            <mat-form-field appearance="outline" class="specific-border">
+                                <input class="black-font"
+                                       placeholder="{{ 'NAME' | translate }}"
+                                       name="search"
+                                       type="text"
+                                       matInput
+                                       required
+                                       (input)="inputChange($event)">
+                            </mat-form-field>
+
+                            <button mat-fab class="clear-button" (click)="clearFilter()">
+                                {{ 'CLEAR_FILTER' | translate }}
+                            </button>
+                        </div>
+
+                        <button mat-fab class="add-button" (click)="add()">
+                            <mat-icon>add</mat-icon>
+                            {{ 'ADD' | translate }}
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+                                <ng-container matColumnDef="id">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'ID' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['id']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="name">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'NAME' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['name']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="balance">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'BALANCE' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row" dir="ltr"
+                                              [ngClass]="{'ar': translate.currentLang === 'ar'}">{{row['balance']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef>{{ 'ACTIONS' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">
+                                        <button (click)="view(row)"
+                                                mat-raised-button
+                                                type="button"
+                                                matTooltip="{{ 'VIEW' | translate }}"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">remove_red_eye</i>
+                                        </button>
+                                        <button (click)="edit(row)"
+                                                mat-raised-button
+                                                type="button"
+                                                matTooltip="{{ 'EDIT' | translate }}"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button (click)="remove(row)"
+                                                mat-raised-button
+                                                type="button"
+                                                matTooltip="{{ 'REMOVE' | translate }}"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="header"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: header"></mat-row>
+                            </mat-table>
+
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                           showFirstLastButtons (page)="pageChange($event)">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

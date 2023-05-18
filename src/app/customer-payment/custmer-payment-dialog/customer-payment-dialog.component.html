@@ -1,0 +1,86 @@
+<h1 mat-dialog-title>{{ 'ADD_CUSTOMER_PAYMENT' | translate }}</h1>
+
+<mat-dialog-content>
+    <form #form class="form">
+        <div class="div">
+            <ng-select [multiple]="false"
+                       [minTermLength]="1"
+                       [loading]="loadingCustomers"
+                       [(ngModel)]="customerPayment.customerEntity.id"
+                       [items]="customerSearch | async"
+                       bindLabel="name"
+                       bindValue="id"
+                       placeholder="{{ 'CUSTOMER_NAME' | translate }}"
+                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+                       name="selectedCustomer"
+                       (input)="loadCustomers($event)">
+            </ng-select>
+
+            <ng-select [multiple]="false"
+                       [minTermLength]="1"
+                       [loading]="loadingPaymentMethods"
+                       [(ngModel)]="customerPayment.paymentMethodEntity.id"
+                       [items]="paymentMethodSearch | async"
+                       bindLabel="name"
+                       bindValue="id"
+                       placeholder="{{ 'PAYMENT_METHOD' | translate }}"
+                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+                       name="selectedPaymentMethod"
+                       (input)="loadPaymentMethods($event)">
+            </ng-select>
+
+            <mat-checkbox [(ngModel)]="customerPayment.transferred" color="primary"
+                          style="display:flex; align-items: center">
+                {{ 'TRANSFERRED_PAYMENT' | translate }}
+            </mat-checkbox>
+
+            <ng-select [hidden]="!customerPayment.transferred"
+                       [multiple]="false"
+                       [minTermLength]="1"
+                       [loading]="loadingSuppliers"
+                       [(ngModel)]="supplierId"
+                       [items]="supplierSearch | async"
+                       bindLabel="name"
+                       bindValue="id"
+                       placeholder="{{ 'SUPPLIER_NAME' | translate }}"
+                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+                       name="selectedSupplier"
+                       (input)="loadSuppliers($event)">
+            </ng-select>
+        </div>
+        <div class="div">
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'AMOUNT' | translate }}</mat-label>
+                <input [(ngModel)]="customerPayment['amount']"
+                       name="amount"
+                       pattern="^[0-9]\d*(\.\d+)?$"
+                       matInput
+                       required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'NUMBER' | translate }}</mat-label>
+                <input [(ngModel)]="customerPayment['number']"
+                       name="number"
+                       matInput
+                       required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'DATE' | translate }}</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()"
+                [disabled]="!form.checkValidity() || customerPayment.customerEntity.id === null ||
+                            customerPayment.paymentMethodEntity.id === null">
+            {{ 'SAVE' | translate }}
+        </button>
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+    </div>
+</mat-dialog-content>

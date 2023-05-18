@@ -1,0 +1,52 @@
+<h1 mat-dialog-title *ngIf="!isEdit">{{ 'ADD_CUSTOMER' | translate }}</h1>
+
+<h1 mat-dialog-title *ngIf="isEdit">{{ 'EDIT_CUSTOMER' | translate }}</h1>
+
+<mat-dialog-content>
+    <form #form class="form">
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{ 'DISCOUNT' | translate }}</mat-label>
+            <input [(ngModel)]="discount.discount"
+                   name="discount"
+                   type="number"
+                   min="0"
+                   max="100"
+                   matInput
+                   required>
+        </mat-form-field>
+
+        <ng-select [multiple]="false"
+                   [minTermLength]="1"
+                   [loading]="loadingCustomers"
+                   [(ngModel)]="discount.customerId"
+                   [items]="customerSearch | async"
+                   bindLabel="name"
+                   bindValue="id"
+                   placeholder="{{ 'CUSTOMER_NAME' | translate }}"
+                   typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+                   name="selectedCustomer"
+                   (input)="loadCustomers($event)">
+        </ng-select>
+
+        <ng-select [multiple]="false"
+                   [minTermLength]="1"
+                   [loading]="loadingProducts"
+                   [(ngModel)]="discount.productId"
+                   [items]="productSearch | async"
+                   bindLabel="name"
+                   bindValue="id"
+                   placeholder="{{ 'PRODUCT_NAME' | translate }}"
+                   typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+                   name="selectedProduct"
+                   (input)="loadProducts($event)">
+        </ng-select>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()"
+                [disabled]="!form.checkValidity() || discount.customerId === null || discount.productId === null">
+            {{ 'SAVE' | translate }}
+        </button>
+        <button mat-button (click)="cancel(false)">{{ 'CANCEL' | translate }}</button>
+    </div>
+</mat-dialog-content>

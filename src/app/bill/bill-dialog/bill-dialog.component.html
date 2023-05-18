@@ -1,0 +1,89 @@
+<h1 mat-dialog-title>{{ 'ADD_BILL' | translate }}</h1>
+
+<mat-dialog-content>
+    <form #form class="form">
+        <div class="div">
+            <ng-select [multiple]="false"
+                       [minTermLength]="1"
+                       [loading]="loadingCustomers"
+                       [(ngModel)]="bill.customerEntity.id"
+                       [items]="customerSearch | async"
+                       bindLabel="name"
+                       bindValue="id"
+                       placeholder="{{ 'CUSTOMER_NAME' | translate }}"
+                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+                       name="selectedCustomer"
+                       (input)="loadCustomers($event)">
+            </ng-select>
+
+            <ng-select [multiple]="false"
+                       [minTermLength]="1"
+                       [loading]="loadingSuppliers"
+                       [(ngModel)]="bill.supplierEntity.id"
+                       [items]="supplierSearch | async"
+                       bindLabel="name"
+                       bindValue="id"
+                       placeholder="{{ 'SUPPLIER_NAME' | translate }}"
+                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+                       name="selectedSupplier"
+                       (input)="loadSuppliers($event)">
+            </ng-select>
+
+            <ng-select [multiple]="false"
+                       [minTermLength]="1"
+                       [loading]="loadingProducts"
+                       [(ngModel)]="bill.productEntity.id"
+                       [items]="productSearch | async"
+                       bindLabel="name"
+                       bindValue="id"
+                       placeholder="{{ 'PRODUCT_NAME' | translate }}"
+                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+                       name="selectedProduct"
+                       (input)="loadProducts($event)">
+            </ng-select>
+        </div>
+
+        <div class="div">
+            <div>
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'BILL_NUMBER' | translate }}</mat-label>
+                    <input [(ngModel)]="bill.number"
+                           name="billNumber"
+                           matInput
+                           required>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'QUANTITY' | translate }}</mat-label>
+                    <input [(ngModel)]="bill.quantity"
+                           pattern="^[0-9]\d*(\.\d+)?$"
+                           name="amount"
+                           matInput
+                           required>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'DATE' | translate }}</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()"
+                [disabled]="!form.checkValidity() ||
+                bill.customerEntity.id === null ||
+                bill.productEntity.id === null ||
+                bill.supplierEntity.id === null">
+            {{ 'SAVE' | translate }}
+        </button>
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+    </div>
+</mat-dialog-content>

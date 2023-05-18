@@ -1,0 +1,23 @@
+<h1 mat-dialog-title *ngIf="!isEdit">Add Payment Method</h1>
+
+<h1 mat-dialog-title *ngIf="isEdit">Edit Payment Method</h1>
+
+<mat-dialog-content>
+    <form #form class="form">
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{ 'NAME' | translate }}</mat-label>
+            <input [(ngModel)]="paymentMethod.name"
+                   name="name"
+                   matInput
+                   required>
+        </mat-form-field>
+    </form>
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()"
+                [disabled]="!form.checkValidity() || paymentMethod.name.trim().length === 0">
+            Save
+        </button>
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+    </div>
+</mat-dialog-content>

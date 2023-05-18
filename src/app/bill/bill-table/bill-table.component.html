@@ -1,0 +1,108 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <div class="sub-card-header">
+                            <mat-form-field appearance="outline" class="specific-border">
+                                <input class="black-font"
+                                       placeholder="{{ 'BILL_NUMBER' | translate }}"
+                                       name="search"
+                                       type="text"
+                                       matInput
+                                       required
+                                       [(ngModel)]="search"
+                                       (input)="inputChange($event)">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" class="specific-border">
+                                <mat-date-range-input [rangePicker]="picker" class="black-font">
+                                    <input matStartDate placeholder="{{ 'START_DATE' | translate }}"
+                                           [(ngModel)]="startDate"
+                                           (dateChange)="dateChange()">
+                                    <input matEndDate placeholder="{{ 'END_DATE' | translate }}" [(ngModel)]="endDate"
+                                           (dateChange)="dateChange()">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+                            </mat-form-field>
+
+                            <button mat-fab class="clear-button" (click)="clearFilter()">
+                                {{ 'CLEAR_FILTER' | translate }}
+                            </button>
+                        </div>
+
+                        <button mat-fab class="add-button" (click)="add()">
+                            <mat-icon>add</mat-icon>
+                            {{ 'ADD' | translate }}
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-hover">
+                            <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+                                <ng-container matColumnDef="number">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'BILL_NUMBER' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['number']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="quantity">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'QUANTITY' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['quantity']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="customer">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'CUSTOMER' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['customer']['name']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="supplier">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'SUPPLIER' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['supplier']['name']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="product">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'PRODUCT' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['product']['name']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="date">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'DATE' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['date']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef>{{ 'ACTIONS' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">
+                                        <button (click)="remove(row)"
+                                                mat-raised-button
+                                                type="button"
+                                                matTooltip="{{ 'REMOVE' | translate }}"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="header"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: header"></mat-row>
+                            </mat-table>
+
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                           (page)="pageChange($event)"
+                                           showFirstLastButtons>
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
