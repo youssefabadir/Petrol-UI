@@ -45,7 +45,6 @@ import {CookieService} from 'ngx-cookie-service';
 import {SupplierTransactionComponent} from './supplier/supplier-transaction/supplier-transaction.component';
 import {DiscountTableComponent} from './discount/discount-table/discount-table.component';
 import {DiscountDialogComponent} from './discount/discount-dialog/discount-dialog.component';
-import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -107,8 +106,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         {
             provide: MatPaginatorIntl, deps: [TranslateService, CookieService],
             useFactory: (translateService: TranslateService, cookie: CookieService) => new PaginatorI18n(translateService, cookie).getPaginatorIntl()
-        },
-        {provide: LocationStrategy, useClass: PathLocationStrategy}],
+        }],
     bootstrap: [AppComponent]
 })
 export class AppModule {
