@@ -45,7 +45,7 @@ export class ProductTableComponent implements OnInit {
         this.apiService.getProducts(name, pageNo, pageSize, sortBy, order).subscribe(res => {
             this.populateTable(res);
         }, () => {
-            Helper.snackbar('Error while retrieving products', this.snackbar)
+            Helper.snackbar(Helper.translateKey('RETRIEVE_PRODUCT_ERROR'), this.snackbar)
         });
     }
 
@@ -86,18 +86,18 @@ export class ProductTableComponent implements OnInit {
     remove(row: Product): void {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
-                title: 'Delete Product',
-                body: 'Do you want to delete product ' + row.name + '?'
+                title: Helper.translateKey('DELETE_PRODUCT_TITLE'),
+                body: Helper.translateKey('DELETE_PRODUCT_BODY', {name: row.name})
             }
         });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.apiService.deleteProduct(row.id).subscribe(() => {
-                    Helper.snackbar('Customer has been deleted successfully', this.snackbar);
+                    Helper.snackbar(Helper.translateKey('DELETE_PRODUCT_SUCCESS'), this.snackbar);
                     this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order);
                 }, () => {
-                    Helper.snackbar('Error while deleting customer', this.snackbar);
+                    Helper.snackbar(Helper.translateKey('DELETE_PRODUCT_ERROR'), this.snackbar);
                 });
             }
         });

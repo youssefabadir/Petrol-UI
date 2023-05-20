@@ -32,17 +32,17 @@ export class SupplierDialogComponent implements OnInit {
     save(): void {
         if (this.isEdit) {
             this.apiService.updateSupplier(this.supplier).subscribe(() => {
-                Helper.snackbar('Supplier data has been updated successfully', this.snackbar);
+                Helper.snackbar(Helper.translateKey('UPDATE_SUPPLIER_SUCCESS'), this.snackbar);
                 this.dialogRef.close(true);
             }, () => {
-                Helper.snackbar('Error while updating supplier data', this.snackbar);
+                Helper.snackbar(Helper.translateKey('UPDATE_SUPPLIER_ERROR'), this.snackbar);
             });
         } else {
             this.apiService.createSupplier(this.supplier).subscribe(() => {
-                Helper.snackbar('Supplier data has been saved successfully', this.snackbar);
+                Helper.snackbar(Helper.translateKey('SAVE_SUPPLIER_SUCCESS'), this.snackbar);
                 this.dialogRef.close(true);
             }, () => {
-                Helper.snackbar('Error while saving supplier data', this.snackbar);
+                Helper.snackbar(Helper.translateKey('SAVE_SUPPLIER_ERROR'), this.snackbar);
             });
         }
     }

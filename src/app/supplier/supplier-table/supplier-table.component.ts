@@ -48,7 +48,7 @@ export class SupplierTableComponent implements OnInit {
         this.apiService.getSuppliers(name, pageNo, pageSize, sortBy, order).subscribe(res => {
             this.populateTable(res);
         }, () => {
-            Helper.snackbar('Error while retrieving suppliers', this.snackbar);
+            Helper.snackbar(Helper.translateKey('RETRIEVE_SUPPLIER_ERROR'), this.snackbar);
         });
     }
 
@@ -98,18 +98,18 @@ export class SupplierTableComponent implements OnInit {
     remove(row: Supplier): void {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
-                title: 'Delete Supplier',
-                body: 'Do you want to delete supplier ' + row.name + '?'
+                title: Helper.translateKey('DELETE_SUPPLIER_TITLE'),
+                body: Helper.translateKey('DELETE_SUPPLIER_BODY', {name: row.name})
             }
         });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.apiService.deleteSupplier(row.id).subscribe(() => {
-                    Helper.snackbar('Supplier has been deleted successfully', this.snackbar);
+                    Helper.snackbar(Helper.translateKey('DELETE_SUPPLIER_SUCCESS'), this.snackbar);
                     this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order);
                 }, () => {
-                    Helper.snackbar('Error while deleting supplier', this.snackbar);
+                    Helper.snackbar(Helper.translateKey('DELETE_SUPPLIER_ERROR'), this.snackbar);
                 });
             }
         });

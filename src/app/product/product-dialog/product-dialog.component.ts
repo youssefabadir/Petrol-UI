@@ -31,17 +31,17 @@ export class ProductDialogComponent implements OnInit {
     save(): void {
         if (this.isEdit) {
             this.apiService.updateProduct(this.product).subscribe(() => {
-                Helper.snackbar('Product has been updated successfully', this.snackbar);
+                Helper.snackbar(Helper.translateKey('UPDATE_PRODUCT_SUCCESS'), this.snackbar);
                 this.dialogRef.close(true);
             }, () => {
-                Helper.snackbar('Error while updating product data', this.snackbar);
+                Helper.snackbar(Helper.translateKey('UPDATE_PRODUCT_ERROR'), this.snackbar);
             });
         } else {
             this.apiService.createProduct(this.product).subscribe(() => {
-                Helper.snackbar('Product data has been saved successfully', this.snackbar);
+                Helper.snackbar(Helper.translateKey('SAVE_PRODUCT_SUCCESS'), this.snackbar);
                 this.dialogRef.close(true);
             }, () => {
-                Helper.snackbar('Error while saving product data', this.snackbar);
+                Helper.snackbar(Helper.translateKey('SAVE_PRODUCT_ERROR'), this.snackbar);
             });
         }
     }
