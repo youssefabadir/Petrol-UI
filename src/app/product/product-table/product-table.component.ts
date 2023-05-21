@@ -7,7 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ProductDialogComponent} from '../product-dialog/product-dialog.component';
 import {Sort} from '@angular/material/sort';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {ConfirmDialogComponent} from '../../components/confirm-dialog/confirm-dialog.component';
 import {PageableResponse} from '../../models/response.model';
 

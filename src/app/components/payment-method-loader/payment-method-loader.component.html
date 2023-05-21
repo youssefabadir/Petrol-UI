@@ -1,0 +1,13 @@
+<ng-select [multiple]="false"
+           [minTermLength]="1"
+           [loading]="loadingPaymentMethods"
+           [(ngModel)]="paymentMethod.id"
+           [items]="paymentMethodSearch | async"
+           bindLabel="name"
+           bindValue="id"
+           placeholder="{{ 'PAYMENT_METHOD' | translate }}"
+           typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+           name="selectedPaymentMethod"
+           (input)="loadPaymentMethods($event)"
+           (change)="changeValue($event)">
+</ng-select>

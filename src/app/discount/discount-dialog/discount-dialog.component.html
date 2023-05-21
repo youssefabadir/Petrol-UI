@@ -15,36 +15,18 @@
                    required>
         </mat-form-field>
 
-        <ng-select [multiple]="false"
-                   [minTermLength]="1"
-                   [loading]="loadingCustomers"
-                   [(ngModel)]="discount.customerId"
-                   [items]="customerSearch | async"
-                   bindLabel="name"
-                   bindValue="id"
-                   placeholder="{{ 'CUSTOMER_NAME' | translate }}"
-                   typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                   name="selectedCustomer"
-                   (input)="loadCustomers($event)">
-        </ng-select>
+        <customer-loader [customer]="{id: discount.customerId, name: discount.customerName, balance: undefined}"
+                         (changeCustomer)="handleCustomer($event)">
+        </customer-loader>
 
-        <ng-select [multiple]="false"
-                   [minTermLength]="1"
-                   [loading]="loadingProducts"
-                   [(ngModel)]="discount.productId"
-                   [items]="productSearch | async"
-                   bindLabel="name"
-                   bindValue="id"
-                   placeholder="{{ 'PRODUCT_NAME' | translate }}"
-                   typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                   name="selectedProduct"
-                   (input)="loadProducts($event)">
-        </ng-select>
+        <product-loader [product]="{id: discount.productId, name: discount.productName}"
+                        (changeProduct)="handleProduct($event)">
+        </product-loader>
     </form>
 
     <div class="actions">
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || discount.customerId === null || discount.productId === null">
+                [disabled]="!form.checkValidity() || !discount.customerId || !discount.productId">
             {{ 'SAVE' | translate }}
         </button>
         <button mat-button (click)="cancel(false)">{{ 'CANCEL' | translate }}</button>

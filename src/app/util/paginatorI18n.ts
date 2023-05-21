@@ -1,7 +1,7 @@
 import {TranslateService} from '@ngx-translate/core';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {CookieService} from 'ngx-cookie-service';
-import {Helper} from './Helper.util';
+import {Helper} from './helper.util';
 
 export class PaginatorI18n {
 

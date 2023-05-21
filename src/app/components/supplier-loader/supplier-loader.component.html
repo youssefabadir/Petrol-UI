@@ -1,0 +1,13 @@
+<ng-select [multiple]="false"
+           [minTermLength]="1"
+           [loading]="loadingSuppliers"
+           [(ngModel)]="supplier.id"
+           [items]="supplierSearch | async"
+           bindLabel="name"
+           bindValue="id"
+           placeholder="{{ 'SUPPLIER_NAME' | translate }}"
+           typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+           name="selectedSupplier"
+           (input)="loadSuppliers($event)"
+           (change)="changeValue($event)">
+</ng-select>

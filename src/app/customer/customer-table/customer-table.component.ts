@@ -9,7 +9,7 @@ import {CustomerDialogComponent} from '../customer-dialog/customer-dialog.compon
 import {CustomerTransactionComponent} from '../customer-transaction/customer-transaction.component';
 import {Sort} from '@angular/material/sort';
 import {ConfirmDialogComponent} from '../../components/confirm-dialog/confirm-dialog.component';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {PageableResponse} from '../../models/response.model';
 import {TranslateService} from '@ngx-translate/core';
 

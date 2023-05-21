@@ -4,7 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
 import {BillDialogComponent} from '../bill-dialog/bill-dialog.component';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Sort} from '@angular/material/sort';
 import {ConfirmDialogComponent} from '../../components/confirm-dialog/confirm-dialog.component';

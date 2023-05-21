@@ -40,7 +40,7 @@ import {OwnerPaymentDialogComponent} from './owner-payment/owner-payment-dialog/
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {PaginatorI18n} from './util/PaginatorI18n';
+import {PaginatorI18n} from './util/paginatorI18n';
 import {CookieService} from 'ngx-cookie-service';
 import {SupplierTransactionComponent} from './supplier/supplier-transaction/supplier-transaction.component';
 import {DiscountTableComponent} from './discount/discount-table/discount-table.component';

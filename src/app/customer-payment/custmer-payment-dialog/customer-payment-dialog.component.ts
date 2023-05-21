@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Helper} from '../../util/Helper.util';
-import {CustomerPayment, defaultCustomerPayment} from '../../models/customerPayment.model';
-import {catchError, concat, Observable, of, tap} from 'rxjs';
+import {Helper} from '../../util/helper.util';
+import {createEmptyCustomerPayment, CustomerPayment} from '../../models/customerPayment.model';
+import {TranslateService} from '@ngx-translate/core';
 import {Customer} from '../../models/customer.model';
-import {PaymentMethod} from '../../models/paymentMethod.model';
 import {Supplier} from '../../models/supplier.model';
+import {PaymentMethod} from '../../models/paymentMethod.model';
 
 @Component({
     selector: 'customer-payment-dialog',
@@ -16,68 +16,17 @@ import {Supplier} from '../../models/supplier.model';
 })
 export class CustomerPaymentDialogComponent implements OnInit {
 
-    customerPayment: CustomerPayment = {...defaultCustomerPayment};
-
-    loadingCustomers: boolean;
-
-    customerSearch: Observable<Customer[]>;
-
-    loadingPaymentMethods: boolean;
-
-    paymentMethodSearch: Observable<PaymentMethod[]>;
-
-    loadingSuppliers: boolean;
-
-    supplierSearch: Observable<Supplier[]>;
+    customerPayment: CustomerPayment = createEmptyCustomerPayment();
 
     supplierId: number;
 
     selectedDate: Date;
 
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<CustomerPaymentDialogComponent>,
-                private snackbar: MatSnackBar,) {
+                private snackbar: MatSnackBar, public translate: TranslateService) {
     }
 
     ngOnInit(): void {
-    }
-
-    loadCustomers(event: Event): void {
-        const name = event.target['value'];
-        if (name.length > 0) {
-            this.customerSearch = concat(
-                    of([]),
-                    this.apiService.searchCustomers(name).pipe(
-                            catchError(() => of([])),
-                            tap(() => this.loadingCustomers = false)
-                    )
-            );
-        }
-    }
-
-    loadSuppliers(event: Event): void {
-        const name = event.target['value'];
-        if (name.length > 0) {
-            this.supplierSearch = concat(
-                    of([]),
-                    this.apiService.searchSuppliers(name).pipe(
-                            catchError(() => of([])),
-                            tap(() => this.loadingSuppliers = false)
-                    )
-            );
-        }
-    }
-
-    loadPaymentMethods(event: Event): void {
-        const name = event.target['value'];
-        if (name.length > 0) {
-            this.paymentMethodSearch = concat(
-                    of([]),
-                    this.apiService.searchPaymentMethods(name).pipe(
-                            catchError(() => of([])),
-                            tap(() => this.loadingPaymentMethods = false)
-                    )
-            );
-        }
     }
 
     save(): void {
@@ -92,6 +41,18 @@ export class CustomerPaymentDialogComponent implements OnInit {
         }, () => {
             Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_PAYMENT_ERROR'), this.snackbar);
         });
+    }
+
+    handleCustomer(customer: Customer): void {
+        this.customerPayment.customerEntity = customer;
+    }
+
+    handleSupplier(supplier: Supplier): void {
+        this.supplierId = supplier.id;
+    }
+
+    handlePaymentMethod(paymentMethod: PaymentMethod): void {
+        this.customerPayment.paymentMethodEntity = paymentMethod;
     }
 
     cancel(): void {

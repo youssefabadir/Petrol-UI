@@ -1,5 +1,5 @@
-import {Customer, defaultCustomer} from './customer.model';
-import {defaultPaymentMethod, PaymentMethod} from './paymentMethod.model';
+import {createEmptyCustomer, Customer} from './customer.model';
+import {createEmptyPaymentMethod, PaymentMethod} from './paymentMethod.model';
 
 export interface CustomerPayment {
 
@@ -19,12 +19,14 @@ export interface CustomerPayment {
 
 }
 
-export const defaultCustomerPayment: CustomerPayment = {
-    id: null,
-    customerEntity: {...defaultCustomer},
-    paymentMethodEntity: {...defaultPaymentMethod},
-    amount: null,
-    number: '',
-    transferred: null,
-    date: null
+export function createEmptyCustomerPayment(): CustomerPayment {
+    return {
+        id: null,
+        customerEntity: createEmptyCustomer(),
+        paymentMethodEntity: createEmptyPaymentMethod(),
+        amount: null,
+        number: '',
+        transferred: null,
+        date: null
+    }
 }

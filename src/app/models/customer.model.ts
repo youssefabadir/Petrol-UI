@@ -12,3 +12,11 @@ export const defaultCustomer: Customer = {
     name: '',
     balance: null
 }
+
+export function createEmptyCustomer(): Customer {
+    return {
+        id: undefined,
+        name: undefined,
+        balance: undefined
+    }
+}

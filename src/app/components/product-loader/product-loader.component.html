@@ -1,0 +1,13 @@
+<ng-select [multiple]="false"
+           [minTermLength]="1"
+           [loading]="loadingProducts"
+           [(ngModel)]="product.id"
+           [items]="productSearch | async"
+           bindLabel="name"
+           bindValue="id"
+           placeholder="{{ 'PRODUCT_NAME' | translate }}"
+           typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+           name="selectedProduct"
+           (input)="loadProducts($event)"
+           (change)="changeValue($event)">
+</ng-select>

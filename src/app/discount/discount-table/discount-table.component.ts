@@ -6,7 +6,7 @@ import {ApiService} from '../../services/api.service';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TranslateService} from '@ngx-translate/core';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {PageableResponse} from '../../models/response.model';
 import {ConfirmDialogComponent} from '../../components/confirm-dialog/confirm-dialog.component';
 import {Sort} from '@angular/material/sort';

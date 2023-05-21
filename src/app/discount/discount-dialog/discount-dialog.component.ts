@@ -3,9 +3,8 @@ import {Customer} from '../../models/customer.model';
 import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {defaultDiscount, Discount} from '../../models/discount.model';
-import {catchError, concat, Observable, of, tap} from 'rxjs';
 import {Product} from '../../models/product.model';
 
 @Component({
@@ -19,64 +18,37 @@ export class DiscountDialogComponent implements OnInit {
 
     isEdit: boolean;
 
-    loadingCustomers: boolean;
-
-    customerSearch: Observable<Customer[]>;
-
-    loadingProducts: boolean;
-
-    productSearch: Observable<Product[]>;
-
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<DiscountDialogComponent>,
                 private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) private data: Discount) {
 
         if (data) {
             this.isEdit = true;
             this.discount = data;
-            this.customerSearch = concat(
-                    of([]),
-                    this.apiService.searchCustomers(data.customerName).pipe(
-                            catchError(() => of([])),
-                            tap(() => this.loadingCustomers = false)
-                    )
-            );
-            this.productSearch = concat(
-                    of([]),
-                    this.apiService.searchProducts(data.productName).pipe(
-                            catchError(() => of([])),
-                            tap(() => this.loadingProducts = false)
-                    )
-            );
         }
     }
 
     ngOnInit(): void {
     }
 
-    loadCustomers(event: Event): void {
-        const name = event.target['value'];
-        if (name.length > 0) {
-            this.customerSearch = concat(
-                    of([]),
-                    this.apiService.searchCustomers(name).pipe(
-                            catchError(() => of([])),
-                            tap(() => this.loadingCustomers = false)
-                    )
-            );
+    handleCustomer(customer: Customer): void {
+        if (customer) {
+            this.discount.customerId = customer.id;
+            this.discount.customerName = customer.name;
+        } else {
+            this.discount.customerId = undefined;
+            this.discount.customerName = undefined;
         }
     }
 
-    loadProducts(event: Event): void {
-        const name = event.target['value'];
-        if (name.length > 0) {
-            this.productSearch = concat(
-                    of([]),
-                    this.apiService.searchProducts(name).pipe(
-                            catchError(() => of([])),
-                            tap(() => this.loadingProducts = false)
-                    )
-            );
+    handleProduct(product: Product): void {
+        if (product) {
+            this.discount.productId = product.id;
+            this.discount.productName = product.name;
+        } else {
+            this.discount.productId = undefined;
+            this.discount.productName = undefined;
         }
+
     }
 
     save(): void {

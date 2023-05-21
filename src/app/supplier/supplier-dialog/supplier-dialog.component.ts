@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {defaultSupplier, Supplier} from '../../models/supplier.model';
 import {defaultCustomer} from '../../models/customer.model';
 

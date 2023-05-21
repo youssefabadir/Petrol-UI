@@ -1,52 +1,25 @@
-<h1 mat-dialog-title>{{ 'ADD_CUSTOMER_PAYMENT' | translate }}</h1>
+<h1 mat-dialog-title [ngClass]="{'title': translate.currentLang === 'ar'}">{{ 'ADD_CUSTOMER_PAYMENT' | translate }}</h1>
 
-<mat-dialog-content>
+<mat-dialog-content dir="{{this.translate.currentLang === 'en'? 'ltr':'rtl'}}">
     <form #form class="form">
         <div class="div">
-            <ng-select [multiple]="false"
-                       [minTermLength]="1"
-                       [loading]="loadingCustomers"
-                       [(ngModel)]="customerPayment.customerEntity.id"
-                       [items]="customerSearch | async"
-                       bindLabel="name"
-                       bindValue="id"
-                       placeholder="{{ 'CUSTOMER_NAME' | translate }}"
-                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                       name="selectedCustomer"
-                       (input)="loadCustomers($event)">
-            </ng-select>
+            <customer-loader [customer]="customerPayment.customerEntity"
+                             (changeCustomer)="handleCustomer($event)">
+            </customer-loader>
 
-            <ng-select [multiple]="false"
-                       [minTermLength]="1"
-                       [loading]="loadingPaymentMethods"
-                       [(ngModel)]="customerPayment.paymentMethodEntity.id"
-                       [items]="paymentMethodSearch | async"
-                       bindLabel="name"
-                       bindValue="id"
-                       placeholder="{{ 'PAYMENT_METHOD' | translate }}"
-                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                       name="selectedPaymentMethod"
-                       (input)="loadPaymentMethods($event)">
-            </ng-select>
+            <payment-method-loader [paymentMethod]="customerPayment.paymentMethodEntity"
+                                   (changePaymentMethod)="handlePaymentMethod($event)">
+            </payment-method-loader>
 
             <mat-checkbox [(ngModel)]="customerPayment.transferred" color="primary"
                           style="display:flex; align-items: center">
                 {{ 'TRANSFERRED_PAYMENT' | translate }}
             </mat-checkbox>
 
-            <ng-select [hidden]="!customerPayment.transferred"
-                       [multiple]="false"
-                       [minTermLength]="1"
-                       [loading]="loadingSuppliers"
-                       [(ngModel)]="supplierId"
-                       [items]="supplierSearch | async"
-                       bindLabel="name"
-                       bindValue="id"
-                       placeholder="{{ 'SUPPLIER_NAME' | translate }}"
-                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                       name="selectedSupplier"
-                       (input)="loadSuppliers($event)">
-            </ng-select>
+            <supplier-loader [hidden]="!customerPayment.transferred"
+                             [supplier]="{id:supplierId, name:''}"
+                             (changeSupplier)="handleSupplier($event)">
+            </supplier-loader>
         </div>
         <div class="div">
             <mat-form-field appearance="outline" class="form-field">
@@ -74,13 +47,14 @@
             </mat-form-field>
         </div>
     </form>
+</mat-dialog-content>
 
+<mat-dialog-actions dir="{{this.translate.currentLang === 'en'? 'ltr':'rtl'}}">
     <div class="actions">
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || customerPayment.customerEntity.id === null ||
-                            customerPayment.paymentMethodEntity.id === null">
+                [disabled]="!form.checkValidity() || !customerPayment.customerEntity.id || !customerPayment.paymentMethodEntity.id">
             {{ 'SAVE' | translate }}
         </button>
-        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
     </div>
-</mat-dialog-content>
+</mat-dialog-actions>

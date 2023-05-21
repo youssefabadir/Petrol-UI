@@ -8,7 +8,7 @@ import {Customer} from '../../models/customer.model';
 import {Sort} from '@angular/material/sort';
 import {PageableResponse} from '../../models/response.model';
 import {CustomerTransaction} from '../../models/customer-transaction.model';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({

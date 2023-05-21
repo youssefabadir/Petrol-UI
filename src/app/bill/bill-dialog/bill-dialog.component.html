@@ -3,44 +3,17 @@
 <mat-dialog-content>
     <form #form class="form">
         <div class="div">
-            <ng-select [multiple]="false"
-                       [minTermLength]="1"
-                       [loading]="loadingCustomers"
-                       [(ngModel)]="bill.customerEntity.id"
-                       [items]="customerSearch | async"
-                       bindLabel="name"
-                       bindValue="id"
-                       placeholder="{{ 'CUSTOMER_NAME' | translate }}"
-                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                       name="selectedCustomer"
-                       (input)="loadCustomers($event)">
-            </ng-select>
+            <customer-loader [customer]="bill.customerEntity"
+                             (changeCustomer)="handleCustomer($event)">
+            </customer-loader>
 
-            <ng-select [multiple]="false"
-                       [minTermLength]="1"
-                       [loading]="loadingSuppliers"
-                       [(ngModel)]="bill.supplierEntity.id"
-                       [items]="supplierSearch | async"
-                       bindLabel="name"
-                       bindValue="id"
-                       placeholder="{{ 'SUPPLIER_NAME' | translate }}"
-                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                       name="selectedSupplier"
-                       (input)="loadSuppliers($event)">
-            </ng-select>
+            <supplier-loader [supplier]="bill.supplierEntity"
+                             (changeSupplier)="handleSupplier($event)">
+            </supplier-loader>
 
-            <ng-select [multiple]="false"
-                       [minTermLength]="1"
-                       [loading]="loadingProducts"
-                       [(ngModel)]="bill.productEntity.id"
-                       [items]="productSearch | async"
-                       bindLabel="name"
-                       bindValue="id"
-                       placeholder="{{ 'PRODUCT_NAME' | translate }}"
-                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                       name="selectedProduct"
-                       (input)="loadProducts($event)">
-            </ng-select>
+            <product-loader [product]="bill.productEntity"
+                            (changeProduct)="handleProduct($event)">
+            </product-loader>
         </div>
 
         <div class="div">
@@ -75,15 +48,17 @@
             </div>
         </div>
     </form>
+</mat-dialog-content>
 
+<mat-dialog-actions>
     <div class="actions">
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
                 [disabled]="!form.checkValidity() ||
-                bill.customerEntity.id === null ||
-                bill.productEntity.id === null ||
-                bill.supplierEntity.id === null">
+                !bill.customerEntity.id ||
+                !bill.productEntity.id ||
+                !bill.supplierEntity.id">
             {{ 'SAVE' | translate }}
         </button>
-        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
     </div>
-</mat-dialog-content>
+</mat-dialog-actions>

@@ -3,7 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Customer, defaultCustomer} from '../../models/customer.model';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({

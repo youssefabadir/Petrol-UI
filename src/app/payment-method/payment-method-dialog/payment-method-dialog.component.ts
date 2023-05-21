@@ -2,8 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Helper} from '../../util/Helper.util';
-import {defaultPaymentMethod, PaymentMethod} from '../../models/paymentMethod.model';
+import {Helper} from '../../util/helper.util';
+import {createEmptyPaymentMethod, PaymentMethod} from '../../models/paymentMethod.model';
 
 @Component({
     selector: 'payment-method-dialog',
@@ -13,7 +13,7 @@ import {defaultPaymentMethod, PaymentMethod} from '../../models/paymentMethod.mo
 export class PaymentMethodDialogComponent implements OnInit {
 
 
-    paymentMethod: PaymentMethod = defaultPaymentMethod;
+    paymentMethod: PaymentMethod = createEmptyPaymentMethod();
 
     isEdit: boolean;
 

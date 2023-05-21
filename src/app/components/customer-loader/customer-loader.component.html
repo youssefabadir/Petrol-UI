@@ -1,0 +1,13 @@
+<ng-select [multiple]="false"
+           [minTermLength]="1"
+           [loading]="loadingCustomers"
+           [(ngModel)]="customer.id"
+           [items]="customerSearch | async"
+           bindLabel="name"
+           bindValue="id"
+           placeholder="{{ 'CUSTOMER_NAME' | translate }}"
+           typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+           name="selectedCustomer"
+           (input)="loadCustomers($event)"
+           (change)="changeValue($event)">
+</ng-select>

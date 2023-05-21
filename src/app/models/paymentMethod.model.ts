@@ -6,7 +6,9 @@ export interface PaymentMethod {
 
 }
 
-export const defaultPaymentMethod: PaymentMethod = {
-    id: null,
-    name: ''
+export function createEmptyPaymentMethod(): PaymentMethod {
+    return {
+        id: undefined,
+        name: undefined
+    }
 }

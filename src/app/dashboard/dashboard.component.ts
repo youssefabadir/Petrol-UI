@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {Helper} from '../util/Helper.util';
+import {Helper} from '../util/helper.util';
 import {PageableResponse} from '../models/response.model';
 import {Sort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';

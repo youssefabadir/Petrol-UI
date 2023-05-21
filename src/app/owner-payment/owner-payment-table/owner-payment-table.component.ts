@@ -4,7 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {ApiService} from '../../services/api.service';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Helper} from '../../util/Helper.util';
+import {Helper} from '../../util/helper.util';
 import {PageableResponse} from '../../models/response.model';
 import {Sort} from '@angular/material/sort';
 import {OwnerPayment} from '../../models/ownerPayment.model';

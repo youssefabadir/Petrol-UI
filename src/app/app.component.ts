@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Helper} from './util/Helper.util';
+import {Helper} from './util/helper.util';
 
 
 @Component({

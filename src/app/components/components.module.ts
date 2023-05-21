@@ -13,6 +13,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTreeModule} from '@angular/material/tree';
 import {MdbCollapseModule} from 'mdb-angular-ui-kit/collapse';
 import {TranslateModule} from '@ngx-translate/core';
+import {CustomerLoaderComponent} from './customer-loader/customer-loader.component';
+import {NgSelectModule} from '@ng-select/ng-select';
+import {SupplierLoaderComponent} from './supplier-loader/supplier-loader.component';
+import {ProductLoaderComponent} from './product-loader/product-loader.component';
+import {PaymentMethodLoaderComponent} from './payment-method-loader/payment-method-loader.component';
 
 @NgModule({
     imports: [
@@ -27,16 +32,25 @@ import {TranslateModule} from '@ngx-translate/core';
         MatTreeModule,
         MdbCollapseModule,
         TranslateModule,
+        NgSelectModule,
     ],
     declarations: [
         NavbarComponent,
         SidebarComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        CustomerLoaderComponent,
+        SupplierLoaderComponent,
+        ProductLoaderComponent,
+        PaymentMethodLoaderComponent
     ],
     exports: [
         NavbarComponent,
         SidebarComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        CustomerLoaderComponent,
+        SupplierLoaderComponent,
+        ProductLoaderComponent,
+        PaymentMethodLoaderComponent
     ]
 })
 export class ComponentsModule {

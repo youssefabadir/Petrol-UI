@@ -3,31 +3,13 @@
 <mat-dialog-content>
     <form #form class="form">
         <div class="div">
-            <ng-select [multiple]="false"
-                       [minTermLength]="1"
-                       [loading]="loadingSuppliers"
-                       [(ngModel)]="ownerPayment.supplierEntity.id"
-                       [items]="supplierSearch | async"
-                       bindLabel="name"
-                       bindValue="id"
-                       placeholder="{{ 'SUPPLIER_NAME' | translate }}"
-                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                       name="selectedCustomer"
-                       (input)="loadSuppliers($event)">
-            </ng-select>
+            <supplier-loader [supplier]="ownerPayment.supplierEntity"
+                             (changeSupplier)="handleSupplier($event)">
+            </supplier-loader>
 
-            <ng-select [multiple]="false"
-                       [minTermLength]="1"
-                       [loading]="loadingPaymentMethods"
-                       [(ngModel)]="ownerPayment.paymentMethodEntity.id"
-                       [items]="paymentMethodSearch | async"
-                       bindLabel="name"
-                       bindValue="id"
-                       placeholder="{{ 'PAYMENT_METHOD' | translate }}"
-                       typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
-                       name="selectedPaymentMethod"
-                       (input)="loadPaymentMethods($event)">
-            </ng-select>
+            <payment-method-loader [paymentMethod]="ownerPayment.paymentMethodEntity"
+                                   (changePaymentMethod)="handlePaymentMethod($event)">
+            </payment-method-loader>
         </div>
         <div class="div">
             <mat-form-field appearance="outline" class="form-field">
@@ -58,8 +40,7 @@
 
     <div class="actions">
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || ownerPayment.supplierEntity.id === null ||
-                            ownerPayment.paymentMethodEntity.id === null">
+                [disabled]="!form.checkValidity() || !ownerPayment.supplierEntity.id || !ownerPayment.paymentMethodEntity.id">
             {{ 'SAVE' | translate }}
         </button>
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
