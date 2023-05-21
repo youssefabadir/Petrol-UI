@@ -16,7 +16,7 @@ import {Supplier} from '../../models/supplier.model';
 })
 export class CustomerPaymentDialogComponent implements OnInit {
 
-    customerPayment: CustomerPayment = defaultCustomerPayment;
+    customerPayment: CustomerPayment = {...defaultCustomerPayment};
 
     loadingCustomers: boolean;
 

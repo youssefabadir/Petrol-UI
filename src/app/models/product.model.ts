@@ -9,6 +9,6 @@ export interface Product {
 
 export const defaultProduct: Product = {
     id: null,
-    name: null,
+    name: '',
     price: null
 }

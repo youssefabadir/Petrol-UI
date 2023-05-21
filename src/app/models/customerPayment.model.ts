@@ -21,8 +21,8 @@ export interface CustomerPayment {
 
 export const defaultCustomerPayment: CustomerPayment = {
     id: null,
-    customerEntity: defaultCustomer,
-    paymentMethodEntity: defaultPaymentMethod,
+    customerEntity: {...defaultCustomer},
+    paymentMethodEntity: {...defaultPaymentMethod},
     amount: null,
     number: '',
     transferred: null,

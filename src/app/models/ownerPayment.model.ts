@@ -19,9 +19,9 @@ export interface OwnerPayment {
 
 export const defaultOwnerPayment: OwnerPayment = {
     id: null,
-    supplierEntity: defaultSupplier,
+    supplierEntity: {...defaultSupplier},
     amount: null,
     number: '',
-    paymentMethodEntity: defaultPaymentMethod,
+    paymentMethodEntity: {...defaultPaymentMethod},
     date: ''
 }
