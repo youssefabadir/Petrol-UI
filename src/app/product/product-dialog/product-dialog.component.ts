@@ -3,7 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Helper} from '../../util/helper.util';
-import {defaultProduct, Product} from '../../models/product.model';
+import {createEmptyProduct, Product} from '../../models/product.model';
 
 @Component({
     selector: 'product-dialog',
@@ -12,7 +12,7 @@ import {defaultProduct, Product} from '../../models/product.model';
 })
 export class ProductDialogComponent implements OnInit {
 
-    product: Product = defaultProduct;
+    product: Product = createEmptyProduct();
 
     isEdit: boolean;
 

@@ -7,12 +7,6 @@ export interface Customer {
     balance?: number;
 }
 
-export const defaultCustomer: Customer = {
-    id: null,
-    name: '',
-    balance: null
-}
-
 export function createEmptyCustomer(): Customer {
     return {
         id: undefined,

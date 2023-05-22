@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Customer, defaultCustomer} from '../../models/customer.model';
+import {createEmptyCustomer, Customer} from '../../models/customer.model';
 import {Helper} from '../../util/helper.util';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
@@ -13,7 +13,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class CustomerDialogComponent implements OnInit {
 
-    customer: Customer = defaultCustomer;
+    customer: Customer = createEmptyCustomer();
 
     isEdit: boolean;
 
@@ -55,7 +55,6 @@ export class CustomerDialogComponent implements OnInit {
     }
 
     cancel(result: boolean): void {
-        this.customer = defaultCustomer;
         this.dialogRef.close(result);
     }
 

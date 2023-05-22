@@ -8,7 +8,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Helper} from '../../util/helper.util';
 import {PageableResponse} from '../../models/response.model';
 import {Sort} from '@angular/material/sort';
-import {defaultSupplier, Supplier} from '../../models/supplier.model';
+import {createEmptySupplier, Supplier} from '../../models/supplier.model';
 import {SupplierTransaction} from '../../models/supplierTransaction.model';
 
 @Component({
@@ -25,7 +25,7 @@ export class SupplierTransactionComponent implements OnInit {
     header = ['balance', 'paymentNumber', 'paymentAmount', 'transferredPayment',
         'paymentMethod', 'billNumber', 'billQuantity', 'billAmount', 'product', 'date'];
 
-    supplier: Supplier = defaultSupplier;
+    supplier: Supplier = createEmptySupplier();
 
     pageNo: number = 0;
 

@@ -1,4 +1,4 @@
-import {defaultSupplier, Supplier} from './supplier.model';
+import {createEmptySupplier, Supplier} from './supplier.model';
 import {createEmptyPaymentMethod, PaymentMethod} from './paymentMethod.model';
 
 export interface OwnerPayment {
@@ -19,7 +19,7 @@ export interface OwnerPayment {
 
 export const defaultOwnerPayment: OwnerPayment = {
     id: null,
-    supplierEntity: {...defaultSupplier},
+    supplierEntity: createEmptySupplier(),
     amount: null,
     number: '',
     paymentMethodEntity: createEmptyPaymentMethod(),

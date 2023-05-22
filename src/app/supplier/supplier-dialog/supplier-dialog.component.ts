@@ -3,8 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Helper} from '../../util/helper.util';
-import {defaultSupplier, Supplier} from '../../models/supplier.model';
-import {defaultCustomer} from '../../models/customer.model';
+import {createEmptySupplier, Supplier} from '../../models/supplier.model';
 
 @Component({
     selector: 'supplier-dialog',
@@ -13,7 +12,7 @@ import {defaultCustomer} from '../../models/customer.model';
 })
 export class SupplierDialogComponent implements OnInit {
 
-    supplier: Supplier = defaultSupplier;
+    supplier: Supplier = createEmptySupplier();
 
     isEdit: boolean;
 
@@ -50,6 +49,4 @@ export class SupplierDialogComponent implements OnInit {
     cancel(): void {
         this.dialogRef.close(undefined);
     }
-
-    protected readonly defaultCustomer = defaultCustomer;
 }

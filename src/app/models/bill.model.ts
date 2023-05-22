@@ -1,6 +1,6 @@
-import {defaultSupplier, Supplier} from './supplier.model';
-import {Customer, defaultCustomer} from './customer.model';
-import {defaultProduct, Product} from './product.model';
+import {createEmptySupplier, Supplier} from './supplier.model';
+import {createEmptyCustomer, Customer} from './customer.model';
+import {createEmptyProduct, Product} from './product.model';
 
 export interface Bill {
 
@@ -23,9 +23,9 @@ export interface Bill {
 }
 
 export const defaultBill: Bill = {
-    supplierEntity: {...defaultSupplier},
-    customerEntity: {...defaultCustomer},
-    productEntity: {...defaultProduct},
+    supplierEntity: createEmptySupplier(),
+    customerEntity: createEmptyCustomer(),
+    productEntity: createEmptyProduct(),
     number: null,
     amount: null,
     quantity: null,

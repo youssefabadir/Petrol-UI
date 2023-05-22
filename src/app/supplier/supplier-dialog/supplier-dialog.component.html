@@ -14,20 +14,15 @@
                    required>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="form-field">
-            <mat-label>{{ 'BALANCE' | translate }}</mat-label>
-            <input [(ngModel)]="supplier.balance"
-                   name="balance"
-                   matInput
-                   required>
-        </mat-form-field>
     </form>
 </mat-dialog-content>
 
-<div class="actions">
-    <button mat-raised-button color="primary" (click)="save()"
-            [disabled]="!form.checkValidity() || supplier.name.trim().length === 0">
-        {{ 'SAVE' | translate }}
-    </button>
-    <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
-</div>
+<mat-dialog-actions>
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="save()"
+                [disabled]="!form.checkValidity() || supplier.name.trim().length === 0">
+            {{ 'SAVE' | translate }}
+        </button>
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+    </div>
+</mat-dialog-actions>

@@ -7,8 +7,10 @@ export interface Product {
     price?: number;
 }
 
-export const defaultProduct: Product = {
-    id: null,
-    name: '',
-    price: null
+export function createEmptyProduct(): Product {
+    return {
+        id: null,
+        name: '',
+        price: null
+    }
 }

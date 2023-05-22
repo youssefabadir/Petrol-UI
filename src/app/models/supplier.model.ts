@@ -7,8 +7,10 @@ export interface Supplier {
     balance?: number;
 }
 
-export const defaultSupplier: Supplier = {
-    id: null,
-    name: '',
-    balance: null
+export function createEmptySupplier(): Supplier {
+    return {
+        id: null,
+        name: '',
+        balance: null
+    }
 }
