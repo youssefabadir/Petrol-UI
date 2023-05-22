@@ -41,7 +41,7 @@ export class OwnerPaymentDialogComponent implements OnInit {
             this.dialogRef.close(true);
         }, (error) => {
             if (error.status === 409) {
-                Helper.snackbar(Helper.translateKey('SAVE_OWNER_PAYMENT_CONFLICT'), this.snackbar);
+                Helper.snackbar(Helper.translateKey('SAVE_PAYMENT_CONFLICT'), this.snackbar);
             } else {
                 Helper.snackbar(Helper.translateKey('SAVE_OWNER_PAYMENT_ERROR'), this.snackbar);
             }

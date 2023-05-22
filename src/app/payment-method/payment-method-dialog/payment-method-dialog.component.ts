@@ -34,15 +34,23 @@ export class PaymentMethodDialogComponent implements OnInit {
             this.apiService.updatePaymentMethod(this.paymentMethod).subscribe(() => {
                 Helper.snackbar(Helper.translateKey('UPDATE_PAYMENT_METHOD_SUCCESS'), this.snackbar);
                 this.dialogRef.close(true);
-            }, () => {
-                Helper.snackbar(Helper.translateKey('UPDATE_PAYMENT_METHOD_ERROR'), this.snackbar);
+            }, (error) => {
+                if (error.status === 409) {
+                    Helper.snackbar(Helper.translateKey('PAYMENT_METHOD_CONFLICT'), this.snackbar);
+                } else {
+                    Helper.snackbar(Helper.translateKey('UPDATE_PAYMENT_METHOD_ERROR'), this.snackbar);
+                }
             });
         } else {
             this.apiService.createPaymentMethod(this.paymentMethod).subscribe(() => {
                 Helper.snackbar(Helper.translateKey('SAVE_PAYMENT_METHOD_SUCCESS'), this.snackbar);
                 this.dialogRef.close(true);
-            }, () => {
-                Helper.snackbar(Helper.translateKey('SAVE_PAYMENT_METHOD_ERROR'), this.snackbar);
+            }, (error) => {
+                if (error.status === 409) {
+                    Helper.snackbar(Helper.translateKey('PAYMENT_METHOD_CONFLICT'), this.snackbar);
+                } else {
+                    Helper.snackbar(Helper.translateKey('SAVE_PAYMENT_METHOD_ERROR'), this.snackbar);
+                }
             });
         }
     }

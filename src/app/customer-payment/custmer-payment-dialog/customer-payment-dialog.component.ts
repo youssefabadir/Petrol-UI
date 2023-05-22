@@ -38,8 +38,12 @@ export class CustomerPaymentDialogComponent implements OnInit {
         this.apiService.createCustomerPayment(this.customerPayment, this.supplierId).subscribe(() => {
             Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_PAYMENT_SUCCESS'), this.snackbar);
             this.dialogRef.close(true);
-        }, () => {
-            Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_PAYMENT_ERROR'), this.snackbar);
+        }, (error) => {
+            if (error.status === 409) {
+                Helper.snackbar(Helper.translateKey('SAVE_PAYMENT_CONFLICT'), this.snackbar);
+            } else {
+                Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_PAYMENT_ERROR'), this.snackbar);
+            }
         });
     }
 
