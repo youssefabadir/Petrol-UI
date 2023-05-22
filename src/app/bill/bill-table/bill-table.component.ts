@@ -22,7 +22,7 @@ export class BillTableComponent implements OnInit {
 
     dataSource: MatTableDataSource<Bill>;
 
-    header = ['number', 'quantity', 'supplier', 'customer', 'product', 'date', 'actions'];
+    header = ['number', 'supplier', 'customer', 'quantity', 'amount', 'product', 'date', 'actions'];
 
     pageNo: number = 0;
 
