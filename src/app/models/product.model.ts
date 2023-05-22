@@ -9,8 +9,8 @@ export interface Product {
 
 export function createEmptyProduct(): Product {
     return {
-        id: null,
+        id: undefined,
         name: '',
-        price: null
+        price: undefined
     }
 }

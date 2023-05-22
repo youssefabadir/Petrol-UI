@@ -4,7 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Customer} from '../../models/customer.model';
+import {createEmptyCustomer, Customer} from '../../models/customer.model';
 import {Sort} from '@angular/material/sort';
 import {PageableResponse} from '../../models/response.model';
 import {CustomerTransaction} from '../../models/customer-transaction.model';
@@ -25,7 +25,7 @@ export class CustomerTransactionComponent implements OnInit {
     header = ['balance', 'paymentNumber', 'paymentAmount', 'transferredPayment',
         'paymentMethod', 'billNumber', 'billQuantity', 'billAmount', 'product', 'date'];
 
-    customer: Customer = {id: null, name: ''}
+    customer: Customer = createEmptyCustomer();
 
     pageNo: number = 0;
 

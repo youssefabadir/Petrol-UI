@@ -13,11 +13,13 @@ export interface Discount {
 
 }
 
-export const defaultDiscount = {
-    id: null,
-    discount: null,
-    customerId: null,
-    customerName: '',
-    productId: null,
-    productName: ''
+export function createEmptyDiscount(): Discount {
+    return {
+        id: undefined,
+        discount: undefined,
+        customerId: undefined,
+        customerName: '',
+        productId: undefined,
+        productName: ''
+    }
 }

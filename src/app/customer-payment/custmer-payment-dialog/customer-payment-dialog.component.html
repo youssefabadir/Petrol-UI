@@ -17,7 +17,7 @@
             </mat-checkbox>
 
             <supplier-loader [hidden]="!customerPayment.transferred"
-                             [supplier]="{id:supplierId, name:''}"
+                             [supplier]="createEmptySupplier()"
                              (changeSupplier)="handleSupplier($event)">
             </supplier-loader>
         </div>

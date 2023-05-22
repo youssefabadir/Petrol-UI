@@ -4,7 +4,7 @@ import {ApiService} from '../../services/api.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Helper} from '../../util/helper.util';
-import {defaultDiscount, Discount} from '../../models/discount.model';
+import {createEmptyDiscount, Discount} from '../../models/discount.model';
 import {Product} from '../../models/product.model';
 
 @Component({
@@ -14,7 +14,7 @@ import {Product} from '../../models/product.model';
 })
 export class DiscountDialogComponent implements OnInit {
 
-    discount: Discount = defaultDiscount;
+    discount: Discount = createEmptyDiscount();
 
     isEdit: boolean;
 

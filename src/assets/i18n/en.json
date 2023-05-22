@@ -102,6 +102,7 @@
     "SAVE_CUSTOMER_SUCCESS": "Customer data has been saved successfully",
     "SAVE_DISCOUNT_ERROR": "Error occurred while saving discount data",
     "SAVE_DISCOUNT_SUCCESS": "Discount has been saved successfully",
+    "SAVE_OWNER_PAYMENT_CONFLICT": "This payment number already exists",
     "SAVE_OWNER_PAYMENT_ERROR": "Error occurred while saving owner payment",
     "SAVE_OWNER_PAYMENT_SUCCESS": "Owner payment has been saved successfully",
     "SAVE_PAYMENT_METHOD_ERROR": "Error occurred while saving payment method data",

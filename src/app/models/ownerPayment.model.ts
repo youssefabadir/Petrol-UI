@@ -17,11 +17,13 @@ export interface OwnerPayment {
 
 }
 
-export const defaultOwnerPayment: OwnerPayment = {
-    id: null,
-    supplierEntity: createEmptySupplier(),
-    amount: null,
-    number: '',
-    paymentMethodEntity: createEmptyPaymentMethod(),
-    date: ''
+export function createEmptyOwnerPayment(): OwnerPayment {
+    return {
+        id: undefined,
+        supplierEntity: createEmptySupplier(),
+        amount: undefined,
+        number: '',
+        paymentMethodEntity: createEmptyPaymentMethod(),
+        date: ''
+    }
 }

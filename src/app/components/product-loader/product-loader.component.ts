@@ -22,7 +22,7 @@ export class ProductLoaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.product.name.length > 0) {
+        if (this.product.name && this.product.name.length > 0) {
             this.productSearch = this.search(this.product.name);
         }
     }

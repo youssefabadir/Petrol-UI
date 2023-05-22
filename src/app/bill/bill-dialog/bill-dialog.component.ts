@@ -3,7 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
 import {Helper} from '../../util/helper.util';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Bill, defaultBill} from '../../models/bill.model';
+import {Bill, createEmptyBill} from '../../models/bill.model';
 import {Customer} from '../../models/customer.model';
 import {Supplier} from '../../models/supplier.model';
 import {Product} from '../../models/product.model';
@@ -15,7 +15,7 @@ import {Product} from '../../models/product.model';
 })
 export class BillDialogComponent implements OnInit {
 
-    bill: Bill = defaultBill;
+    bill: Bill = createEmptyBill();
 
     selectedDate: Date;
 

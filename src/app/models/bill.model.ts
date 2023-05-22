@@ -22,12 +22,14 @@ export interface Bill {
 
 }
 
-export const defaultBill: Bill = {
-    supplierEntity: createEmptySupplier(),
-    customerEntity: createEmptyCustomer(),
-    productEntity: createEmptyProduct(),
-    number: null,
-    amount: null,
-    quantity: null,
-    date: null
+export function createEmptyBill(): Bill {
+    return {
+        supplierEntity: createEmptySupplier(),
+        customerEntity: createEmptyCustomer(),
+        productEntity: createEmptyProduct(),
+        number: undefined,
+        amount: undefined,
+        quantity: undefined,
+        date: undefined
+    }
 }

@@ -9,8 +9,8 @@ export interface Supplier {
 
 export function createEmptySupplier(): Supplier {
     return {
-        id: null,
+        id: undefined,
         name: '',
-        balance: null
+        balance: undefined
     }
 }

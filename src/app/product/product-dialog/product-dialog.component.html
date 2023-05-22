@@ -30,7 +30,7 @@
 
     <div class="actions">
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || product.name.trim().length === 0 || product.price === null">
+                [disabled]="!form.checkValidity() || !product.name.trim().length || !product.price">
             {{ 'SAVE' | translate }}
         </button>
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>

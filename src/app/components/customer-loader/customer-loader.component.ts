@@ -22,7 +22,7 @@ export class CustomerLoaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.customer.name.length > 0) {
+        if (this.customer.name && this.customer.name.length > 0) {
             this.customerSearch = this.search(this.customer.name);
         }
     }

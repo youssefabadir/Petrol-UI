@@ -102,6 +102,7 @@
     "SAVE_CUSTOMER_SUCCESS": "تم حفظ بيانات العميل بنجاح",
     "SAVE_DISCOUNT_ERROR": "حدث خطأ أثناء حفظ بيانات الخصم",
     "SAVE_DISCOUNT_SUCCESS": "تم حفظ الخصم بنجاح",
+    "SAVE_OWNER_PAYMENT_CONFLICT": "رقم الدفع هذا موجود مسبقا",
     "SAVE_OWNER_PAYMENT_ERROR": "حدث خطأ أثناء حفظ دفع المالك",
     "SAVE_OWNER_PAYMENT_SUCCESS": "تم حفظ دفع المالك بنجاح",
     "SAVE_PAYMENT_METHOD_ERROR": "حدث خطأ أثناء حفظ بيانات طريقة الدفع",

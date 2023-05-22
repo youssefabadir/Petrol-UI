@@ -22,7 +22,7 @@ export class PaymentMethodLoaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.paymentMethod.name.length > 0) {
+        if (this.paymentMethod.name && this.paymentMethod.name.length > 0) {
             this.paymentMethodSearch = this.search(this.paymentMethod.name);
         }
     }

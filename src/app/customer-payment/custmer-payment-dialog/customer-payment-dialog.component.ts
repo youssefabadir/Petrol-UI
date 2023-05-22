@@ -6,7 +6,7 @@ import {Helper} from '../../util/helper.util';
 import {createEmptyCustomerPayment, CustomerPayment} from '../../models/customerPayment.model';
 import {TranslateService} from '@ngx-translate/core';
 import {Customer} from '../../models/customer.model';
-import {Supplier} from '../../models/supplier.model';
+import {createEmptySupplier, Supplier} from '../../models/supplier.model';
 import {PaymentMethod} from '../../models/paymentMethod.model';
 
 @Component({
@@ -58,4 +58,6 @@ export class CustomerPaymentDialogComponent implements OnInit {
     cancel(): void {
         this.dialogRef.close(undefined);
     }
+
+    protected readonly createEmptySupplier = createEmptySupplier;
 }

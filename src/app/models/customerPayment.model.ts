@@ -21,12 +21,12 @@ export interface CustomerPayment {
 
 export function createEmptyCustomerPayment(): CustomerPayment {
     return {
-        id: null,
+        id: undefined,
         customerEntity: createEmptyCustomer(),
         paymentMethodEntity: createEmptyPaymentMethod(),
-        amount: null,
+        amount: undefined,
         number: '',
-        transferred: null,
-        date: null
+        transferred: undefined,
+        date: undefined
     }
 }

@@ -3,7 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Helper} from '../../util/helper.util';
-import {defaultOwnerPayment, OwnerPayment} from '../../models/ownerPayment.model';
+import {createEmptyOwnerPayment, OwnerPayment} from '../../models/ownerPayment.model';
 import {Supplier} from '../../models/supplier.model';
 import {PaymentMethod} from '../../models/paymentMethod.model';
 
@@ -14,7 +14,7 @@ import {PaymentMethod} from '../../models/paymentMethod.model';
 })
 export class OwnerPaymentDialogComponent implements OnInit {
 
-    ownerPayment: OwnerPayment = defaultOwnerPayment;
+    ownerPayment: OwnerPayment = createEmptyOwnerPayment();
 
     selectedDate: Date;
 
@@ -39,8 +39,12 @@ export class OwnerPaymentDialogComponent implements OnInit {
         this.apiService.createOwnerPayment(this.ownerPayment).subscribe(() => {
             Helper.snackbar(Helper.translateKey('SAVE_OWNER_PAYMENT_SUCCESS'), this.snackbar);
             this.dialogRef.close(true);
-        }, () => {
-            Helper.snackbar(Helper.translateKey('SAVE_OWNER_PAYMENT_ERROR'), this.snackbar);
+        }, (error) => {
+            if (error.status === 409) {
+                Helper.snackbar(Helper.translateKey('SAVE_OWNER_PAYMENT_CONFLICT'), this.snackbar);
+            } else {
+                Helper.snackbar(Helper.translateKey('SAVE_OWNER_PAYMENT_ERROR'), this.snackbar);
+            }
         });
     }
 

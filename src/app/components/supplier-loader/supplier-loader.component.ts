@@ -22,7 +22,7 @@ export class SupplierLoaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.supplier.name.length > 0) {
+        if (this.supplier.name && this.supplier.name.length > 0) {
             this.supplierSearch = this.search(this.supplier.name);
         }
     }
