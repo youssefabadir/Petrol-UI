@@ -17,9 +17,20 @@
 
         <div>
             <mat-form-field appearance="outline" class="form-field">
-                <mat-label>{{ 'PRICE' | translate }}</mat-label>
-                <input [(ngModel)]="product.price"
-                       name="price"
+                <mat-label>{{ 'CUSTOMER_PRICE' | translate }}</mat-label>
+                <input [(ngModel)]="product.customerPrice"
+                       name="customerPrice"
+                       pattern="^[0-9]\d*(\.\d+)?$"
+                       matInput
+                       required>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'SUPPLIER_PRICE' | translate }}</mat-label>
+                <input [(ngModel)]="product.supplierPrice"
+                       name="supplierPrice"
                        pattern="^[0-9]\d*(\.\d+)?$"
                        matInput
                        required>
@@ -30,7 +41,7 @@
 
     <div class="actions">
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || !product.name.trim().length || !product.price">
+                [disabled]="!form.checkValidity()">
             {{ 'SAVE' | translate }}
         </button>
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>

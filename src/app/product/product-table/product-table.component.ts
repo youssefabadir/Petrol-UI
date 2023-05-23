@@ -22,7 +22,7 @@ export class ProductTableComponent implements OnInit {
 
     dataSource: MatTableDataSource<Product>
 
-    header = ['id', 'name', 'price', 'actions']
+    header = ['id', 'name', 'customerPrice', 'supplierPrice', 'actions']
 
     pageNo: number = 0;
 

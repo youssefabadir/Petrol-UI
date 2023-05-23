@@ -4,13 +4,16 @@ export interface Product {
 
     name?: string;
 
-    price?: number;
+    customerPrice?: number;
+
+    supplierPrice?: number;
 }
 
 export function createEmptyProduct(): Product {
     return {
         id: undefined,
         name: '',
-        price: undefined
+        customerPrice: undefined,
+        supplierPrice: undefined
     }
 }

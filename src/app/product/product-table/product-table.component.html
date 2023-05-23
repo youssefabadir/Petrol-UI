@@ -40,10 +40,16 @@
                                     <mat-cell *matCellDef="let row">{{row['name']}}</mat-cell>
                                 </ng-container>
 
-                                <ng-container matColumnDef="price">
+                                <ng-container matColumnDef="customerPrice">
                                     <mat-header-cell *matHeaderCellDef
-                                                     mat-sort-header>{{ 'PRICE' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['price']}}</mat-cell>
+                                                     mat-sort-header>{{ 'CUSTOMER_PRICE' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['customerPrice']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="supplierPrice">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'SUPPLIER_PRICE' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['supplierPrice']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="actions">
