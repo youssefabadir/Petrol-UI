@@ -74,6 +74,7 @@
     "PAYMENT_METHOD": "طريقة الدفع",
     "PAYMENT_METHOD_CONFLICT": "اسم طريقة الدفع هذا موجود مسبقًا",
     "PAYMENT_NUMBER": "رقم الدفع",
+    "PAYMENT_NUMBER_MISSING": "الرجاء إدخال رقم الدفع",
     "PREVIOUS_PAGE_LABEL": "الصفحة السابقة",
     "PRICE": "السعر",
     "PRODUCT": "المنتج",

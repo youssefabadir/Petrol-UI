@@ -39,10 +39,16 @@ export class CustomerPaymentDialogComponent implements OnInit {
             Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_PAYMENT_SUCCESS'), this.snackbar);
             this.dialogRef.close(true);
         }, (error) => {
-            if (error.status === 409) {
-                Helper.snackbar(Helper.translateKey('SAVE_PAYMENT_CONFLICT'), this.snackbar);
-            } else {
-                Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_PAYMENT_ERROR'), this.snackbar);
+            switch (error.status) {
+                case 409:
+                    Helper.snackbar(Helper.translateKey('SAVE_PAYMENT_CONFLICT'), this.snackbar);
+                    break;
+                case 422:
+                    Helper.snackbar(Helper.translateKey('PAYMENT_NUMBER_MISSING'), this.snackbar);
+                    break;
+                default:
+                    Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_PAYMENT_ERROR'), this.snackbar);
+                    break;
             }
         });
     }

@@ -74,6 +74,7 @@
     "PAYMENT_METHOD": "Payment Method",
     "PAYMENT_METHOD_CONFLICT": "This payment method name already exists",
     "PAYMENT_NUMBER": "Payment Number",
+    "PAYMENT_NUMBER_MISSING": "Please enter the payment number",
     "PREVIOUS_PAGE_LABEL": "Previous Page",
     "PRICE": "Price",
     "PRODUCT": "Product",
