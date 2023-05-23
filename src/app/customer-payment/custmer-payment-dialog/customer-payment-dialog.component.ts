@@ -70,4 +70,6 @@ export class CustomerPaymentDialogComponent implements OnInit {
     }
 
     protected readonly createEmptySupplier = createEmptySupplier;
+
+    protected readonly Helper = Helper;
 }

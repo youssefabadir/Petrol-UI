@@ -1,8 +1,10 @@
-<h1 mat-dialog-title *ngIf="!isEdit">{{ 'ADD_CUSTOMER' | translate }}</h1>
+<h1 mat-dialog-title *ngIf="!isEdit"
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'ADD_CUSTOMER' | translate }}</h1>
 
-<h1 mat-dialog-title *ngIf="isEdit">{{ 'EDIT_CUSTOMER' | translate }}</h1>
+<h1 mat-dialog-title *ngIf="isEdit"
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'EDIT_CUSTOMER' | translate }}</h1>
 
-<mat-dialog-content [formGroup]="customerForm">
+<mat-dialog-content [formGroup]="customerForm" dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <form #form class="form">
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>{{ 'NAME' | translate }}</mat-label>

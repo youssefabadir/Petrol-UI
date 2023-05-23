@@ -58,4 +58,5 @@ export class CustomerDialogComponent implements OnInit {
         this.dialogRef.close(result);
     }
 
+    protected readonly Helper = Helper;
 }

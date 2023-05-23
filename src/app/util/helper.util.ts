@@ -2,7 +2,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {TranslateService} from '@ngx-translate/core';
 
 export class Helper {
-    private static translate: TranslateService;
+    public static translate: TranslateService;
 
     constructor(private translateService: TranslateService) {
         Helper.translate = translateService;

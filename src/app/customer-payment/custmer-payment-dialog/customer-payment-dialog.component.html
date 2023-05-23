@@ -1,6 +1,7 @@
-<h1 mat-dialog-title [ngClass]="{'title': translate.currentLang === 'ar'}">{{ 'ADD_CUSTOMER_PAYMENT' | translate }}</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'ADD_CUSTOMER_PAYMENT' | translate }}</h1>
 
-<mat-dialog-content dir="{{this.translate.currentLang === 'en'? 'ltr':'rtl'}}">
+<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <form #form class="form">
         <div class="div">
             <customer-loader [customer]="customerPayment.customerEntity"
