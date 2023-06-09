@@ -4,11 +4,13 @@
 <mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <form #form class="form">
         <div class="div">
-            <customer-loader [customer]="customerPayment.customerEntity"
+            <customer-loader [customer]="customerPayment.customer"
                              (changeCustomer)="handleCustomer($event)">
             </customer-loader>
 
-            <payment-method-loader [paymentMethod]="customerPayment.paymentMethodEntity"
+            <payment-method-loader [paymentMethodId]="customerPayment.paymentMethodId"
+                                   [paymentMethodName]="customerPayment.paymentMethodName"
+                                   [paymentMethodBalance]="customerPayment.paymentMethodBalance"
                                    (changePaymentMethod)="handlePaymentMethod($event)">
             </payment-method-loader>
 
@@ -53,7 +55,7 @@
     <div class="actions">
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || !customerPayment.customerEntity.id || !customerPayment.paymentMethodEntity.id">
+                [disabled]="!form.checkValidity() || !customerPayment.customer.id || !customerPayment.paymentMethodId">
             {{ 'SAVE' | translate }}
         </button>
     </div>

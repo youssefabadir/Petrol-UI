@@ -4,11 +4,14 @@ export interface PaymentMethod {
 
     name: string;
 
+    balance?: number;
+
 }
 
 export function createEmptyPaymentMethod(): PaymentMethod {
     return {
         id: undefined,
-        name: undefined
+        name: undefined,
+        balance: undefined
     }
 }

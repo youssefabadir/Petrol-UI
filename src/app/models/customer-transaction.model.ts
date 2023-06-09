@@ -1,6 +1,6 @@
 export interface CustomerTransaction {
 
-    customer: string;
+    customerName: string;
 
     customerBalance: number;
 

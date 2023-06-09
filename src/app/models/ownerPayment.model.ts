@@ -1,17 +1,20 @@
 import {createEmptySupplier, Supplier} from './supplier.model';
-import {createEmptyPaymentMethod, PaymentMethod} from './paymentMethod.model';
 
 export interface OwnerPayment {
 
     id?: number;
 
-    supplierEntity: Supplier;
+    supplier: Supplier;
 
     amount: number;
 
     number: string;
 
-    paymentMethodEntity: PaymentMethod;
+    paymentMethodId: number;
+
+    paymentMethodName: string;
+
+    paymentMethodBalance: number;
 
     date: string;
 
@@ -20,10 +23,12 @@ export interface OwnerPayment {
 export function createEmptyOwnerPayment(): OwnerPayment {
     return {
         id: undefined,
-        supplierEntity: createEmptySupplier(),
+        supplier: createEmptySupplier(),
         amount: undefined,
         number: '',
-        paymentMethodEntity: createEmptyPaymentMethod(),
+        paymentMethodId: undefined,
+        paymentMethodName: undefined,
+        paymentMethodBalance: undefined,
         date: ''
     }
 }

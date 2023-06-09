@@ -90,7 +90,7 @@
                                 <ng-container matColumnDef="paymentMethod">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'PAYMENT_METHOD' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['paymentMethod']['name']}}</mat-cell>
+                                    <mat-cell *matCellDef="let row">{{row['paymentMethodName']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="date">
@@ -142,7 +142,7 @@
                                 <ng-container matColumnDef="paymentMethod">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'PAYMENT_METHOD' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['paymentMethod']['name']}}</mat-cell>
+                                    <mat-cell *matCellDef="let row">{{row['paymentMethodName']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="date">

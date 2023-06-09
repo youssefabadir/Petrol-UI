@@ -1,8 +1,8 @@
 export interface SupplierTransaction {
 
-    supplier: string;
+    supplierName: string;
 
-    ownerSupplierBalance: number;
+    supplierBalance: number;
 
     paymentNumber?: string;
 

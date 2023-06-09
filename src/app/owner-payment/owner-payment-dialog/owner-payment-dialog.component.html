@@ -3,11 +3,13 @@
 <mat-dialog-content>
     <form #form class="form">
         <div class="div">
-            <supplier-loader [supplier]="ownerPayment.supplierEntity"
+            <supplier-loader [supplier]="ownerPayment.supplier"
                              (changeSupplier)="handleSupplier($event)">
             </supplier-loader>
 
-            <payment-method-loader [paymentMethod]="ownerPayment.paymentMethodEntity"
+            <payment-method-loader [paymentMethodId]="ownerPayment.paymentMethodId"
+                                   [paymentMethodName]="ownerPayment.paymentMethodName"
+                                   [paymentMethodBalance]="ownerPayment.paymentMethodBalance"
                                    (changePaymentMethod)="handlePaymentMethod($event)">
             </payment-method-loader>
         </div>
@@ -40,7 +42,7 @@
 
     <div class="actions">
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || !ownerPayment.supplierEntity.id || !ownerPayment.paymentMethodEntity.id">
+                [disabled]="!form.checkValidity() || !ownerPayment.supplier.id || !ownerPayment.paymentMethodId">
             {{ 'SAVE' | translate }}
         </button>
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>

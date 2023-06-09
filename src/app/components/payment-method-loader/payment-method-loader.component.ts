@@ -10,7 +10,11 @@ import {PaymentMethod} from '../../models/paymentMethod.model';
 })
 export class PaymentMethodLoaderComponent implements OnInit {
 
-    @Input() paymentMethod: PaymentMethod;
+    @Input() paymentMethodId: number;
+
+    @Input() paymentMethodName: string;
+
+    @Input() paymentMethodBalance: number;
 
     @Output() changePaymentMethod: EventEmitter<PaymentMethod> = new EventEmitter<PaymentMethod>();
 
@@ -22,8 +26,8 @@ export class PaymentMethodLoaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.paymentMethod.name && this.paymentMethod.name.length > 0) {
-            this.paymentMethodSearch = this.search(this.paymentMethod.name);
+        if (this.paymentMethodName && this.paymentMethodName.length > 0) {
+            this.paymentMethodSearch = this.search(this.paymentMethodName);
         }
     }
 

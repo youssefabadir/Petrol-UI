@@ -54,7 +54,7 @@ export class CustomerPaymentDialogComponent implements OnInit {
     }
 
     handleCustomer(customer: Customer): void {
-        this.customerPayment.customerEntity = customer;
+        this.customerPayment.customer = customer;
     }
 
     handleSupplier(supplier: Supplier): void {
@@ -62,7 +62,9 @@ export class CustomerPaymentDialogComponent implements OnInit {
     }
 
     handlePaymentMethod(paymentMethod: PaymentMethod): void {
-        this.customerPayment.paymentMethodEntity = paymentMethod;
+        this.customerPayment.paymentMethodId = paymentMethod.id;
+        this.customerPayment.paymentMethodName = paymentMethod.name;
+        this.customerPayment.paymentMethodBalance = paymentMethod.balance;
     }
 
     cancel(): void {

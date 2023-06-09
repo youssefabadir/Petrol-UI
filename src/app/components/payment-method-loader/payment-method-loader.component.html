@@ -1,7 +1,7 @@
 <ng-select [multiple]="false"
            [minTermLength]="1"
            [loading]="loadingPaymentMethods"
-           [(ngModel)]="paymentMethod.id"
+           [(ngModel)]="paymentMethodId"
            [items]="paymentMethodSearch | async"
            bindLabel="name"
            bindValue="id"

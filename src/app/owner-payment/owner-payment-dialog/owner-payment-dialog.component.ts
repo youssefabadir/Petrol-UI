@@ -26,11 +26,13 @@ export class OwnerPaymentDialogComponent implements OnInit {
     }
 
     handleSupplier(supplier: Supplier): void {
-        this.ownerPayment.supplierEntity = supplier;
+        this.ownerPayment.supplier = supplier;
     }
 
     handlePaymentMethod(paymentMethod: PaymentMethod): void {
-        this.ownerPayment.paymentMethodEntity = paymentMethod;
+        this.ownerPayment.paymentMethodId = paymentMethod.id;
+        this.ownerPayment.paymentMethodName = paymentMethod.name;
+        this.ownerPayment.paymentMethodBalance = paymentMethod.balance;
     }
 
     save(): void {

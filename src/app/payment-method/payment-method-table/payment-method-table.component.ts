@@ -72,6 +72,10 @@ export class PaymentMethodTableComponent implements OnInit {
         });
     }
 
+    view(paymentMethod: PaymentMethod): void {
+
+    }
+
     edit(paymentMethod: PaymentMethod): void {
         const dialogRef = this.dialog.open(PaymentMethodDialogComponent,
                 {data: paymentMethod});

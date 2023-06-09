@@ -1,13 +1,18 @@
 import {createEmptyCustomer, Customer} from './customer.model';
-import {createEmptyPaymentMethod, PaymentMethod} from './paymentMethod.model';
 
 export interface CustomerPayment {
 
     id?: number;
 
-    customerEntity: Customer;
+    paymentType?: string;
 
-    paymentMethodEntity: PaymentMethod;
+    customer: Customer;
+
+    paymentMethodId: number;
+
+    paymentMethodName: string;
+
+    paymentMethodBalance: number;
 
     amount: number;
 
@@ -22,8 +27,11 @@ export interface CustomerPayment {
 export function createEmptyCustomerPayment(): CustomerPayment {
     return {
         id: undefined,
-        customerEntity: createEmptyCustomer(),
-        paymentMethodEntity: createEmptyPaymentMethod(),
+        paymentType: 'CUSTOMER_PAYMENT',
+        customer: createEmptyCustomer(),
+        paymentMethodId: undefined,
+        paymentMethodName: undefined,
+        paymentMethodBalance: undefined,
         amount: undefined,
         number: '',
         transferred: undefined,

@@ -14,6 +14,14 @@
                    required>
         </mat-form-field>
 
+        <mat-form-field *ngIf="!isEdit" appearance="outline" class="form-field">
+            <mat-label>{{ 'BALANCE' | translate }}</mat-label>
+            <input [(ngModel)]="supplier.balance"
+                   name="balance"
+                   type="number"
+                   matInput
+                   required>
+        </mat-form-field>
     </form>
 </mat-dialog-content>
 

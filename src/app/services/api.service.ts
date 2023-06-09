@@ -163,7 +163,7 @@ export class ApiService {
                         pageSize: number = 10,
                         sortBy: string = 'id',
                         order: string = 'desc'): Observable<PageableResponse<CustomerPayment>> {
-        return this.http.get<PageableResponse<CustomerPayment>>(`${url}/customer/payment`, {
+        return this.http.get<PageableResponse<CustomerPayment>>(`${url}/payment/customer`, {
             params: {
                 number: paymentNumber,
                 pageNo: pageNo,
@@ -179,7 +179,7 @@ export class ApiService {
                      pageSize: number = 10,
                      sortBy: string = 'id',
                      order: string = 'desc'): Observable<PageableResponse<OwnerPayment>> {
-        return this.http.get<PageableResponse<OwnerPayment>>(`${url}/owner/payment`, {
+        return this.http.get<PageableResponse<OwnerPayment>>(`${url}/payment/owner`, {
             params: {
                 number: paymentNumber,
                 pageNo: pageNo,
@@ -219,19 +219,19 @@ export class ApiService {
     }
 
     createCustomerPayment(customerPayment: CustomerPayment, supplierId: number = -1): Observable<CustomerPayment> {
-        return this.http.post<CustomerPayment>(`${url}/customer/payment?supplierId=${supplierId}`, customerPayment);
+        return this.http.post<CustomerPayment>(`${url}/payment/customer?supplierId=${supplierId}`, customerPayment);
     }
 
     deleteCustomerPayment(id: number): Observable<void> {
-        return this.http.delete<void>(`${url}/customer/payment/${id}`);
+        return this.http.delete<void>(`${url}/payment/${id}`);
     }
 
     createOwnerPayment(ownerPayment: OwnerPayment): Observable<OwnerPayment> {
-        return this.http.post<OwnerPayment>(`${url}/owner/payment`, ownerPayment);
+        return this.http.post<OwnerPayment>(`${url}/payment/owner`, ownerPayment);
     }
 
     deleteOwnerPayment(id: number): Observable<void> {
-        return this.http.delete<void>(`${url}/owner/payment/${id}`);
+        return this.http.delete<void>(`${url}/payment/${id}`);
     }
 
     searchPaymentMethods(name: string): Observable<PaymentMethod[]> {
