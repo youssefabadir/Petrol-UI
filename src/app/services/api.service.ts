@@ -13,6 +13,7 @@ import {PaymentMethod} from '../models/paymentMethod.model';
 import {CustomerTransaction} from '../models/customer-transaction.model';
 import {SupplierTransaction} from '../models/supplierTransaction.model';
 import {Discount} from '../models/discount.model';
+import {Payment} from '../models/payment.model';
 
 @Injectable({
     providedIn: 'root'
@@ -308,5 +309,25 @@ export class ApiService {
 
     deleteDiscount(id: number): Observable<void> {
         return this.http.delete<void>(`${url}/discount/${id}`);
+    }
+
+    getPayments(paymentMethodId: number = -1,
+                pageNo: number = 0,
+                pageSize: number = 10,
+                sortBy: string = 'id',
+                order: string = 'asc',
+                start: string = '',
+                end: string = ''): Observable<PageableResponse<Payment>> {
+        return this.http.get<PageableResponse<Payment>>(`${url}/payment`, {
+            params: {
+                paymentMethodId: paymentMethodId,
+                pageNo: pageNo,
+                pageSize: pageSize,
+                sortBy: sortBy,
+                order: order,
+                start: start,
+                end: end
+            }
+        });
     }
 }

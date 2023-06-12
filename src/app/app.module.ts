@@ -45,6 +45,10 @@ import {CookieService} from 'ngx-cookie-service';
 import {SupplierTransactionComponent} from './supplier/supplier-transaction/supplier-transaction.component';
 import {DiscountTableComponent} from './discount/discount-table/discount-table.component';
 import {DiscountDialogComponent} from './discount/discount-dialog/discount-dialog.component';
+import {
+    PaymentMethodTransactionComponent
+} from './payment-method/payment-method-transaction/payment-method-transaction.component';
+import {TreasuryComponent} from './treasury/treasury.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -100,6 +104,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         SupplierTransactionComponent,
         DiscountTableComponent,
         DiscountDialogComponent,
+        PaymentMethodTransactionComponent,
+        TreasuryComponent,
 
     ],
     providers: [

@@ -1,12 +1,14 @@
-<h3 mat-dialog-title>{{data.title}}</h3>
+<h3 mat-dialog-title [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{data.title}}</h3>
 
-<mat-dialog-content>
+<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <p>{{data.body}}</p>
+</mat-dialog-content>
 
+<mat-dialog-actions>
     <div class="actions">
         <button mat-raised-button color="primary" (click)="save()">
             {{ 'YES' | translate }}
         </button>
         <button mat-button (click)="cancel()">{{ 'NO' | translate }}</button>
     </div>
-</mat-dialog-content>
+</mat-dialog-actions>

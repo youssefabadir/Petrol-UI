@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {ApiService} from '../../services/api.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Helper} from '../../util/helper.util';
 import {PageableResponse} from '../../models/response.model';
@@ -10,6 +10,7 @@ import {ConfirmDialogComponent} from '../../components/confirm-dialog/confirm-di
 import {Sort} from '@angular/material/sort';
 import {PaymentMethod} from '../../models/paymentMethod.model';
 import {PaymentMethodDialogComponent} from '../payment-method-dialog/payment-method-dialog.component';
+import {PaymentMethodTransactionComponent} from '../payment-method-transaction/payment-method-transaction.component';
 
 @Component({
     selector: 'payment-method-table',
@@ -22,7 +23,7 @@ export class PaymentMethodTableComponent implements OnInit {
 
     dataSource: MatTableDataSource<PaymentMethod>
 
-    header = ['id', 'name', 'actions']
+    header = ['id', 'name', 'balance', 'actions']
 
     pageNo: number = 0;
 
@@ -73,7 +74,12 @@ export class PaymentMethodTableComponent implements OnInit {
     }
 
     view(paymentMethod: PaymentMethod): void {
+        const data = new MatDialogConfig();
+        data.width = '2000px';
+        data.height = '680px';
+        data.data = {data: paymentMethod, panelClass: 'view-dialog'};
 
+        this.dialog.open(PaymentMethodTransactionComponent, data);
     }
 
     edit(paymentMethod: PaymentMethod): void {
@@ -92,7 +98,7 @@ export class PaymentMethodTableComponent implements OnInit {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
                 title: Helper.translateKey('DELETE_PAYMENT_METHOD_TITLE'),
-                body: Helper.translateKey('DELETE_PAYMENT_METHOD_BODY')
+                body: Helper.translateKey('DELETE_PAYMENT_METHOD_BODY', {name: row.name})
             }
         });
 

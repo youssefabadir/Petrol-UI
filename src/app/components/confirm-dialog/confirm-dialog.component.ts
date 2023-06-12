@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ConfirmDialog} from '../../models/confirmDialog.model';
+import {Helper} from '../../util/helper.util';
 
 @Component({
     selector: 'confirm-dialog',
@@ -22,4 +23,6 @@ export class ConfirmDialogComponent implements OnInit {
     cancel(): void {
         this.dialogRef.close(false);
     }
+
+    protected readonly Helper = Helper;
 }

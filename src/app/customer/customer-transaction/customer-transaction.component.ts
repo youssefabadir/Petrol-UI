@@ -39,6 +39,8 @@ export class CustomerTransactionComponent implements OnInit {
 
     endDate: Date;
 
+    RegExp: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<CustomerTransactionComponent>,
                 private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) private data: any, public translate: TranslateService) {
 
@@ -97,5 +99,4 @@ export class CustomerTransactionComponent implements OnInit {
     cancel(): void {
         this.dialogRef.close();
     }
-
 }

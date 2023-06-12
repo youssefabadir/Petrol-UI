@@ -35,6 +35,8 @@ export class CustomerPaymentTableComponent implements OnInit {
 
     search: string = '';
 
+    RegExp: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
     constructor(private apiService: ApiService, private dialog: MatDialog, private snackbar: MatSnackBar,
                 public translate: TranslateService) {
     }

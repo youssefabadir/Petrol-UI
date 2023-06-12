@@ -11,8 +11,19 @@
                    matInput
                    required>
         </mat-form-field>
-    </form>
 
+        <mat-form-field *ngIf="!isEdit" appearance="outline" class="form-field">
+            <mat-label>{{ 'BALANCE' | translate }}</mat-label>
+            <input [(ngModel)]="paymentMethod.balance"
+                   name="balance"
+                   type="number"
+                   matInput
+                   required>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
     <div class="actions">
         <button mat-raised-button color="primary" (click)="save()"
                 [disabled]="!form.checkValidity() || paymentMethod.name.trim().length === 0">
@@ -20,4 +31,4 @@
         </button>
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
     </div>
-</mat-dialog-content>
+</mat-dialog-actions>

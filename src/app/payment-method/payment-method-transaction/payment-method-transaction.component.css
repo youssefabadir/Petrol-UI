@@ -1,0 +1,48 @@
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    background-color: transparent;
+}
+
+::ng-deep .mat-form-field-appearance-outline.specific-border .mat-form-field-outline {
+    background-color: white;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.black-font {
+    color: black;
+}
+
+.sub-card-header {
+    display: flex;
+    flex-direction: row
+}
+
+.actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.centered-cell {
+    display: flex;
+    justify-content: center;
+}
+
+.clear-button {
+    background-color: #ff9800;
+    width: unset;
+    padding: 0 26px;
+    border-radius: 5px;
+    height: 41px;
+    top: 9px;
+    margin-left: 5px;
+}
+
+.ar {
+    justify-content: flex-end;
+}

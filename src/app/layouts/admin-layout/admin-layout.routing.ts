@@ -11,6 +11,7 @@ import {
 } from '../../customer-payment/customer-payment-table/customer-payment-table.component';
 import {OwnerPaymentTableComponent} from '../../owner-payment/owner-payment-table/owner-payment-table.component';
 import {DiscountTableComponent} from '../../discount/discount-table/discount-table.component';
+import {TreasuryComponent} from '../../treasury/treasury.component';
 
 export const AdminLayoutRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -21,5 +22,6 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'payment-method', component: PaymentMethodTableComponent},
     {path: 'customer-payments', component: CustomerPaymentTableComponent},
     {path: 'owner-payments', component: OwnerPaymentTableComponent},
-    {path: 'discount', component: DiscountTableComponent}
+    {path: 'discount', component: DiscountTableComponent},
+    {path: 'treasury', component: TreasuryComponent},
 ];

@@ -6,53 +6,50 @@
                     <div class="card-header card-header-danger">
                         <div class="sub-card-header">
                             <mat-form-field appearance="outline" class="specific-border">
-                                <input class="black-font"
-                                       placeholder="{{ 'PAYMENT_NUMBER' | translate }}"
-                                       name="search"
-                                       type="text"
-                                       matInput
-                                       required
-                                       [(ngModel)]="search"
-                                       (input)="inputChange($event)">
+                                <mat-date-range-input [rangePicker]="picker" class="black-font">
+                                    <input matStartDate placeholder="{{ 'START_DATE' | translate }}"
+                                           [(ngModel)]="startDate"
+                                           (dateChange)="dateChange()">
+                                    <input matEndDate placeholder="{{ 'END_DATE' | translate }}" [(ngModel)]="endDate"
+                                           (dateChange)="dateChange()">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
                             </mat-form-field>
 
                             <button mat-fab class="clear-button" (click)="clearFilter()">
                                 {{ 'CLEAR_FILTER' | translate }}
                             </button>
                         </div>
-
-                        <button mat-fab class="add-button" (click)="add()">
-                            <mat-icon>add</mat-icon>
-                            {{ 'ADD' | translate }}
-                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive table-hover">
                             <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
-                                <ng-container matColumnDef="id">
-                                    <mat-header-cell *matHeaderCellDef
-                                                     mat-sort-header>{{ 'ID' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['id']}}</mat-cell>
-                                </ng-container>
-
                                 <ng-container matColumnDef="number">
                                     <mat-header-cell *matHeaderCellDef
-                                                     mat-sort-header>{{ 'NUMBER' | translate }}</mat-header-cell>
+                                                     mat-sort-header>{{ 'PAYMENT_NUMBER' | translate }}</mat-header-cell>
                                     <mat-cell
-                                            *matCellDef="let row">{{RegExp.test(row['number']) ? '' : row['number']}}</mat-cell>
+                                            *matCellDef="let row">{{RegExp.test(row['paymentNumber']) ? '' : row['paymentNumber']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="amount">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'AMOUNT' | translate }}</mat-header-cell>
                                     <mat-cell *matCellDef="let row" dir="ltr"
-                                              [ngClass]="{'ar': translate.currentLang === 'ar'}">{{row['amount']}}</mat-cell>
+                                              [ngClass]="{'ar': translate.currentLang === 'ar'}">{{row['paymentAmount']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="treasuryBalance">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'TREASURY_BALANCE' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row" dir="ltr"
+                                              [ngClass]="{'ar': translate.currentLang === 'ar'}">{{row['treasuryBalance']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="customer">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'CUSTOMER' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['customer']['name']}}</mat-cell>
+                                    <mat-cell *matCellDef="let row">{{row['customer']?.name}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="paymentMethod">
@@ -65,20 +62,6 @@
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'DATE' | translate }}</mat-header-cell>
                                     <mat-cell *matCellDef="let row">{{row['date']}}</mat-cell>
-                                </ng-container>
-
-                                <ng-container matColumnDef="actions">
-                                    <mat-header-cell *matHeaderCellDef>{{ 'ACTIONS' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">
-                                        <button (click)="remove(row)"
-                                                mat-raised-button
-                                                type="button"
-                                                matTooltip="{{ 'REMOVE' | translate }}"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                            <i class="material-icons">close</i>
-                                        </button>
-                                    </mat-cell>
                                 </ng-container>
 
                                 <mat-header-row *matHeaderRowDef="header"></mat-header-row>
