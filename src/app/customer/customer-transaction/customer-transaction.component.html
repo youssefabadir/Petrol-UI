@@ -1,4 +1,7 @@
-<h1 mat-dialog-title>{{customer.name}} {{ 'TRANSACTIONS' | translate }}</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">
+    {{ 'TRANSACTIONS' | translate}} {{" " + customer.name}}
+</h1>
 <mat-dialog-content dir="{{translate.currentLang === 'en'? 'ltr': 'rtl'}}">
     <div class="container-fluid">
         <div class="row">
@@ -50,7 +53,8 @@
                                 <ng-container matColumnDef="transferredPayment">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'TRANSFERRED_PAYMENT' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['transferredPayment']}}</mat-cell>
+                                    <mat-cell
+                                            *matCellDef="let row">{{(row['transferredPayment'] === true ? 'YES' : (row['transferredPayment'] === false ? 'NO' : '')) | translate}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="paymentMethod">
@@ -105,6 +109,8 @@
     </div>
 </mat-dialog-content>
 
-<div dir="{{translate.currentLang === 'en'? 'ltr': 'rtl'}}" class="actions">
-    <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
-</div>
+<mat-dialog-actions>
+    <div dir="{{translate.currentLang === 'en'? 'ltr': 'rtl'}}" class="actions">
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+    </div>
+</mat-dialog-actions>

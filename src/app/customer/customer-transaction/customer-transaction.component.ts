@@ -99,4 +99,6 @@ export class CustomerTransactionComponent implements OnInit {
     cancel(): void {
         this.dialogRef.close();
     }
+
+    protected readonly Helper = Helper;
 }

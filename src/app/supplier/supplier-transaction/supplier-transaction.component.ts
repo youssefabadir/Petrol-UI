@@ -22,7 +22,7 @@ export class SupplierTransactionComponent implements OnInit {
 
     dataSource: MatTableDataSource<SupplierTransaction>;
 
-    header = ['balance', 'paymentNumber', 'paymentAmount', 'transferredPayment',
+    header = ['supplierBalance', 'paymentNumber', 'paymentAmount', 'transferredPayment',
         'paymentMethod', 'billNumber', 'billQuantity', 'billAmount', 'product', 'date'];
 
     supplier: Supplier = createEmptySupplier();
@@ -55,6 +55,7 @@ export class SupplierTransactionComponent implements OnInit {
             order: string, start: Date, end: Date): void {
         this.apiService.getSupplierTransactions(id, pageNo, pageSize,
                 sortBy, order, Helper.changeDateFormat(start), Helper.changeDateFormat(end)).subscribe(res => {
+            console.log(res)
             this.populateTable(res);
         }, () => {
             Helper.snackbar(Helper.translateKey('RETRIEVE_SUPPLIER_TRANSACTION_ERROR'), this.snackbar);
@@ -98,4 +99,5 @@ export class SupplierTransactionComponent implements OnInit {
         this.dialogRef.close();
     }
 
+    protected readonly Helper = Helper;
 }

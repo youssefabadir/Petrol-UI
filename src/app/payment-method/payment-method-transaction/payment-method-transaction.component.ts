@@ -22,7 +22,7 @@ export class PaymentMethodTransactionComponent implements OnInit {
 
     dataSource: MatTableDataSource<Payment>;
 
-    header = ['paymentNumber', 'paymentAmount', 'paymentMethodName', 'paymentMethodBalance', 'customer', 'supplier', 'date'];
+    header = ['paymentNumber', 'paymentAmount', 'paymentMethodBalance', 'customer', 'supplier', 'date'];
 
     paymentMethod: PaymentMethod = createEmptyPaymentMethod();
 
@@ -97,4 +97,5 @@ export class PaymentMethodTransactionComponent implements OnInit {
         this.dialogRef.close();
     }
 
+    protected readonly Helper = Helper;
 }

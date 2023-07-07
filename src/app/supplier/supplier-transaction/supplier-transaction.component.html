@@ -1,4 +1,7 @@
-<h1 mat-dialog-title>{{supplier.name}} {{ 'TRANSACTIONS' | translate }}</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">
+    {{ 'TRANSACTIONS' | translate}} {{" " + supplier.name}}
+</h1>
 <mat-dialog-content dir="{{translate.currentLang === 'en'? 'ltr': 'rtl'}}">
     <div class="container-fluid">
         <div class="row">
@@ -27,11 +30,11 @@
                         <div class="table-responsive">
                             <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
 
-                                <ng-container matColumnDef="balance">
+                                <ng-container matColumnDef="supplierBalance">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'BALANCE' | translate }}</mat-header-cell>
                                     <mat-cell *matCellDef="let row" dir="ltr"
-                                              [ngClass]="{'ar': translate.currentLang === 'ar'}">{{row['ownerSupplierBalance']}}</mat-cell>
+                                              [ngClass]="{'ar': translate.currentLang === 'ar'}">{{row['supplierBalance']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="paymentNumber">
@@ -50,13 +53,14 @@
                                 <ng-container matColumnDef="transferredPayment">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'TRANSFERRED_PAYMENT' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['transferredPayment']}}</mat-cell>
+                                    <mat-cell
+                                            *matCellDef="let row">{{(row['transferredPayment'] === true ? 'YES' : (row['transferredPayment'] === false ? 'NO' : '')) | translate}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="paymentMethod">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'PAYMENT_METHOD' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['paymentMethod']}}</mat-cell>
+                                    <mat-cell *matCellDef="let row">{{row['paymentMethodName']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="billNumber">

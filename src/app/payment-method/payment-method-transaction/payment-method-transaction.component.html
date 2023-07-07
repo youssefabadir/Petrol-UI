@@ -1,4 +1,7 @@
-<h1 mat-dialog-title>{{paymentMethod.name}} {{ 'TRANSACTIONS' | translate }}</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">
+    {{ 'TRANSACTIONS' | translate}} {{" " + paymentMethod.name}}
+</h1>
 <mat-dialog-content dir="{{translate.currentLang === 'en'? 'ltr': 'rtl'}}">
     <div class="container-fluid">
         <div class="row">
@@ -37,12 +40,6 @@
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'PAYMENT_AMOUNT' | translate }}</mat-header-cell>
                                     <mat-cell *matCellDef="let row">{{row['paymentAmount']}}</mat-cell>
-                                </ng-container>
-
-                                <ng-container matColumnDef="paymentMethodName">
-                                    <mat-header-cell *matHeaderCellDef
-                                                     mat-sort-header>{{ 'PAYMENT_METHOD' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['paymentMethodName']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="paymentMethodBalance">

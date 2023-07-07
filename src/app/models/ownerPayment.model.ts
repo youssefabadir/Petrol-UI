@@ -4,6 +4,8 @@ export interface OwnerPayment {
 
     id?: number;
 
+    paymentType?: string;
+
     supplier: Supplier;
 
     amount: number;
@@ -23,6 +25,7 @@ export interface OwnerPayment {
 export function createEmptyOwnerPayment(): OwnerPayment {
     return {
         id: undefined,
+        paymentType: 'OWNER_PAYMENT',
         supplier: createEmptySupplier(),
         amount: undefined,
         number: '',
