@@ -46,8 +46,8 @@
 
                                 <ng-container matColumnDef="discount">
                                     <mat-header-cell *matHeaderCellDef
-                                                     mat-sort-header>{{ 'DISCOUNT' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['discount']}}%</mat-cell>
+                                                     mat-sort-header>{{ 'DISCOUNTED_PRICE' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['discountedPrice']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="customerName">

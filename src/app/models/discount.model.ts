@@ -1,7 +1,7 @@
 export interface Discount {
     id: number;
 
-    discount: number;
+    discountedPrice: number;
 
     customerId: number;
 
@@ -16,7 +16,7 @@ export interface Discount {
 export function createEmptyDiscount(): Discount {
     return {
         id: undefined,
-        discount: undefined,
+        discountedPrice: undefined,
         customerId: undefined,
         customerName: '',
         productId: undefined,

@@ -55,6 +55,7 @@
     "DELETE_SUPPLIER_SUCCESS": "Supplier has been deleted successfully",
     "DELETE_SUPPLIER_TITLE": "Delete Supplier",
     "DISCOUNT": "Discount",
+    "DISCOUNTED_PRICE": "Discounted Price",
     "EDIT": "Edit",
     "EDIT_CUSTOMER": "Edit Customer",
     "EDIT_PRODUCT": "Edit Product",
