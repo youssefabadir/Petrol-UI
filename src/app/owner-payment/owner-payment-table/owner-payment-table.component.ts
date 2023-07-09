@@ -24,7 +24,7 @@ export class OwnerPaymentTableComponent implements OnInit {
 
     dataSource: MatTableDataSource<OwnerPayment>;
 
-    header = ['id', 'number', 'amount', 'supplier', 'paymentMethod', 'date', 'actions'];
+    header = ['number', 'amount', 'supplier', 'paymentMethod', 'date', 'note', 'actions'];
 
     pageNo: number = 0;
 

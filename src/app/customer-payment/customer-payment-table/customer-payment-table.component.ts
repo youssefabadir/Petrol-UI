@@ -23,7 +23,7 @@ export class CustomerPaymentTableComponent implements OnInit {
 
     dataSource: MatTableDataSource<CustomerPayment>;
 
-    header = ['id', 'number', 'amount', 'customer', 'paymentMethod', 'date', 'actions'];
+    header = ['number', 'amount', 'customer', 'paymentMethod', 'date', 'note', 'actions'];
 
     pageNo: number = 0;
 

@@ -20,6 +20,8 @@ export interface CustomerPayment {
 
     transferred: boolean;
 
+    note: string;
+
     date: string;
 
 }
@@ -35,6 +37,7 @@ export function createEmptyCustomerPayment(): CustomerPayment {
         amount: undefined,
         number: '',
         transferred: undefined,
+        note: undefined,
         date: undefined
     }
 }

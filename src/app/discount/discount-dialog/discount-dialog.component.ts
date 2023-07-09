@@ -73,4 +73,5 @@ export class DiscountDialogComponent implements OnInit {
         this.dialogRef.close(result);
     }
 
+    protected readonly Helper = Helper;
 }

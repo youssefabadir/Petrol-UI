@@ -1,6 +1,7 @@
-<h1 mat-dialog-title>{{ 'ADD_BILL' | translate }}</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'ADD_BILL' | translate }}</h1>
 
-<mat-dialog-content>
+<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <form #form class="form">
         <div class="div">
             <customer-loader [customer]="bill.customerEntity"
@@ -50,7 +51,7 @@
     </form>
 </mat-dialog-content>
 
-<mat-dialog-actions>
+<mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"

@@ -7,6 +7,7 @@ import {Bill, createEmptyBill} from '../../models/bill.model';
 import {Customer} from '../../models/customer.model';
 import {Supplier} from '../../models/supplier.model';
 import {Product} from '../../models/product.model';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'transaction-dialog',
@@ -20,7 +21,7 @@ export class BillDialogComponent implements OnInit {
     selectedDate: Date;
 
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<BillDialogComponent>,
-                private snackbar: MatSnackBar) {
+                private snackbar: MatSnackBar, public translate: TranslateService) {
     }
 
     ngOnInit(): void {
@@ -53,4 +54,5 @@ export class BillDialogComponent implements OnInit {
         this.bill.productEntity = product;
     }
 
+    protected readonly Helper = Helper;
 }

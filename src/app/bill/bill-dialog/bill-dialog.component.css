@@ -24,4 +24,14 @@
 .actions {
     display: flex;
     justify-content: flex-end;
+    width: 100%;
+}
+
+.title {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ar {
+    justify-content: flex-end;
 }

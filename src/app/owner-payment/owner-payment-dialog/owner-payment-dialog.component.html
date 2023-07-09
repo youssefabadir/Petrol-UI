@@ -1,6 +1,7 @@
-<h1 mat-dialog-title>{{ 'ADD_OWNER_PAYMENT' | translate }}</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'ADD_OWNER_PAYMENT' | translate }}</h1>
 
-<mat-dialog-content>
+<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <form #form class="form">
         <div class="div">
             <supplier-loader [supplier]="ownerPayment.supplier"
@@ -38,8 +39,20 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
+        <div class="div">
+            <mat-form-field style="width: 80%">
+                <mat-label>{{'NOTES' | translate}}</mat-label>
+                <textarea matInput
+                          cdkTextareaAutosize
+                          cdkAutosizeMinRows="1"
+                          [(ngModel)]="ownerPayment['note']">
+                </textarea>
+            </mat-form-field>
+        </div>
     </form>
+</mat-dialog-content>
 
+<mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
         <button mat-raised-button color="primary" (click)="save()"
                 [disabled]="!form.checkValidity() || !ownerPayment.supplier.id || !ownerPayment.paymentMethodId">
@@ -47,4 +60,4 @@
         </button>
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
     </div>
-</mat-dialog-content>
+</mat-dialog-actions>

@@ -29,12 +29,6 @@
                     <div class="card-body">
                         <div class="table-responsive table-hover">
                             <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
-                                <ng-container matColumnDef="id">
-                                    <mat-header-cell *matHeaderCellDef
-                                                     mat-sort-header>{{ 'ID' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['id']}}</mat-cell>
-                                </ng-container>
-
                                 <ng-container matColumnDef="number">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'NUMBER' | translate }}</mat-header-cell>
@@ -59,6 +53,12 @@
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'PAYMENT_METHOD' | translate }}</mat-header-cell>
                                     <mat-cell *matCellDef="let row">{{row['paymentMethodName']}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="note">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'NOTES' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['note']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="date">

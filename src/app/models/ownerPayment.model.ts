@@ -18,6 +18,8 @@ export interface OwnerPayment {
 
     paymentMethodBalance: number;
 
+    note: string;
+
     date: string;
 
 }
@@ -28,10 +30,11 @@ export function createEmptyOwnerPayment(): OwnerPayment {
         paymentType: 'OWNER_PAYMENT',
         supplier: createEmptySupplier(),
         amount: undefined,
-        number: '',
+        number: undefined,
         paymentMethodId: undefined,
         paymentMethodName: undefined,
         paymentMethodBalance: undefined,
-        date: ''
+        note: undefined,
+        date: undefined
     }
 }

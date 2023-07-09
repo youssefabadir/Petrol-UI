@@ -6,6 +6,7 @@ import {Helper} from '../../util/helper.util';
 import {createEmptyOwnerPayment, OwnerPayment} from '../../models/ownerPayment.model';
 import {Supplier} from '../../models/supplier.model';
 import {PaymentMethod} from '../../models/paymentMethod.model';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'owner-payment-dialog',
@@ -19,7 +20,7 @@ export class OwnerPaymentDialogComponent implements OnInit {
     selectedDate: Date;
 
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<OwnerPaymentDialogComponent>,
-                private snackbar: MatSnackBar) {
+                private snackbar: MatSnackBar, public translate: TranslateService) {
     }
 
     ngOnInit(): void {
@@ -53,4 +54,6 @@ export class OwnerPaymentDialogComponent implements OnInit {
     cancel(): void {
         this.dialogRef.close(undefined);
     }
+
+    protected readonly Helper = Helper;
 }

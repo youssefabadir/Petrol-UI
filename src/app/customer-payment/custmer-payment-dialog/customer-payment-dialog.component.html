@@ -48,10 +48,20 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
+        <div class="div">
+            <mat-form-field style="width: 80%">
+                <mat-label>{{'NOTES' | translate}}</mat-label>
+                <textarea matInput
+                          cdkTextareaAutosize
+                          cdkAutosizeMinRows="1"
+                          [(ngModel)]="customerPayment['note']">
+                </textarea>
+            </mat-form-field>
+        </div>
     </form>
 </mat-dialog-content>
 
-<mat-dialog-actions dir="{{this.translate.currentLang === 'en'? 'ltr':'rtl'}}">
+<mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
