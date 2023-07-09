@@ -1,8 +1,16 @@
-<h1 mat-dialog-title *ngIf="!isEdit">Add Payment Method</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}"
+    *ngIf="!isEdit">
+    {{'ADD_PAYMENT_METHOD' | translate}}
+</h1>
 
-<h1 mat-dialog-title *ngIf="isEdit">Edit Payment Method</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}"
+    *ngIf="isEdit">
+    {{'EDIT_PAYMENT_METHOD' | translate}}
+</h1>
 
-<mat-dialog-content>
+<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <form #form class="form">
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>{{ 'NAME' | translate }}</mat-label>
@@ -24,12 +32,12 @@
     </form>
 </mat-dialog-content>
 
-<mat-dialog-actions>
+<mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
                 [disabled]="!form.checkValidity() || paymentMethod.name.trim().length === 0">
-            Save
+            {{ 'SAVE' | translate }}
         </button>
-        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
     </div>
 </mat-dialog-actions>

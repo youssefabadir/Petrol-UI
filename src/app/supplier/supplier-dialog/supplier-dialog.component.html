@@ -1,8 +1,16 @@
-<h1 mat-dialog-title *ngIf="!isEdit">{{ 'ADD_SUPPLIER' | translate }}</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}"
+    *ngIf="!isEdit">
+    {{ 'ADD_SUPPLIER' | translate }}
+</h1>
 
-<h1 mat-dialog-title *ngIf="isEdit">{{ 'EDIT_SUPPLIER' | translate }}</h1>
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}"
+    *ngIf="isEdit">
+    {{ 'EDIT_SUPPLIER' | translate }}
+</h1>
 
-<mat-dialog-content>
+<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <form #form class="form">
 
         <mat-form-field appearance="outline" class="form-field">
@@ -26,12 +34,12 @@
     </form>
 </mat-dialog-content>
 
-<mat-dialog-actions>
+<mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
                 [disabled]="!form.checkValidity() || supplier.name.trim().length === 0">
             {{ 'SAVE' | translate }}
         </button>
-        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
     </div>
 </mat-dialog-actions>

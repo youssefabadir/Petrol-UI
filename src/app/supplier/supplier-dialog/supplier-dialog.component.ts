@@ -49,4 +49,6 @@ export class SupplierDialogComponent implements OnInit {
     cancel(): void {
         this.dialogRef.close(undefined);
     }
+
+    protected readonly Helper = Helper;
 }

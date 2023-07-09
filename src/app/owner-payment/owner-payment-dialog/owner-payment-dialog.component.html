@@ -54,10 +54,10 @@
 
 <mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
+        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
                 [disabled]="!form.checkValidity() || !ownerPayment.supplier.id || !ownerPayment.paymentMethodId">
             {{ 'SAVE' | translate }}
         </button>
-        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
     </div>
 </mat-dialog-actions>

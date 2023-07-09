@@ -59,4 +59,5 @@ export class PaymentMethodDialogComponent implements OnInit {
         this.dialogRef.close(undefined);
     }
 
+    protected readonly Helper = Helper;
 }
