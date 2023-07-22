@@ -49,6 +49,7 @@ import {
     PaymentMethodTransactionComponent
 } from './payment-method/payment-method-transaction/payment-method-transaction.component';
 import {TreasuryComponent} from './treasury/treasury.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -82,7 +83,8 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatTabsModule
     ],
     declarations: [
         AppComponent,

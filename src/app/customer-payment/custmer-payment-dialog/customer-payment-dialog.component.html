@@ -1,71 +1,120 @@
-<h1 mat-dialog-title
-    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'ADD_CUSTOMER_PAYMENT' | translate }}</h1>
+<mat-tab-group dir="rtl" (selectedTabChange)="changeTab()" #tab>
+    <mat-tab label="{{'CUSTOMER_PAYMENT' | translate}}">
+        <form #form class="form">
+            <div class="div">
+                <customer-loader [customer]="customerPayment.customer"
+                                 (changeCustomer)="handleCustomer($event)">
+                </customer-loader>
 
-<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
-    <form #form class="form">
-        <div class="div">
-            <customer-loader [customer]="customerPayment.customer"
-                             (changeCustomer)="handleCustomer($event)">
-            </customer-loader>
+                <payment-method-loader [paymentMethodId]="customerPayment.paymentMethodId"
+                                       [paymentMethodName]="customerPayment.paymentMethodName"
+                                       [paymentMethodBalance]="customerPayment.paymentMethodBalance"
+                                       (changePaymentMethod)="handlePaymentMethod($event)">
+                </payment-method-loader>
 
-            <payment-method-loader [paymentMethodId]="customerPayment.paymentMethodId"
-                                   [paymentMethodName]="customerPayment.paymentMethodName"
-                                   [paymentMethodBalance]="customerPayment.paymentMethodBalance"
-                                   (changePaymentMethod)="handlePaymentMethod($event)">
-            </payment-method-loader>
+                <mat-checkbox [(ngModel)]="customerPayment.transferred" color="primary"
+                              style="display:flex; align-items: center">
+                    {{ 'TRANSFERRED_PAYMENT' | translate }}
+                </mat-checkbox>
 
-            <mat-checkbox [(ngModel)]="customerPayment.transferred" color="primary"
-                          style="display:flex; align-items: center">
-                {{ 'TRANSFERRED_PAYMENT' | translate }}
-            </mat-checkbox>
+                <supplier-loader [hidden]="!customerPayment.transferred"
+                                 [supplier]="createEmptySupplier()"
+                                 (changeSupplier)="handleSupplier($event)">
+                </supplier-loader>
+            </div>
+            <div class="div">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'AMOUNT' | translate }}</mat-label>
+                    <input [(ngModel)]="customerPayment['amount']"
+                           name="amount"
+                           pattern="^[0-9]\d*(\.\d+)?$"
+                           matInput
+                           required>
+                </mat-form-field>
 
-            <supplier-loader [hidden]="!customerPayment.transferred"
-                             [supplier]="createEmptySupplier()"
-                             (changeSupplier)="handleSupplier($event)">
-            </supplier-loader>
-        </div>
-        <div class="div">
-            <mat-form-field appearance="outline" class="form-field">
-                <mat-label>{{ 'AMOUNT' | translate }}</mat-label>
-                <input [(ngModel)]="customerPayment['amount']"
-                       name="amount"
-                       pattern="^[0-9]\d*(\.\d+)?$"
-                       matInput
-                       required>
-            </mat-form-field>
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'NUMBER' | translate }}</mat-label>
+                    <input [(ngModel)]="customerPayment['number']"
+                           name="number"
+                           matInput>
+                </mat-form-field>
 
-            <mat-form-field appearance="outline" class="form-field">
-                <mat-label>{{ 'NUMBER' | translate }}</mat-label>
-                <input [(ngModel)]="customerPayment['number']"
-                       name="number"
-                       matInput>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-                <mat-label>{{ 'DATE' | translate }}</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div class="div">
-            <mat-form-field style="width: 80%">
-                <mat-label>{{'NOTES' | translate}}</mat-label>
-                <textarea matInput
-                          cdkTextareaAutosize
-                          cdkAutosizeMinRows="1"
-                          [(ngModel)]="customerPayment['note']">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'DATE' | translate }}</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="div">
+                <mat-form-field style="width: 80%">
+                    <mat-label>{{'NOTES' | translate}}</mat-label>
+                    <textarea name="notes"
+                              matInput
+                              cdkTextareaAutosize
+                              cdkAutosizeMinRows="1"
+                              [(ngModel)]="customerPayment['note']">
                 </textarea>
-            </mat-form-field>
-        </div>
-    </form>
-</mat-dialog-content>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-tab>
+
+    <mat-tab label="{{'IRREGULAR_CUSTOMER_PAYMENT' | translate}}">
+        <form #form1 class="form">
+            <div style="width: 30%">
+                <payment-method-loader [paymentMethodId]="customerPayment.paymentMethodId"
+                                       [paymentMethodName]="customerPayment.paymentMethodName"
+                                       [paymentMethodBalance]="customerPayment.paymentMethodBalance"
+                                       (changePaymentMethod)="handlePaymentMethod($event)">
+                </payment-method-loader>
+            </div>
+            <div class="div">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'AMOUNT' | translate }}</mat-label>
+                    <input [(ngModel)]="customerPayment['amount']"
+                           name="amount"
+                           pattern="^[0-9]\d*(\.\d+)?$"
+                           matInput
+                           required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'NUMBER' | translate }}</mat-label>
+                    <input [(ngModel)]="customerPayment['number']"
+                           name="number"
+                           matInput>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'DATE' | translate }}</mat-label>
+                    <input matInput [matDatepicker]="picker2" [(ngModel)]="selectedDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="div">
+                <mat-form-field style="width: 80%">
+                    <mat-label>{{'NOTES' | translate}}</mat-label>
+                    <textarea name="notes"
+                              matInput
+                              cdkTextareaAutosize
+                              cdkAutosizeMinRows="1"
+                              [(ngModel)]="customerPayment['note']">
+                </textarea>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-tab>
+</mat-tab-group>
 
 <mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || !customerPayment.customer.id || !customerPayment.paymentMethodId">
+                [disabled]="!(form.checkValidity() && form1.checkValidity()) ||
+                (tab.selectedIndex === 0 && !this.customerPayment.customer.id) ||
+                !this.customerPayment.paymentMethodId">
             {{ 'SAVE' | translate }}
         </button>
     </div>

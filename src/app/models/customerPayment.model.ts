@@ -35,8 +35,8 @@ export function createEmptyCustomerPayment(): CustomerPayment {
         paymentMethodName: undefined,
         paymentMethodBalance: undefined,
         amount: undefined,
-        number: '',
-        transferred: undefined,
+        number: undefined,
+        transferred: false,
         note: undefined,
         date: undefined
     }
