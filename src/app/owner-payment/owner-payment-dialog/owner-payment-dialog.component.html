@@ -1,62 +1,110 @@
-<h1 mat-dialog-title
-    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'ADD_OWNER_PAYMENT' | translate }}</h1>
+<mat-tab-group dir="rtl" (selectedTabChange)="changeTab()" #tab>
+    <mat-tab label="{{'SUPPLIER_PAYMENT' | translate}}">
+        <form #form class="form">
+            <div class="div">
+                <supplier-loader [supplier]="ownerPayment.supplier"
+                                 (changeSupplier)="handleSupplier($event)">
+                </supplier-loader>
 
-<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
-    <form #form class="form">
-        <div class="div">
-            <supplier-loader [supplier]="ownerPayment.supplier"
-                             (changeSupplier)="handleSupplier($event)">
-            </supplier-loader>
+                <payment-method-loader [paymentMethodId]="ownerPayment.paymentMethodId"
+                                       [paymentMethodName]="ownerPayment.paymentMethodName"
+                                       [paymentMethodBalance]="ownerPayment.paymentMethodBalance"
+                                       (changePaymentMethod)="handlePaymentMethod($event)">
+                </payment-method-loader>
+            </div>
+            <div class="div">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'AMOUNT' | translate }}</mat-label>
+                    <input [(ngModel)]="ownerPayment['amount']"
+                           name="amount"
+                           pattern="^[0-9]\d*(\.\d+)?$"
+                           matInput
+                           required>
+                </mat-form-field>
 
-            <payment-method-loader [paymentMethodId]="ownerPayment.paymentMethodId"
-                                   [paymentMethodName]="ownerPayment.paymentMethodName"
-                                   [paymentMethodBalance]="ownerPayment.paymentMethodBalance"
-                                   (changePaymentMethod)="handlePaymentMethod($event)">
-            </payment-method-loader>
-        </div>
-        <div class="div">
-            <mat-form-field appearance="outline" class="form-field">
-                <mat-label>{{ 'AMOUNT' | translate }}</mat-label>
-                <input [(ngModel)]="ownerPayment['amount']"
-                       name="amount"
-                       pattern="^[0-9]\d*(\.\d+)?$"
-                       matInput
-                       required>
-            </mat-form-field>
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'NUMBER' | translate }}</mat-label>
+                    <input [(ngModel)]="ownerPayment['number']"
+                           name="number"
+                           matInput>
+                </mat-form-field>
 
-            <mat-form-field appearance="outline" class="form-field">
-                <mat-label>{{ 'NUMBER' | translate }}</mat-label>
-                <input [(ngModel)]="ownerPayment['number']"
-                       name="number"
-                       matInput
-                       required>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-                <mat-label>{{ 'DATE' | translate }}</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div class="div">
-            <mat-form-field style="width: 80%">
-                <mat-label>{{'NOTES' | translate}}</mat-label>
-                <textarea matInput
-                          cdkTextareaAutosize
-                          cdkAutosizeMinRows="1"
-                          [(ngModel)]="ownerPayment['note']">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'DATE' | translate }}</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="div">
+                <mat-form-field style="width: 80%">
+                    <mat-label>{{'NOTES' | translate}}</mat-label>
+                    <textarea name="notes"
+                              matInput
+                              cdkTextareaAutosize
+                              cdkAutosizeMinRows="1"
+                              [(ngModel)]="ownerPayment['note']">
                 </textarea>
-            </mat-form-field>
-        </div>
-    </form>
-</mat-dialog-content>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-tab>
+
+    <mat-tab label="{{'OWNER_EXPENSES' | translate}}">
+        <form #form1 class="form">
+            <div class="div" style="width: 30%">
+                <payment-method-loader [paymentMethodId]="ownerPayment.paymentMethodId"
+                                       [paymentMethodName]="ownerPayment.paymentMethodName"
+                                       [paymentMethodBalance]="ownerPayment.paymentMethodBalance"
+                                       (changePaymentMethod)="handlePaymentMethod($event)">
+                </payment-method-loader>
+            </div>
+            <div class="div">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'AMOUNT' | translate }}</mat-label>
+                    <input [(ngModel)]="ownerPayment['amount']"
+                           name="amount"
+                           pattern="^[0-9]\d*(\.\d+)?$"
+                           matInput
+                           required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'NUMBER' | translate }}</mat-label>
+                    <input [(ngModel)]="ownerPayment['number']"
+                           name="number"
+                           matInput>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>{{ 'DATE' | translate }}</mat-label>
+                    <input matInput [matDatepicker]="picker1" [(ngModel)]="selectedDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="div">
+                <mat-form-field style="width: 80%">
+                    <mat-label>{{'NOTES' | translate}}</mat-label>
+                    <textarea name="notes"
+                              matInput
+                              cdkTextareaAutosize
+                              cdkAutosizeMinRows="1"
+                              [(ngModel)]="ownerPayment['note']">
+                </textarea>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-tab>
+</mat-tab-group>
 
 <mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
         <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
-                [disabled]="!form.checkValidity() || !ownerPayment.supplier.id || !ownerPayment.paymentMethodId">
+                [disabled]="!(form.checkValidity() && form1.checkValidity()) ||
+                (tab.selectedIndex === 0 && !this.ownerPayment.supplier.id) ||
+                !this.ownerPayment.paymentMethodId">
             {{ 'SAVE' | translate }}
         </button>
     </div>

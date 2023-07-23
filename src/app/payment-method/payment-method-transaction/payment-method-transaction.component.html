@@ -33,7 +33,8 @@
                                 <ng-container matColumnDef="paymentNumber">
                                     <mat-header-cell
                                             *matHeaderCellDef>{{ 'PAYMENT_NUMBER' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['paymentNumber']}}</mat-cell>
+                                    <mat-cell
+                                            *matCellDef="let row">{{RegExp.test(row['paymentNumber']) ? '' : row['paymentNumber']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="paymentAmount">
@@ -58,6 +59,12 @@
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'SUPPLIER' | translate }}</mat-header-cell>
                                     <mat-cell *matCellDef="let row">{{row['supplier']?.name}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="notes">
+                                    <mat-header-cell *matHeaderCellDef
+                                                     mat-sort-header>{{ 'NOTES' | translate }}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row">{{row['note']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="date">

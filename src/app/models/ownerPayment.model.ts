@@ -30,7 +30,7 @@ export function createEmptyOwnerPayment(): OwnerPayment {
         paymentType: 'OWNER_PAYMENT',
         supplier: createEmptySupplier(),
         amount: undefined,
-        number: undefined,
+        number: '',
         paymentMethodId: undefined,
         paymentMethodName: undefined,
         paymentMethodBalance: undefined,

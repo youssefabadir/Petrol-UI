@@ -63,7 +63,7 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title"
-                            style="display: flex; flex-direction: row">{{ 'OWNER_PAYMENTS' | translate }}</h4>
+                            style="display: flex; flex-direction: row">{{ 'EXPENSES' | translate }}</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -72,7 +72,8 @@
                                 <ng-container matColumnDef="number">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'PAYMENT_NUMBER' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['number']}}</mat-cell>
+                                    <mat-cell
+                                            *matCellDef="let row">{{RegExp.test(row['number']) ? '' : row['number']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="amount">
@@ -115,7 +116,7 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title"
-                            style="display: flex; flex-direction: row">{{ 'CUSTOMER_PAYMENTS' | translate }}</h4>
+                            style="display: flex; flex-direction: row">{{ 'INCOME' | translate }}</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -124,7 +125,8 @@
                                 <ng-container matColumnDef="number">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'PAYMENT_NUMBER' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['number']}}</mat-cell>
+                                    <mat-cell
+                                            *matCellDef="let row">{{RegExp.test(row['number']) ? '' : row['number']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="amount">

@@ -22,7 +22,7 @@ export class PaymentMethodTransactionComponent implements OnInit {
 
     dataSource: MatTableDataSource<Payment>;
 
-    header = ['paymentNumber', 'paymentAmount', 'paymentMethodBalance', 'customer', 'supplier', 'date'];
+    header = ['paymentNumber', 'paymentAmount', 'paymentMethodBalance', 'customer', 'supplier', 'notes', 'date'];
 
     paymentMethod: PaymentMethod = createEmptyPaymentMethod();
 
@@ -37,6 +37,8 @@ export class PaymentMethodTransactionComponent implements OnInit {
     startDate: Date;
 
     endDate: Date;
+
+    RegExp: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<PaymentMethodTransactionComponent>,
                 private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) private data: any, public translate: TranslateService) {
@@ -54,6 +56,7 @@ export class PaymentMethodTransactionComponent implements OnInit {
             order: string, start: Date, end: Date): void {
         this.apiService.getPayments(paymentMethodId, pageNo, pageSize,
                 sortBy, order, Helper.changeDateFormat(start), Helper.changeDateFormat(end)).subscribe(res => {
+            console.log(res)
             this.populateTable(res);
         }, () => {
             Helper.snackbar(Helper.translateKey('RETRIEVE_PAYMENTS_ERROR'), this.snackbar);

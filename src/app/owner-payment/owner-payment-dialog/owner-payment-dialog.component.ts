@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -18,6 +18,8 @@ export class OwnerPaymentDialogComponent implements OnInit {
     ownerPayment: OwnerPayment = createEmptyOwnerPayment();
 
     selectedDate: Date;
+
+    @ViewChild('tab', {static: false}) tab;
 
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<OwnerPaymentDialogComponent>,
                 private snackbar: MatSnackBar, public translate: TranslateService) {
@@ -53,6 +55,12 @@ export class OwnerPaymentDialogComponent implements OnInit {
 
     cancel(): void {
         this.dialogRef.close(undefined);
+    }
+
+    changeTab(): void {
+        this.ownerPayment = createEmptyOwnerPayment();
+        this.selectedDate = undefined;
+        this.tab.realignInkBar();
     }
 
     protected readonly Helper = Helper;

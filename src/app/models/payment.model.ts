@@ -1,5 +1,5 @@
-import {createEmptySupplier, Supplier} from './supplier.model';
-import {createEmptyCustomer, Customer} from './customer.model';
+import {Supplier} from './supplier.model';
+import {Customer} from './customer.model';
 
 export interface Payment {
     id?: number;
@@ -20,9 +20,12 @@ export interface Payment {
 
     treasuryBalance: number;
 
+    note: string;
+
     date: string;
 }
 
+/*
 export function createEmptyPayment(): Payment {
     return {
         id: undefined,
@@ -36,4 +39,4 @@ export function createEmptyPayment(): Payment {
         treasuryBalance: undefined,
         date: undefined
     }
-}
+}*/

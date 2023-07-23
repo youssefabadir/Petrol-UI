@@ -36,6 +36,8 @@ export class OwnerPaymentTableComponent implements OnInit {
 
     search: string = '';
 
+    RegExp: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
     constructor(private apiService: ApiService, private dialog: MatDialog, private snackbar: MatSnackBar,
                 public translate: TranslateService) {
     }
@@ -83,7 +85,7 @@ export class OwnerPaymentTableComponent implements OnInit {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
                 title: Helper.translateKey('DELETE_BILL_TITLE'),
-                body: Helper.translateKey('DELETE_OWNER_PAYMENT_BODY', {number: row.number})
+                body: Helper.translateKey('DELETE_OWNER_PAYMENT_BODY', {number: this.RegExp.test(row.number) ? '' : row.number})
             }
 
         });

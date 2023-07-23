@@ -84,7 +84,7 @@ export class CustomerPaymentTableComponent implements OnInit {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
                 title: Helper.translateKey('DELETE_CUSTOMER_PAYMENT_TITLE'),
-                body: Helper.translateKey('DELETE_CUSTOMER_PAYMENT_BODY', {number: row.number})
+                body: Helper.translateKey('DELETE_CUSTOMER_PAYMENT_BODY', {number: this.RegExp.test(row.number) ? '' : row.number})
             }
         });
 

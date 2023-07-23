@@ -32,7 +32,8 @@
                                 <ng-container matColumnDef="number">
                                     <mat-header-cell *matHeaderCellDef
                                                      mat-sort-header>{{ 'NUMBER' | translate }}</mat-header-cell>
-                                    <mat-cell *matCellDef="let row">{{row['number']}}</mat-cell>
+                                    <mat-cell
+                                            *matCellDef="let row">{{RegExp.test(row['number']) ? '' : row['number']}}</mat-cell>
                                 </ng-container>
 
                                 <ng-container matColumnDef="amount">

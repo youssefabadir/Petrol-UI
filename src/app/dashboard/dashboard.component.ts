@@ -44,8 +44,6 @@ export class DashboardComponent implements OnInit {
 
     billOrder: string = 'asc';
 
-    billSearch: string = '';
-
     customerPaymentPageNo: number = 0;
 
     customerPaymentPageSize: number = 5;
@@ -53,8 +51,6 @@ export class DashboardComponent implements OnInit {
     customerPaymentSortBy: string = 'id';
 
     customerPaymentOrder: string = 'asc';
-
-    customerPaymentSearch: string = '';
 
     ownerPaymentPageNo: number = 0;
 
@@ -64,18 +60,18 @@ export class DashboardComponent implements OnInit {
 
     ownerPaymentOrder: string = 'asc';
 
-    ownerPaymentSearch: string = '';
+    RegExp: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
     constructor(private apiService: ApiService, private dialog: MatDialog, private snackbar: MatSnackBar) {
     }
 
     ngOnInit(): void {
-        this.getBillData(this.billSearch, this.billPageNo, this.billPageSize, this.billSortBy, this.billOrder);
+        this.getBillData('', this.billPageNo, this.billPageSize, this.billSortBy, this.billOrder);
 
-        this.getCustomerPaymentData(this.customerPaymentSearch, this.customerPaymentPageNo, this.customerPaymentPageSize,
+        this.getCustomerPaymentData('', this.customerPaymentPageNo, this.customerPaymentPageSize,
                 this.customerPaymentSortBy, this.customerPaymentOrder);
 
-        this.getOwnerPaymentData(this.ownerPaymentSearch, this.ownerPaymentPageNo, this.ownerPaymentPageSize,
+        this.getOwnerPaymentData('', this.ownerPaymentPageNo, this.ownerPaymentPageSize,
                 this.ownerPaymentSortBy, this.ownerPaymentOrder);
     }
 
@@ -96,11 +92,11 @@ export class DashboardComponent implements OnInit {
     billPageChange(event: PageEvent): void {
         this.billPageNo = event.pageIndex;
         this.billPageSize = event.pageSize;
-        this.getBillData(this.billSearch, this.billPageNo, this.billPageSize, this.billSortBy, this.billOrder);
+        this.getBillData('', this.billPageNo, this.billPageSize, this.billSortBy, this.billOrder);
     }
 
     billSortData(event: Sort): void {
-        this.getBillData(this.billSearch, this.billPageNo, this.billPageSize, event.active, event.direction);
+        this.getBillData('', this.billPageNo, this.billPageSize, event.active, event.direction);
     }
 
     getCustomerPaymentData(number: string = '', pageNo: number, pageSize: number, sortBy: string, order: string): void {
@@ -120,12 +116,12 @@ export class DashboardComponent implements OnInit {
     customerPaymentPageChange(event: PageEvent): void {
         this.customerPaymentPageNo = event.pageIndex;
         this.customerPaymentPageSize = event.pageSize;
-        this.getCustomerPaymentData(this.customerPaymentSearch, this.customerPaymentPageNo, this.customerPaymentPageSize,
+        this.getCustomerPaymentData('', this.customerPaymentPageNo, this.customerPaymentPageSize,
                 this.customerPaymentSortBy, this.customerPaymentOrder);
     }
 
     customerPaymentSortData(event: Sort): void {
-        this.getCustomerPaymentData(this.customerPaymentSearch, this.customerPaymentPageNo, this.customerPaymentPageSize, event.active, event.direction);
+        this.getCustomerPaymentData('', this.customerPaymentPageNo, this.customerPaymentPageSize, event.active, event.direction);
     }
 
     getOwnerPaymentData(number: string = '', pageNo: number, pageSize: number, sortBy: string, order: string): void {
@@ -145,11 +141,11 @@ export class DashboardComponent implements OnInit {
     ownerPaymentPageChange(event: PageEvent): void {
         this.ownerPaymentPageNo = event.pageIndex;
         this.ownerPaymentPageSize = event.pageSize;
-        this.getOwnerPaymentData(this.ownerPaymentSearch, this.ownerPaymentPageNo, this.ownerPaymentPageSize,
+        this.getOwnerPaymentData('', this.ownerPaymentPageNo, this.ownerPaymentPageSize,
                 this.ownerPaymentSortBy, this.ownerPaymentOrder);
     }
 
     ownerPaymentSortData(event: Sort): void {
-        this.getOwnerPaymentData(this.ownerPaymentSearch, this.ownerPaymentPageNo, this.ownerPaymentPageSize, event.active, event.direction);
+        this.getOwnerPaymentData('', this.ownerPaymentPageNo, this.ownerPaymentPageSize, event.active, event.direction);
     }
 }
