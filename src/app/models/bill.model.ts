@@ -14,7 +14,9 @@ export interface Bill {
 
     number: number;
 
-    amount: number;
+    supplierAmount: number;
+
+    customerAmount: number;
 
     quantity: number;
 
@@ -28,7 +30,8 @@ export function createEmptyBill(): Bill {
         customerEntity: createEmptyCustomer(),
         productEntity: createEmptyProduct(),
         number: undefined,
-        amount: undefined,
+        supplierAmount: undefined,
+        customerAmount: undefined,
         quantity: undefined,
         date: undefined
     }

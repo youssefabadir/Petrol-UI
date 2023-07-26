@@ -16,7 +16,7 @@ export interface CustomerTransaction {
 
     billQuantity?: number;
 
-    billAmount?: number;
+    billCustomerAmount?: number;
 
     productName?: string;
 
