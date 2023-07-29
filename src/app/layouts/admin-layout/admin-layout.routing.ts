@@ -20,8 +20,8 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'suppliers', component: SupplierTableComponent},
     {path: 'products', component: ProductTableComponent},
     {path: 'payment-method', component: PaymentMethodTableComponent},
-    {path: 'customer-payments', component: CustomerPaymentTableComponent},
-    {path: 'owner-payments', component: OwnerPaymentTableComponent},
+    {path: 'income', component: CustomerPaymentTableComponent},
+    {path: 'expenses', component: OwnerPaymentTableComponent},
     {path: 'discount', component: DiscountTableComponent},
     {path: 'treasury', component: TreasuryComponent},
 ];
