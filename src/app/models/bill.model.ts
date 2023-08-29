@@ -1,6 +1,7 @@
 import {createEmptySupplier, Supplier} from './supplier.model';
 import {createEmptyCustomer, Customer} from './customer.model';
 import {createEmptyProduct, Product} from './product.model';
+import {createEmptyTruck, Truck} from './truck.model';
 
 export interface Bill {
 
@@ -22,6 +23,8 @@ export interface Bill {
 
     date: string;
 
+    truckEntity: Truck;
+
 }
 
 export function createEmptyBill(): Bill {
@@ -33,6 +36,7 @@ export function createEmptyBill(): Bill {
         supplierAmount: undefined,
         customerAmount: undefined,
         quantity: undefined,
-        date: undefined
+        date: undefined,
+        truckEntity: createEmptyTruck()
     }
 }

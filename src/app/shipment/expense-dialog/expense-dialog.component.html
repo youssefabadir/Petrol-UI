@@ -1,0 +1,49 @@
+<h1 mat-dialog-title *ngIf="!isEdit"
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'ADD_EXPENSE' | translate }}</h1>
+
+<h1 mat-dialog-title *ngIf="isEdit"
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'EDIT_EXPENSE' | translate }}</h1>
+
+<mat-dialog-content [formGroup]="expenseForm" dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
+    <form #form class="form">
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{ 'AMOUNT' | translate }}</mat-label>
+            <input [(ngModel)]="expense.amount"
+                   name="amount"
+                   type="number"
+                   step="any"
+                   matInput
+                   required>
+        </mat-form-field>
+
+        <payment-method-loader [paymentMethodId]="paymentMethod.id"
+                               [paymentMethodName]="paymentMethod.name"
+                               [paymentMethodBalance]="paymentMethod.balance"
+                               (changePaymentMethod)="handlePaymentMethod($event)">
+        </payment-method-loader>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{ 'NOTES' | translate }}</mat-label>
+            <input [(ngModel)]="expense.note"
+                   name="note"
+                   matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>{{ 'PAYMENT_NUMBER' | translate }}</mat-label>
+            <input [(ngModel)]="paymentNumber"
+                   name="paymentNumber"
+                   matInput>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
+    <div class="actions">
+        <button mat-button (click)="cancel(false)">{{ 'CANCEL' | translate }}</button>
+        <button mat-raised-button color="primary" (click)="save()"
+                [disabled]="!form.checkValidity() || !paymentMethod.id">
+            {{ 'SAVE' | translate }}
+        </button>
+    </div>
+</mat-dialog-actions>

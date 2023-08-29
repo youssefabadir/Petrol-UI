@@ -1,0 +1,120 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <div class="sub-card-header">
+                            <mat-form-field appearance="outline" class="specific-border">
+                                <input class="black-font"
+                                       placeholder="{{ 'BILL_NUMBER' | translate }}"
+                                       name="search"
+                                       type="text"
+                                       matInput
+                                       required
+                                       [(ngModel)]="search">
+                            </mat-form-field>
+
+                            <button mat-fab class="clear-button">
+                                {{ 'CLEAR_FILTER' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                    <mat-table [dataSource]="dataSource" multiTemplateDataRows dir="rtl"
+                               matSort (matSortChange)="sortData($event)">
+                        <ng-container matColumnDef="id">
+                            <mat-header-cell *matHeaderCellDef
+                                             mat-sort-header>{{ 'ID' | translate }}</mat-header-cell>
+                            <mat-cell *matCellDef="let row">{{row['id']}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="billNumber">
+                            <mat-header-cell *matHeaderCellDef
+                                             mat-sort-header>{{ 'BILL_NUMBER' | translate }}</mat-header-cell>
+                            <mat-cell *matCellDef="let row">{{row['billNumber']}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="revenue">
+                            <mat-header-cell *matHeaderCellDef
+                                             mat-sort-header>{{ 'AMOUNT' | translate }}</mat-header-cell>
+                            <mat-cell *matCellDef="let row">{{row['revenue']}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="truckNumber">
+                            <mat-header-cell *matHeaderCellDef
+                                             mat-sort-header>{{ 'TRUCK_NUMBER' | translate }}</mat-header-cell>
+                            <mat-cell *matCellDef="let row">{{row['truckNumber']}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="expandedDetail">
+                            <mat-cell *matCellDef="let element" class="full-width gray">
+                                <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+                                     class="full-width">
+                                    <div *ngIf="element['expenses'].length > 0">
+                                        <mat-table [dataSource]="element['expenses']" class="full-width gray">
+                                            <ng-container matColumnDef="notes">
+                                                <mat-header-cell
+                                                        *matHeaderCellDef>{{ 'NOTES' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">{{row['note']}}</mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="amount">
+                                                <mat-header-cell
+                                                        *matHeaderCellDef>{{ 'AMOUNT' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" dir="ltr"
+                                                          [ngClass]="{'ar': translate.currentLang === 'ar'}">{{row['amount']}}</mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="actions">
+                                                <mat-header-cell
+                                                        *matHeaderCellDef>{{ 'ACTIONS' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+                                                    <button (click)="deleteExpense(row)"
+                                                            mat-raised-button
+                                                            type="button"
+                                                            matTooltip="{{ 'REMOVE' | translate }}"
+                                                            [matTooltipPosition]="'above'"
+                                                            class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                        <i class="material-icons">close</i>
+                                                    </button>
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="expensesHeader"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: expensesHeader"></mat-row>
+                                        </mat-table>
+
+                                    </div>
+                                </div>
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="header"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: header;"
+                                 class="example-element-row"
+                                 [class.example-expanded-row]="expandedElement === row"
+                                 (click)="expandedElement = expandedElement === row ? null : row">
+                        </mat-row>
+                        <ng-container matColumnDef="actions">
+                            <mat-header-cell *matHeaderCellDef>{{ 'ACTIONS' | translate }}</mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <button (click)="addExpenses(row.id); $event.stopPropagation()" mat-raised-button
+                                        type="button"
+                                        matTooltip="{{ 'VIEW' | translate }}"
+                                        [matTooltipPosition]="'above'"
+                                        class="btn btn-link btn-sm btn-just-icon">
+                                    <i class="material-icons green-icon">add</i>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+
+                        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']"
+                            class="example-detail-row flex1"></tr>
+                    </mat-table>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                   showFirstLastButtons (page)="pageChange($event)">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

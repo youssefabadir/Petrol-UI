@@ -16,10 +16,12 @@ export const ROUTES: RouteInfo[] = [
     {path: '/expenses', title: 'EXPENSES', icon: 'trending_down'},
     {path: '/customers', title: 'CUSTOMERS', icon: 'group'},
     {path: '/suppliers', title: 'SUPPLIERS', icon: 'local_shipping'},
+    {path: '/shipments', title: 'SHIPMENTS', icon: 'local_shipping'},
     // {path: '/treasury', title: 'TREASURY', icon: 'attach_money'},
     {path: '/payment-method', title: 'PAYMENT_METHOD', icon: 'account_balance'},
     {path: '/products', title: 'PRODUCTS', icon: 'inventory_2'},
-    {path: '/discount', title: 'DISCOUNT', icon: 'swap_vert'}
+    {path: '/discount', title: 'DISCOUNT', icon: 'swap_vert'},
+    {path: '/trucks', title: 'TRUCKS', icon: 'local_shipping'}
 ];
 
 @Component({

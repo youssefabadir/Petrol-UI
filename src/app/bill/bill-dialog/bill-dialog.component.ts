@@ -8,6 +8,7 @@ import {Customer} from '../../models/customer.model';
 import {Supplier} from '../../models/supplier.model';
 import {Product} from '../../models/product.model';
 import {TranslateService} from '@ngx-translate/core';
+import {Truck} from '../../models/truck.model';
 
 @Component({
     selector: 'transaction-dialog',
@@ -30,11 +31,12 @@ export class BillDialogComponent implements OnInit {
     save(): void {
         this.bill.date = Helper.changeDateFormat(this.selectedDate);
 
-        this.apiService.createBill(this.bill).subscribe(() => {
-            Helper.snackbar(Helper.translateKey('SAVE_BILL_SUCCESS'), this.snackbar);
-            this.dialogRef.close(true);
-        }, () => {
-            Helper.snackbar(Helper.translateKey('SAVE_BILL_ERROR'), this.snackbar);
+        this.apiService.createBill(this.bill, this.bill.truckEntity.id).subscribe({
+            next: () => {
+                Helper.snackbar(Helper.translateKey('SAVE_BILL_SUCCESS'), this.snackbar);
+                this.dialogRef.close(true);
+            },
+            error: () => Helper.snackbar(Helper.translateKey('SAVE_BILL_ERROR'), this.snackbar)
         });
     }
 
@@ -52,6 +54,10 @@ export class BillDialogComponent implements OnInit {
 
     handleProduct(product: Product): void {
         this.bill.productEntity = product;
+    }
+
+    handleTruck(truck: Truck): void {
+        this.bill.truckEntity = truck;
     }
 
     protected readonly Helper = Helper;

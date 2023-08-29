@@ -55,11 +55,9 @@ export class PaymentMethodTransactionComponent implements OnInit {
     getData(paymentMethodId: number, pageNo: number, pageSize: number, sortBy: string,
             order: string, start: Date, end: Date): void {
         this.apiService.getPayments(paymentMethodId, pageNo, pageSize,
-                sortBy, order, Helper.changeDateFormat(start), Helper.changeDateFormat(end)).subscribe(res => {
-            console.log(res)
-            this.populateTable(res);
-        }, () => {
-            Helper.snackbar(Helper.translateKey('RETRIEVE_PAYMENTS_ERROR'), this.snackbar);
+                sortBy, order, Helper.changeDateFormat(start), Helper.changeDateFormat(end)).subscribe({
+            next: (res) => this.populateTable(res),
+            error: () => Helper.snackbar(Helper.translateKey('RETRIEVE_PAYMENTS_ERROR'), this.snackbar)
         });
     }
 

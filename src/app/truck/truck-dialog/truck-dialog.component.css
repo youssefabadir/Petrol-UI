@@ -1,0 +1,31 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 250px;
+}
+
+.div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.form-field {
+    margin: 5px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.title {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ar {
+    justify-content: flex-end;
+}

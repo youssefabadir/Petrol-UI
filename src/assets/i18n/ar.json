@@ -147,5 +147,8 @@
     "UPDATE_SUPPLIER_ERROR": "حدث خطأ أثناء تحديث المورد",
     "UPDATE_SUPPLIER_SUCCESS": "تم تحديث المورد بنجاح",
     "VIEW": "عرض",
-    "YES": "نعم"
+    "YES": "نعم",
+    "TRUCK_NUMBER": "رقم الشاحنة",
+    "SHIPMENTS": "الشحنات",
+    "DELETE_EXPENSE_SUCCESS": "تم حذف المصاريف بنجاح"
 }

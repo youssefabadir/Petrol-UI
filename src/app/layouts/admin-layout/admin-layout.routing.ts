@@ -12,6 +12,8 @@ import {
 import {OwnerPaymentTableComponent} from '../../owner-payment/owner-payment-table/owner-payment-table.component';
 import {DiscountTableComponent} from '../../discount/discount-table/discount-table.component';
 import {TreasuryComponent} from '../../treasury/treasury.component';
+import {ShipmentComponent} from '../../shipment/shipment.component';
+import {TruckTableComponent} from '../../truck/truck-table/truck-table.component';
 
 export const AdminLayoutRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -24,4 +26,6 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'expenses', component: OwnerPaymentTableComponent},
     {path: 'discount', component: DiscountTableComponent},
     {path: 'treasury', component: TreasuryComponent},
+    {path: 'shipments', component: ShipmentComponent},
+    {path: 'trucks', component: TruckTableComponent},
 ];

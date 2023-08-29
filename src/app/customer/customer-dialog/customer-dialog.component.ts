@@ -20,7 +20,7 @@ export class CustomerDialogComponent implements OnInit {
     customerForm: FormGroup
 
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<CustomerDialogComponent>,
-                private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) private data: Customer,
+                private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) data: Customer,
                 private fb: FormBuilder,) {
 
         if (data) {

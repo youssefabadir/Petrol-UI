@@ -1,0 +1,68 @@
+<h1 mat-dialog-title *ngIf="!isEdit"
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'ADD_TRUCK' | translate }}</h1>
+
+<h1 mat-dialog-title *ngIf="isEdit"
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'EDIT_TRUCK' | translate }}</h1>
+
+<mat-dialog-content [formGroup]="truckForm" dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
+    <form #form class="form">
+
+        <div style="display: flex; flex-direction: row; align-items: center">
+            <mat-label style="padding-bottom: 15px">{{ 'TRUCK_NUMBER' | translate }}</mat-label>
+            <mat-form-field appearance="outline" class="form-field" style="width: 35px; align-items: center">
+                <input [(ngModel)]="letter1"
+                       name="1"
+                       matInput
+                       maxlength="1"
+                       pattern="^[\u0621-\u064A ]+$"
+                       required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field" style="width: 35px">
+                <input [(ngModel)]="letter2"
+                       name="2"
+                       matInput
+                       maxlength="1"
+                       pattern="^[\u0621-\u064A ]+$"
+                       required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field" style="width: 35px">
+                <input [(ngModel)]="letter3"
+                       name="3"
+                       matInput
+                       maxlength="1"
+                       pattern="^[\u0621-\u064A ]+$"
+                       required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="form-field" style="width: 55px">
+                <input [(ngModel)]="numbers"
+                       name="4"
+                       matInput
+                       maxlength="4"
+                       pattern="[0-9]{1,4}"
+                       required>
+            </mat-form-field>
+        </div>
+
+
+        <mat-form-field *ngIf="!isEdit" appearance="outline" class="form-field">
+            <mat-label>{{ 'BALANCE' | translate }}</mat-label>
+            <input [(ngModel)]="truck.balance"
+                   name="balance"
+                   type="number"
+                   step="any"
+                   matInput
+                   required>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
+    <div class="actions">
+        <button mat-button (click)="cancel(false)">{{ 'CANCEL' | translate }}</button>
+        <button mat-raised-button color="primary" (click)="save()"
+                [disabled]="!form.checkValidity()">
+            {{ 'SAVE' | translate }}
+        </button>
+    </div>
+</mat-dialog-actions>

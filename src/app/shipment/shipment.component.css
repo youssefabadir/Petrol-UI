@@ -1,0 +1,111 @@
+tr.example-detail-row {
+    height: 0;
+}
+
+mat-row.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+}
+
+mat-row.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+}
+
+.example-element-row mat-cell {
+    border-bottom-width: 0;
+}
+
+.example-element-detail {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+}
+
+.example-element-description {
+    padding: 16px;
+}
+
+.example-element-description-attribution {
+    opacity: 0.5;
+}
+
+.green-icon {
+    color: #25A12D;
+}
+
+.expenses {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start
+}
+
+.full-width {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.mat-column-expandedDetail {
+    width: 100% !important;
+}
+
+.mat-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex1 {
+    flex: 1
+}
+
+.ar {
+    justify-content: flex-end;
+}
+
+.gray {
+    background: #bbb9b9;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between
+}
+
+.button {
+    background-color: transparent;
+}
+
+::ng-deep .mat-form-field-appearance-outline.specific-border .mat-form-field-outline {
+    background-color: white;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.black-font {
+    color: black;
+}
+
+.sub-card-header {
+    display: flex;
+    flex-direction: row
+}
+
+.clear-button {
+    background-color: #ff9800;
+    width: unset;
+    padding: 0 26px;
+    border-radius: 5px;
+    height: 41px;
+    top: 9px;
+    margin-left: 5px;
+}
+
+::ng-deep .mat-fab .mat-button-wrapper {
+    padding: 0;
+}

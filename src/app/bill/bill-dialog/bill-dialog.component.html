@@ -15,6 +15,10 @@
             <product-loader [product]="bill.productEntity"
                             (changeProduct)="handleProduct($event)">
             </product-loader>
+
+            <truck-loader [truck]="bill.truckEntity"
+                          (changeTruck)="handleTruck($event)">
+            </truck-loader>
         </div>
 
         <div class="div">

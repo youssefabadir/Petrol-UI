@@ -43,7 +43,7 @@ export class CustomerLoaderComponent implements OnInit {
                 of([]),
                 this.apiService.searchCustomers(name).pipe(
                         catchError(() => of([])),
-                        tap(() => this.loadingCustomers = false)
+                        tap((): boolean => this.loadingCustomers = false)
                 )
         );
     }

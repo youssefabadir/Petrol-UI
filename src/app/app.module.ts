@@ -49,7 +49,11 @@ import {
     PaymentMethodTransactionComponent
 } from './payment-method/payment-method-transaction/payment-method-transaction.component';
 import {TreasuryComponent} from './treasury/treasury.component';
-import {MatTabsModule} from "@angular/material/tabs";
+import {MatTabsModule} from '@angular/material/tabs';
+import {ShipmentComponent} from './shipment/shipment.component';
+import {TruckTableComponent} from './truck/truck-table/truck-table.component';
+import {TruckDialogComponent} from './truck/truck-dialog/truck-dialog.component';
+import {ExpenseDialogComponent} from './shipment/expense-dialog/expense-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -108,6 +112,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         DiscountDialogComponent,
         PaymentMethodTransactionComponent,
         TreasuryComponent,
+        ShipmentComponent,
+        TruckTableComponent,
+        TruckDialogComponent,
+        ExpenseDialogComponent,
 
     ],
     providers: [

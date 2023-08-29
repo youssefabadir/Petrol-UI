@@ -110,7 +110,7 @@
     "RETRIEVE_TREASURY_ERROR": "Error occurred while retrieving treasury data",
     "SAVE": "Save",
     "SAVE_BILL_ERROR": "Error occurred while saving bill",
-    "SAVE_BILL_SUCCESS": "Bill has been saved succussfully",
+    "SAVE_BILL_SUCCESS": "Bill has been saved successfully",
     "SAVE_CUSTOMER_ERROR": "Error occurred while saving customer data",
     "SAVE_CUSTOMER_PAYMENT_ERROR": "Error occurred while saving customer payment data",
     "SAVE_CUSTOMER_PAYMENT_SUCCESS": "Customer payment has been saved successfully",
@@ -147,5 +147,8 @@
     "UPDATE_SUPPLIER_ERROR": "Error occurred while updating supplier",
     "UPDATE_SUPPLIER_SUCCESS": "Supplier has been updated successfully",
     "VIEW": "View",
-    "YES": "Yes"
+    "YES": "Yes",
+    "TRUCK_NUMBER": "Truck Number",
+    "SHIPMENTS": "Shipments",
+    "DELETE_EXPENSE_SUCCESS": "Expense has been deleted successfully"
 }

@@ -43,7 +43,7 @@ export class SupplierLoaderComponent implements OnInit {
                 of([]),
                 this.apiService.searchSuppliers(name).pipe(
                         catchError(() => of([])),
-                        tap(() => this.loadingSuppliers = false)
+                        tap((): boolean => this.loadingSuppliers = false)
                 )
         );
     }

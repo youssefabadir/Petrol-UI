@@ -14,6 +14,9 @@ import {CustomerTransaction} from '../models/customer-transaction.model';
 import {SupplierTransaction} from '../models/supplierTransaction.model';
 import {Discount} from '../models/discount.model';
 import {Payment} from '../models/payment.model';
+import {Truck} from '../models/truck.model';
+import {Shipment} from '../models/shipment.model';
+import {Expense} from '../models/expense.model';
 
 @Injectable({
     providedIn: 'root'
@@ -95,8 +98,12 @@ export class ApiService {
         });
     }
 
-    createBill(transaction: Bill): Observable<Bill> {
-        return this.http.post<Bill>(`${url}/bill`, transaction);
+    createBill(transaction: Bill, truckId: number): Observable<Bill> {
+        return this.http.post<Bill>(`${url}/bill`, transaction, {
+            params: {
+                truckId: truckId
+            }
+        });
     }
 
     deleteBill(id: number): Observable<void> {
@@ -329,5 +336,77 @@ export class ApiService {
                 end: end
             }
         });
+    }
+
+    getTrucks(number: string = '',
+              pageNo: number = 0,
+              pageSize: number = 10,
+              sortBy: string = 'id',
+              order: string = 'asc'): Observable<PageableResponse<Truck>> {
+        return this.http.get<PageableResponse<Truck>>(`${url}/truck`, {
+            params: {
+                number: number,
+                pageNo: pageNo,
+                pageSize: pageSize,
+                sortBy: sortBy,
+                order: order
+            }
+        });
+    }
+
+    createTruck(truck: Truck): Observable<Truck> {
+        return this.http.post<Truck>(`${url}/truck`, truck);
+    }
+
+    updateTruck(truck: Truck): Observable<Truck> {
+        return this.http.put<Truck>(`${url}/truck`, truck);
+    }
+
+    deleteTruck(id: number): Observable<void> {
+        return this.http.delete<void>(`${url}/truck/${id}`);
+    }
+
+    searchTrucks(number: string): Observable<Truck[]> {
+        return this.http.get<Truck[]>(`${url}/truck/search`, {
+            params: {
+                number: number
+            }
+        });
+    }
+
+    getShipments(billNumber: string = '',
+                 pageNo: number = 0,
+                 pageSize: number = 10,
+                 sortBy: string = 'id',
+                 order: string = 'asc'): Observable<PageableResponse<Shipment>> {
+        return this.http.get<PageableResponse<Shipment>>(`${url}/shipment`, {
+            params: {
+                billNumber: billNumber,
+                pageNo: pageNo,
+                pageSize: pageSize,
+                sortBy: sortBy,
+                order: order
+            }
+        });
+    }
+
+    createExpense(expense: Expense, paymentNumber: string = ''): Observable<Expense> {
+        return this.http.post<Expense>(`${url}/expense`, expense, {
+            params: {
+                paymentNumber: paymentNumber
+            }
+        });
+    }
+
+    updateExpense(expense: Expense, paymentNumber: string = ''): Observable<Expense> {
+        return this.http.put<Expense>(`${url}/expense`, expense, {
+            params: {
+                paymentNumber: paymentNumber
+            }
+        });
+    }
+
+    deleteExpense(id: number): Observable<void> {
+        return this.http.delete<void>(`${url}/expense/${id}`);
     }
 }

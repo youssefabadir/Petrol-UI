@@ -18,6 +18,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {SupplierLoaderComponent} from './supplier-loader/supplier-loader.component';
 import {ProductLoaderComponent} from './product-loader/product-loader.component';
 import {PaymentMethodLoaderComponent} from './payment-method-loader/payment-method-loader.component';
+import {TruckLoaderComponent} from './truck-loader/truck-loader.component';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import {PaymentMethodLoaderComponent} from './payment-method-loader/payment-meth
         CustomerLoaderComponent,
         SupplierLoaderComponent,
         ProductLoaderComponent,
-        PaymentMethodLoaderComponent
+        PaymentMethodLoaderComponent,
+        TruckLoaderComponent
     ],
     exports: [
         NavbarComponent,
@@ -50,7 +52,8 @@ import {PaymentMethodLoaderComponent} from './payment-method-loader/payment-meth
         CustomerLoaderComponent,
         SupplierLoaderComponent,
         ProductLoaderComponent,
-        PaymentMethodLoaderComponent
+        PaymentMethodLoaderComponent,
+        TruckLoaderComponent
     ]
 })
 export class ComponentsModule {

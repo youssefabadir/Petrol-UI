@@ -1,0 +1,13 @@
+<ng-select [multiple]="false"
+           [minTermLength]="1"
+           [loading]="loadingTrucks"
+           [(ngModel)]="truck.id"
+           [items]="truckSearch | async"
+           bindLabel="number"
+           bindValue="id"
+           placeholder="{{ 'TRUCK_NUMBER' | translate }}"
+           typeToSearchText="{{ 'MORE_CHARACTER' | translate }}"
+           name="selectedTruck"
+           (input)="loadTrucks($event)"
+           (change)="changeValue($event)">
+</ng-select>

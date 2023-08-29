@@ -47,7 +47,7 @@ export class PaymentMethodLoaderComponent implements OnInit {
                 of([]),
                 this.apiService.searchPaymentMethods(name).pipe(
                         catchError(() => of([])),
-                        tap(() => this.loadingPaymentMethods = false)
+                        tap((): boolean => this.loadingPaymentMethods = false)
                 )
         );
     }

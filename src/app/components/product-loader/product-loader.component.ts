@@ -43,7 +43,7 @@ export class ProductLoaderComponent implements OnInit {
                 of([]),
                 this.apiService.searchProducts(name).pipe(
                         catchError(() => of([])),
-                        tap(() => this.loadingProducts = false)
+                        tap((): boolean => this.loadingProducts = false)
                 )
         );
     }
