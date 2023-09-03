@@ -7,8 +7,8 @@
     <ul class="nav" *ngFor="let menuItem of menuItems">
         <li routerLinkActive="active" class="nav-item">
             <a [routerLink]="[menuItem.path]" class="nav-link" style="display: flex; flex-direction: row">
-                <i class="material-icons" [ngClass]="{'ar': translate.currentLang === 'ar',
-                'en': translate.currentLang === 'en'}">{{menuItem.icon}}</i>
+                <!--<i class="material-icons" [ngClass]="{'ar': translate.currentLang === 'ar',
+                'en': translate.currentLang === 'en'}">{{menuItem.icon}}</i>-->
                 <p>{{ menuItem.title | translate }}</p>
             </a>
         </li>

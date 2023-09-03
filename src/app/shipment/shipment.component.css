@@ -20,20 +20,6 @@ mat-row.example-element-row:not(.example-expanded-row):active {
     flex-direction: column;
 }
 
-.example-element-symbol {
-    font-weight: bold;
-    font-size: 40px;
-    line-height: normal;
-}
-
-.example-element-description {
-    padding: 16px;
-}
-
-.example-element-description-attribution {
-    opacity: 0.5;
-}
-
 .green-icon {
     color: #25A12D;
 }
@@ -107,5 +93,5 @@ mat-row.example-element-row:not(.example-expanded-row):active {
 }
 
 ::ng-deep .mat-fab .mat-button-wrapper {
-    padding: 0;
+    padding: 0 !important;
 }

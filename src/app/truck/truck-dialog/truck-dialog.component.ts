@@ -49,25 +49,23 @@ export class TruckDialogComponent implements OnInit {
         });
     }
 
-    //TODO: change the snackbar messages
     save(): void {
         this.truck.number = this.letter1 + ' ' + this.letter2 + ' ' + this.letter3 + ' ' + this.numbers;
-        console.log(this.truck.number)
         if (this.isEdit) {
             this.apiService.updateTruck(this.truck).subscribe({
                 next: (): void => {
-                    Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_SUCCESS'), this.snackbar);
+                    Helper.snackbar(Helper.translateKey('UPDATE_TRUCK_SUCCESS'), this.snackbar);
                     this.cancel(true);
                 },
-                error: (): void => Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_ERROR'), this.snackbar)
+                error: (): void => Helper.snackbar(Helper.translateKey('UPDATE_TRUCK_ERROR'), this.snackbar)
             });
         } else {
             this.apiService.createTruck(this.truck).subscribe({
                 next: (): void => {
-                    Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_SUCCESS'), this.snackbar);
+                    Helper.snackbar(Helper.translateKey('SAVE_TRUCK_SUCCESS'), this.snackbar);
                     this.cancel(true);
                 },
-                error: (): void => Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_ERROR'), this.snackbar)
+                error: (): void => Helper.snackbar(Helper.translateKey('SAVE_TRUCK_ERROR'), this.snackbar)
             });
         }
     }

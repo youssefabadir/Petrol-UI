@@ -68,7 +68,7 @@
                                                 <mat-header-cell
                                                         *matHeaderCellDef>{{ 'ACTIONS' | translate }}</mat-header-cell>
                                                 <mat-cell *matCellDef="let row">
-                                                    <button (click)="deleteExpense(row)"
+                                                    <button (click)="removeExpense(row)"
                                                             mat-raised-button
                                                             type="button"
                                                             matTooltip="{{ 'REMOVE' | translate }}"

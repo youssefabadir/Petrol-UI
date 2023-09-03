@@ -42,7 +42,7 @@
 }
 
 ::ng-deep .mat-fab .mat-button-wrapper {
-    padding: 0;
+    padding: 0 !important;
 }
 
 .ar {

@@ -12,6 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {createEmptyExpense, Expense} from '../models/expense.model';
 import {ExpenseDialogComponent} from './expense-dialog/expense-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector: 'shipment',
@@ -57,8 +58,7 @@ export class ShipmentComponent implements OnInit {
     getData(number: string, pageNo: number, pageSize: number, sortBy: string, order: string): void {
         this.apiService.getShipments(number, pageNo, pageSize, sortBy, order).subscribe({
             next: (res: PageableResponse<Shipment>) => this.populateTable(res),
-            //TODO: write the error message
-            error: () => Helper.snackbar(Helper.translateKey('RETRIEVE_CUSTOMER_ERROR'), this.snackbar)
+            error: () => Helper.snackbar(Helper.translateKey('RETRIEVE_EXPENSE_ERROR'), this.snackbar)
         });
     }
 
@@ -94,16 +94,24 @@ export class ShipmentComponent implements OnInit {
         });
     }
 
-    deleteExpense(row: Expense): void {
-        this.apiService.deleteExpense(row.id).subscribe({
-            next: (): void => {
-                this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order);
-                Helper.snackbar(Helper.translateKey('DELETE_EXPENSE_SUCCESS'), this.snackbar);
-            },
-            //TODO: add error message
-            error: (): void => console.log('error')
-        })
-    }
+    removeExpense(row: Expense): void {
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            data: {
+                title: Helper.translateKey('DELETE_EXPENSE_TITLE'),
+                body: Helper.translateKey('DELETE_EXPENSE_BODY')
+            }
+        });
 
-    protected readonly console = console;
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.apiService.deleteExpense(row.id).subscribe({
+                    next: (): void => {
+                        this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order);
+                        Helper.snackbar(Helper.translateKey('DELETE_EXPENSE_SUCCESS'), this.snackbar);
+                    },
+                    error: (): void => Helper.snackbar(Helper.translateKey('DELETE_EXPENSE_ERROR'), this.snackbar)
+                });
+            }
+        });
+    }
 }

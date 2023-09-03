@@ -24,7 +24,7 @@ export class Helper {
     }
 
     public static translateKey(key: string, params?: any): string {
-        let result;
+        let result: string;
         this.translate.get(key, params).subscribe(e => result = e);
         return result;
     }

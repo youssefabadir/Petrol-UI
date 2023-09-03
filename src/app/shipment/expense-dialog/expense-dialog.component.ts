@@ -42,22 +42,21 @@ export class ExpenseDialogComponent implements OnInit {
     }
 
     save(): void {
-        //TODO: add messages
         if (this.isEdit) {
             this.apiService.updateExpense(this.expense, this.paymentNumber).subscribe({
                 next: () => {
-                    Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_SUCCESS'), this.snackbar);
+                    Helper.snackbar(Helper.translateKey('UPDATE_EXPENSE_SUCCESS'), this.snackbar);
                     this.cancel(true);
                 },
-                error: () => Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_SUCCESS'), this.snackbar)
+                error: () => Helper.snackbar(Helper.translateKey('UPDATE_EXPENSE_ERROR'), this.snackbar)
             });
         } else {
             this.apiService.createExpense(this.expense, this.paymentNumber).subscribe({
                 next: () => {
-                    Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_SUCCESS'), this.snackbar);
+                    Helper.snackbar(Helper.translateKey('SAVE_EXPENSE_SUCCESS'), this.snackbar);
                     this.cancel(true);
                 },
-                error: () => Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_SUCCESS'), this.snackbar)
+                error: () => Helper.snackbar(Helper.translateKey('SAVE_EXPENSE_ERROR'), this.snackbar)
             });
         }
     }
