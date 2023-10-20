@@ -21,7 +21,7 @@ export class CustomerDialogComponent implements OnInit {
 
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<CustomerDialogComponent>,
                 private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) data: Customer,
-                private fb: FormBuilder,) {
+                private fb: FormBuilder) {
 
         if (data) {
             this.isEdit = true;
@@ -38,18 +38,20 @@ export class CustomerDialogComponent implements OnInit {
 
     save(): void {
         if (this.isEdit) {
-            this.apiService.updateCustomer(this.customer).subscribe(() => {
-                Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_SUCCESS'), this.snackbar);
-                this.cancel(true);
-            }, () => {
-                Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_ERROR'), this.snackbar);
+            this.apiService.updateCustomer(this.customer).subscribe({
+                next: () => {
+                    Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_SUCCESS'), this.snackbar);
+                    this.cancel(true);
+                },
+                error: () => Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_ERROR'), this.snackbar)
             });
         } else {
-            this.apiService.createCustomer(this.customer).subscribe(() => {
-                Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_SUCCESS'), this.snackbar);
-                this.cancel(true);
-            }, () => {
-                Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_ERROR'), this.snackbar);
+            this.apiService.createCustomer(this.customer).subscribe({
+                next: () => {
+                    Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_SUCCESS'), this.snackbar);
+                    this.cancel(true);
+                },
+                error: () => Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_ERROR'), this.snackbar)
             });
         }
     }

@@ -106,6 +106,14 @@ export class ApiService {
         });
     }
 
+    updateBill(transaction: Bill, truckId: number): Observable<Bill> {
+        return this.http.put<Bill>(`${url}/bill`, transaction, {
+            params: {
+                truckId: truckId
+            }
+        });
+    }
+
     deleteBill(id: number): Observable<void> {
         return this.http.delete<void>(`${url}/bill/${id}`);
     }

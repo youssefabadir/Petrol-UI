@@ -36,7 +36,8 @@
                         <ng-container matColumnDef="revenue">
                             <mat-header-cell *matHeaderCellDef
                                              mat-sort-header>{{ 'AMOUNT' | translate }}</mat-header-cell>
-                            <mat-cell *matCellDef="let row">{{row['revenue']}}</mat-cell>
+                            <mat-cell *matCellDef="let row" dir="ltr"
+                                      [ngClass]="{'ar': translate.currentLang === 'ar'}">{{row['revenue']}}</mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="truckNumber">

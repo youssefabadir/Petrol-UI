@@ -8,7 +8,7 @@ export class Helper {
         Helper.translate = translateService;
     }
 
-    public static snackbar(message: string, snackbar: MatSnackBar, duration: number = 5000): void {
+    public static snackbar(message: string, snackbar: MatSnackBar, duration: number = 10000): void {
         snackbar.open(message, '✖', {
             duration: duration,
             panelClass: ['snackbar']

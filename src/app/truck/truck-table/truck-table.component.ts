@@ -2,12 +2,11 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {ApiService} from '../../services/api.service';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TranslateService} from '@ngx-translate/core';
 import {Helper} from '../../util/helper.util';
 import {PageableResponse} from '../../models/response.model';
-import {CustomerTransactionComponent} from '../../customer/customer-transaction/customer-transaction.component';
 import {ConfirmDialogComponent} from '../../components/confirm-dialog/confirm-dialog.component';
 import {Sort} from '@angular/material/sort';
 import {Truck} from '../../models/truck.model';
@@ -74,7 +73,7 @@ export class TruckTableComponent implements OnInit {
         });
     }
 
-    view(customer: Truck): void {
+    /*view(customer: Truck): void {
         const data = new MatDialogConfig();
         data.width = '2000px';
         data.height = '650px';
@@ -82,12 +81,12 @@ export class TruckTableComponent implements OnInit {
 
         this.dialog.open(CustomerTransactionComponent, data);
 
-    }
+    }*/
 
-    edit(customer: Truck): void {
+    edit(truck: Truck): void {
         const dialogRef = this.dialog.open(TruckDialogComponent,
                 {
-                    data: customer,
+                    data: truck,
                 });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -102,8 +101,8 @@ export class TruckTableComponent implements OnInit {
 
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
-                title: Helper.translateKey('DELETE_CUSTOMER'),
-                body: Helper.translateKey('DELETE_CUSTOMER_BODY', {name: row.number})
+                title: Helper.translateKey('DELETE_TRUCK'),
+                body: Helper.translateKey('DELETE_TRUCK_BODY', {name: row.number})
             }
         });
 
@@ -111,10 +110,10 @@ export class TruckTableComponent implements OnInit {
             if (result) {
                 this.apiService.deleteTruck(row.id).subscribe({
                     next: (): void => {
-                        Helper.snackbar(Helper.translateKey('DELETE_CUSTOMER_SUCCESS'), this.snackbar);
+                        Helper.snackbar(Helper.translateKey('DELETE_TRUCK_SUCCESS'), this.snackbar);
                         this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order);
                     },
-                    error: () => Helper.snackbar(Helper.translateKey('DELETE_CUSTOMER_ERROR'), this.snackbar)
+                    error: () => Helper.snackbar(Helper.translateKey('DELETE_TRUCK_ERROR'), this.snackbar)
                 });
             }
         });

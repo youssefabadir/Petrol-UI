@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Helper} from '../../util/helper.util';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Bill, createEmptyBill} from '../../models/bill.model';
@@ -21,23 +21,54 @@ export class BillDialogComponent implements OnInit {
 
     selectedDate: Date;
 
+    isEdit: boolean;
+
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<BillDialogComponent>,
-                private snackbar: MatSnackBar, public translate: TranslateService) {
+                private snackbar: MatSnackBar, public translate: TranslateService, @Inject(MAT_DIALOG_DATA) data: Bill) {
+
+        if (data) {
+            this.bill = data;
+            this.isEdit = true;
+        }
     }
 
     ngOnInit(): void {
+        //TODO: implement edit mapping
     }
 
     save(): void {
         this.bill.date = Helper.changeDateFormat(this.selectedDate);
 
-        this.apiService.createBill(this.bill, this.bill.truckEntity.id).subscribe({
-            next: () => {
-                Helper.snackbar(Helper.translateKey('SAVE_BILL_SUCCESS'), this.snackbar);
-                this.dialogRef.close(true);
-            },
-            error: () => Helper.snackbar(Helper.translateKey('SAVE_BILL_ERROR'), this.snackbar)
-        });
+        if (this.isEdit) {
+            this.apiService.updateBill(this.bill, this.bill.truckEntity.id).subscribe({
+                next: () => {
+                    Helper.snackbar(Helper.translateKey('UPDATE_BILL_SUCCESS'), this.snackbar);
+                    this.dialogRef.close(true);
+                },
+                error: (err) => {
+                    console.log(err)
+                    Helper.snackbar(Helper.translateKey('SAVE_BILL_ERROR'), this.snackbar)
+                }
+            });
+        } else {
+            this.apiService.createBill(this.bill, this.bill.truckEntity.id).subscribe({
+                next: () => {
+                    Helper.snackbar(Helper.translateKey('SAVE_BILL_SUCCESS'), this.snackbar);
+                    this.dialogRef.close(true);
+                },
+                error: (err) => {
+                    switch (err.status) {
+                        case 409:
+                            Helper.snackbar(Helper.translateKey('SAVE_BILL_ERROR_EXISTS'), this.snackbar);
+                            break;
+                        default:
+                            Helper.snackbar(Helper.translateKey('SAVE_BILL_ERROR'), this.snackbar);
+                            break;
+                    }
+
+                }
+            });
+        }
     }
 
     cancel(): void {
