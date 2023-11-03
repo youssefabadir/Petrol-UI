@@ -398,18 +398,18 @@ export class ApiService {
         });
     }
 
-    createExpense(expense: Expense, paymentNumber: string = ''): Observable<Expense> {
+    createExpense(expense: Expense, paymentMethodId: number): Observable<Expense> {
         return this.http.post<Expense>(`${url}/expense`, expense, {
             params: {
-                paymentNumber: paymentNumber
+                paymentMethodId: paymentMethodId
             }
         });
     }
 
-    updateExpense(expense: Expense, paymentNumber: string = ''): Observable<Expense> {
+    updateExpense(expense: Expense, paymentMethodId: number): Observable<Expense> {
         return this.http.put<Expense>(`${url}/expense`, expense, {
             params: {
-                paymentNumber: paymentNumber
+                paymentMethodId: paymentMethodId
             }
         });
     }

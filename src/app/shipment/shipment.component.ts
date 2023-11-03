@@ -94,6 +94,19 @@ export class ShipmentComponent implements OnInit {
         });
     }
 
+    editExpenses(row: Expense): void {
+        const dialogRef = this.dialog.open(ExpenseDialogComponent, {
+            data: row,
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.search = '';
+                this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order);
+            }
+        });
+    }
+
     removeExpense(row: Expense): void {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
@@ -113,5 +126,17 @@ export class ShipmentComponent implements OnInit {
                 });
             }
         });
+    }
+
+    inputChange(event: Event): void {
+        this.search = event.target['value'];
+        this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order);
+    }
+
+    clearFilter(): void {
+        if (this.search.length > 0) {
+            this.search = '';
+            this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order);
+        }
     }
 }

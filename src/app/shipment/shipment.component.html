@@ -12,10 +12,11 @@
                                        type="text"
                                        matInput
                                        required
-                                       [(ngModel)]="search">
+                                       [(ngModel)]="search"
+                                       (input)="inputChange($event)">
                             </mat-form-field>
 
-                            <button mat-fab class="clear-button">
+                            <button mat-fab class="clear-button" (click)="clearFilter()">
                                 {{ 'CLEAR_FILTER' | translate }}
                             </button>
                         </div>
@@ -69,6 +70,14 @@
                                                 <mat-header-cell
                                                         *matHeaderCellDef>{{ 'ACTIONS' | translate }}</mat-header-cell>
                                                 <mat-cell *matCellDef="let row">
+                                                    <button (click)="editExpenses(row)"
+                                                            mat-raised-button
+                                                            type="button"
+                                                            matTooltip="{{ 'EDIT' | translate }}"
+                                                            [matTooltipPosition]="'above'"
+                                                            class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
                                                     <button (click)="removeExpense(row)"
                                                             mat-raised-button
                                                             type="button"
@@ -100,7 +109,7 @@
                             <mat-cell *matCellDef="let row">
                                 <button (click)="addExpenses(row.id); $event.stopPropagation()" mat-raised-button
                                         type="button"
-                                        matTooltip="{{ 'VIEW' | translate }}"
+                                        matTooltip="{{ 'ADD_EXPENSE' | translate }}"
                                         [matTooltipPosition]="'above'"
                                         class="btn btn-link btn-sm btn-just-icon">
                                     <i class="material-icons green-icon">add</i>

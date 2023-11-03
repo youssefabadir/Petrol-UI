@@ -22,8 +22,6 @@ export class ExpenseDialogComponent implements OnInit {
 
     expenseForm: FormGroup;
 
-    paymentNumber: string;
-
     constructor(private apiService: ApiService, private dialogRef: MatDialogRef<ExpenseDialogComponent>,
                 private snackbar: MatSnackBar, @Inject(MAT_DIALOG_DATA) data: Expense,
                 private fb: FormBuilder,) {
@@ -43,7 +41,7 @@ export class ExpenseDialogComponent implements OnInit {
 
     save(): void {
         if (this.isEdit) {
-            this.apiService.updateExpense(this.expense, this.paymentNumber).subscribe({
+            this.apiService.updateExpense(this.expense, this.paymentMethod.id).subscribe({
                 next: () => {
                     Helper.snackbar(Helper.translateKey('UPDATE_EXPENSE_SUCCESS'), this.snackbar);
                     this.cancel(true);
@@ -51,7 +49,7 @@ export class ExpenseDialogComponent implements OnInit {
                 error: () => Helper.snackbar(Helper.translateKey('UPDATE_EXPENSE_ERROR'), this.snackbar)
             });
         } else {
-            this.apiService.createExpense(this.expense, this.paymentNumber).subscribe({
+            this.apiService.createExpense(this.expense, this.paymentMethod.id).subscribe({
                 next: () => {
                     Helper.snackbar(Helper.translateKey('SAVE_EXPENSE_SUCCESS'), this.snackbar);
                     this.cancel(true);
