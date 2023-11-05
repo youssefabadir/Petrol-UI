@@ -11,6 +11,7 @@ import {Sort} from '@angular/material/sort';
 import {PaymentMethod} from '../../models/paymentMethod.model';
 import {PaymentMethodDialogComponent} from '../payment-method-dialog/payment-method-dialog.component';
 import {PaymentMethodTransactionComponent} from '../payment-method-transaction/payment-method-transaction.component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'payment-method-table',
@@ -35,7 +36,7 @@ export class PaymentMethodTableComponent implements OnInit {
 
     search: string = '';
 
-    constructor(private apiService: ApiService, private dialog: MatDialog, private snackbar: MatSnackBar) {
+    constructor(private apiService: ApiService, private dialog: MatDialog, private snackbar: MatSnackBar, public translate: TranslateService) {
     }
 
     ngOnInit(): void {
