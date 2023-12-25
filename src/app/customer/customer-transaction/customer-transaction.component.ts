@@ -22,7 +22,7 @@ export class CustomerTransactionComponent implements OnInit {
 
     dataSource: MatTableDataSource<CustomerTransaction>;
 
-    header = ['balance', 'paymentNumber', 'paymentAmount', 'transferredPayment',
+    header = ['customerBalance', 'paymentNumber', 'paymentAmount', 'transferredPayment',
         'paymentMethod', 'billNumber', 'billQuantity', 'billAmount', 'product', 'date'];
 
     customer: Customer = createEmptyCustomer();
@@ -31,7 +31,7 @@ export class CustomerTransactionComponent implements OnInit {
 
     pageSize: number = 5;
 
-    sortBy: string = 'transactionId'
+    sortBy: string = 'date'
 
     order: string = 'asc'
 
@@ -55,11 +55,12 @@ export class CustomerTransactionComponent implements OnInit {
 
     getData(id: number, pageNo: number, pageSize: number, sortBy: string,
             order: string, start: Date, end: Date): void {
-        this.apiService.getCustomerTransactions(id, pageNo, pageSize,
-                sortBy, order, Helper.changeDateFormat(start), Helper.changeDateFormat(end)).subscribe(res => {
-            this.populateTable(res);
-        }, () => {
-            Helper.snackbar(Helper.translateKey('RETRIEVE_CUSTOMER_TRANSACTION_ERROR'), this.snackbar);
+        this.apiService.getCustomerTransactions(id, pageNo, pageSize, sortBy, order,
+                Helper.changeDateFormat(start), Helper.changeDateFormat(end)).subscribe({
+            next: (res) => {
+                this.populateTable(res);
+            },
+            error: () => Helper.snackbar(Helper.translateKey('RETRIEVE_CUSTOMER_TRANSACTION_ERROR'), this.snackbar)
         });
     }
 
