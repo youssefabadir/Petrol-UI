@@ -31,7 +31,7 @@ export class SupplierTransactionComponent implements OnInit {
 
     pageSize: number = 5;
 
-    sortBy: string = 'transactionId'
+    sortBy: string = 'date'
 
     order: string = 'asc'
 
