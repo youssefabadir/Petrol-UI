@@ -30,7 +30,7 @@ export class PaymentMethodTransactionComponent implements OnInit {
 
     pageSize: number = 5;
 
-    sortBy: string = 'id'
+    sortBy: string = 'date'
 
     order: string = 'asc'
 
