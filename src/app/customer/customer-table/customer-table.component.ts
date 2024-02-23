@@ -78,7 +78,7 @@ export class CustomerTableComponent implements OnInit {
     view(customer: Customer): void {
         const data = new MatDialogConfig();
         data.width = '2000px';
-        data.height = '650px';
+        data.height = '700px';
         data.data = {data: customer, panelClass: 'view-dialog'};
 
         this.dialog.open(CustomerTransactionComponent, data);

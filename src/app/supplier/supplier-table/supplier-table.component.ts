@@ -78,7 +78,7 @@ export class SupplierTableComponent implements OnInit {
     view(supplier: Supplier): void {
         const data = new MatDialogConfig();
         data.width = '2000px';
-        data.maxHeight = '650px';
+        data.height = '700px';
         data.data = {data: supplier, panelClass: 'view-dialog'};
 
         this.dialog.open(SupplierTransactionComponent, data);
