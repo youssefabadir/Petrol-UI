@@ -157,8 +157,8 @@ export class ApiService {
     getBills(billNumber: string = '',
              pageNo: number = 0,
              pageSize: number = 10,
-             sortBy: string = 'id',
-             order: string = 'desc',
+             sortBy: string = 'date',
+             order: string = 'asc',
              start: string = '',
              end: string = ''): Observable<PageableResponse<Bill>> {
         return this.http.get<PageableResponse<Bill>>(`${url}/bill`, {
@@ -177,8 +177,8 @@ export class ApiService {
     getCustomerPayments(paymentNumber: string = '',
                         pageNo: number = 0,
                         pageSize: number = 10,
-                        sortBy: string = 'id',
-                        order: string = 'desc'): Observable<PageableResponse<CustomerPayment>> {
+                        sortBy: string = 'date',
+                        order: string = 'asc'): Observable<PageableResponse<CustomerPayment>> {
         return this.http.get<PageableResponse<CustomerPayment>>(`${url}/payment/customer`, {
             params: {
                 number: paymentNumber,
@@ -193,8 +193,8 @@ export class ApiService {
     getOwnerPayments(paymentNumber: string = '',
                      pageNo: number = 0,
                      pageSize: number = 10,
-                     sortBy: string = 'id',
-                     order: string = 'desc'): Observable<PageableResponse<OwnerPayment>> {
+                     sortBy: string = 'date',
+                     order: string = 'asc'): Observable<PageableResponse<OwnerPayment>> {
         return this.http.get<PageableResponse<OwnerPayment>>(`${url}/payment/owner`, {
             params: {
                 number: paymentNumber,
@@ -261,8 +261,8 @@ export class ApiService {
     getCustomerTransactions(customerId: number,
                             pageNo: number = 0,
                             pageSize: number = 10,
-                            sortBy: string = 'transactionId',
-                            order: string = 'desc',
+                            sortBy: string = 'date',
+                            order: string = 'asc',
                             start: string = '',
                             end: string = ''): Observable<PageableResponse<CustomerTransaction>> {
         return this.http.get<PageableResponse<CustomerTransaction>>(`${url}/transaction/customer/${customerId}`, {
@@ -280,8 +280,8 @@ export class ApiService {
     getSupplierTransactions(supplierId: number,
                             pageNo: number = 0,
                             pageSize: number = 10,
-                            sortBy: string = 'transactionId',
-                            order: string = 'desc',
+                            sortBy: string = 'date',
+                            order: string = 'asc',
                             start: string = '',
                             end: string = ''): Observable<PageableResponse<SupplierTransaction>> {
         return this.http.get<PageableResponse<SupplierTransaction>>(`${url}/transaction/owner/${supplierId}`, {
@@ -329,7 +329,7 @@ export class ApiService {
     getPayments(paymentMethodId: number = -1,
                 pageNo: number = 0,
                 pageSize: number = 10,
-                sortBy: string = 'id',
+                sortBy: string = 'date',
                 order: string = 'asc',
                 start: string = '',
                 end: string = ''): Observable<PageableResponse<Payment>> {

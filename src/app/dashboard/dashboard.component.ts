@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
 
     billPageSize: number = 5;
 
-    billSortBy: string = 'id';
+    billSortBy: string = 'date';
 
     billOrder: string = 'asc';
 
@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
 
     customerPaymentPageSize: number = 5;
 
-    customerPaymentSortBy: string = 'id';
+    customerPaymentSortBy: string = 'date';
 
     customerPaymentOrder: string = 'asc';
 
@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
 
     ownerPaymentPageSize: number = 5;
 
-    ownerPaymentSortBy: string = 'id';
+    ownerPaymentSortBy: string = 'date';
 
     ownerPaymentOrder: string = 'asc';
 
