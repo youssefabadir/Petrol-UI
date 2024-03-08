@@ -94,7 +94,7 @@ export class SupplierTransactionComponent implements OnInit {
         }
     }
 
-    cancel(): void {
+    close(): void {
         this.dialogRef.close();
     }
 

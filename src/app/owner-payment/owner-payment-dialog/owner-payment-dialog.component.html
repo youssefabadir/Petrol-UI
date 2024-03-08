@@ -100,7 +100,7 @@
 
 <mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
     <div class="actions">
-        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+        <button mat-button (click)="close()">{{ 'CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="save()"
                 [disabled]="!(form.checkValidity() && form1.checkValidity()) ||
                 (tab.selectedIndex === 0 && !this.ownerPayment.supplier.id) ||

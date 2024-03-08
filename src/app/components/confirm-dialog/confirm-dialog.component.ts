@@ -20,7 +20,7 @@ export class ConfirmDialogComponent implements OnInit {
         this.dialogRef.close(true);
     }
 
-    cancel(): void {
+    close(): void {
         this.dialogRef.close(false);
     }
 

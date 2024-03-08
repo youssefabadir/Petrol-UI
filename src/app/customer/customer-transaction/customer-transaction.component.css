@@ -19,7 +19,9 @@
 
 .sub-card-header {
     display: flex;
-    flex-direction: row
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .actions {
@@ -31,6 +33,15 @@
 .centered-cell {
     display: flex;
     justify-content: center;
+}
+
+.add-button {
+    background-color: #25A12D;
+    width: unset;
+    padding: 0 26px;
+    border-radius: 5px;
+    height: 41px;
+    top: 9px;
 }
 
 .clear-button {

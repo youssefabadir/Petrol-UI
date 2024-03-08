@@ -55,21 +55,21 @@ export class DiscountDialogComponent implements OnInit {
         if (this.isEdit) {
             this.apiService.updateDiscount(this.discount).subscribe(() => {
                 Helper.snackbar(Helper.translateKey('UPDATE_DISCOUNT_SUCCESS'), this.snackbar);
-                this.cancel(true);
+                this.close(true);
             }, () => {
                 Helper.snackbar(Helper.translateKey('UPDATE_DISCOUNT_ERROR'), this.snackbar);
             });
         } else {
             this.apiService.createDiscount(this.discount).subscribe(() => {
                 Helper.snackbar(Helper.translateKey('SAVE_DISCOUNT_SUCCESS'), this.snackbar);
-                this.cancel(true);
+                this.close(true);
             }, () => {
                 Helper.snackbar(Helper.translateKey('SAVE_DISCOUNT_ERROR'), this.snackbar);
             });
         }
     }
 
-    cancel(result: boolean): void {
+    close(result: boolean): void {
         this.dialogRef.close(result);
     }
 

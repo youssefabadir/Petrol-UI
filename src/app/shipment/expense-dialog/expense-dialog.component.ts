@@ -44,7 +44,7 @@ export class ExpenseDialogComponent implements OnInit {
             this.apiService.updateExpense(this.expense, this.paymentMethod.id).subscribe({
                 next: () => {
                     Helper.snackbar(Helper.translateKey('UPDATE_EXPENSE_SUCCESS'), this.snackbar);
-                    this.cancel(true);
+                    this.close(true);
                 },
                 error: () => Helper.snackbar(Helper.translateKey('UPDATE_EXPENSE_ERROR'), this.snackbar)
             });
@@ -52,7 +52,7 @@ export class ExpenseDialogComponent implements OnInit {
             this.apiService.createExpense(this.expense, this.paymentMethod.id).subscribe({
                 next: () => {
                     Helper.snackbar(Helper.translateKey('SAVE_EXPENSE_SUCCESS'), this.snackbar);
-                    this.cancel(true);
+                    this.close(true);
                 },
                 error: () => Helper.snackbar(Helper.translateKey('SAVE_EXPENSE_ERROR'), this.snackbar)
             });
@@ -63,7 +63,7 @@ export class ExpenseDialogComponent implements OnInit {
         this.paymentMethod = paymentMethod;
     }
 
-    cancel(result: boolean): void {
+    close(result: boolean): void {
         this.dialogRef.close(result);
     }
 

@@ -41,7 +41,7 @@ export class CustomerDialogComponent implements OnInit {
             this.apiService.updateCustomer(this.customer).subscribe({
                 next: () => {
                     Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_SUCCESS'), this.snackbar);
-                    this.cancel(true);
+                    this.close(true);
                 },
                 error: () => Helper.snackbar(Helper.translateKey('UPDATE_CUSTOMER_ERROR'), this.snackbar)
             });
@@ -49,14 +49,14 @@ export class CustomerDialogComponent implements OnInit {
             this.apiService.createCustomer(this.customer).subscribe({
                 next: () => {
                     Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_SUCCESS'), this.snackbar);
-                    this.cancel(true);
+                    this.close(true);
                 },
                 error: () => Helper.snackbar(Helper.translateKey('SAVE_CUSTOMER_ERROR'), this.snackbar)
             });
         }
     }
 
-    cancel(result: boolean): void {
+    close(result: boolean): void {
         this.dialogRef.close(result);
     }
 

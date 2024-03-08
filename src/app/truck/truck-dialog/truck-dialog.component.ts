@@ -55,7 +55,7 @@ export class TruckDialogComponent implements OnInit {
             this.apiService.updateTruck(this.truck).subscribe({
                 next: (): void => {
                     Helper.snackbar(Helper.translateKey('UPDATE_TRUCK_SUCCESS'), this.snackbar);
-                    this.cancel(true);
+                    this.close(true);
                 },
                 error: (): void => Helper.snackbar(Helper.translateKey('UPDATE_TRUCK_ERROR'), this.snackbar)
             });
@@ -63,14 +63,14 @@ export class TruckDialogComponent implements OnInit {
             this.apiService.createTruck(this.truck).subscribe({
                 next: (): void => {
                     Helper.snackbar(Helper.translateKey('SAVE_TRUCK_SUCCESS'), this.snackbar);
-                    this.cancel(true);
+                    this.close(true);
                 },
                 error: (): void => Helper.snackbar(Helper.translateKey('SAVE_TRUCK_ERROR'), this.snackbar)
             });
         }
     }
 
-    cancel(result: boolean): void {
+    close(result: boolean): void {
         this.dialogRef.close(result);
     }
 

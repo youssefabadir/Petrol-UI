@@ -17,6 +17,7 @@ import {Payment} from '../models/payment.model';
 import {Truck} from '../models/truck.model';
 import {Shipment} from '../models/shipment.model';
 import {Expense} from '../models/expense.model';
+import {FinancialSummary} from '../models/financialSummary.model';
 
 @Injectable({
     providedIn: 'root'
@@ -416,5 +417,20 @@ export class ApiService {
 
     deleteExpense(id: number): Observable<void> {
         return this.http.delete<void>(`${url}/expense/${id}`);
+    }
+
+    getCustomerFinancialSummary(customerId: number,
+                                start: string,
+                                end: string,
+                                productId: string,
+                                paymentMethodId: string): Observable<FinancialSummary> {
+        return this.http.get<FinancialSummary>(`${url}/financial-summary/customer/${customerId}`, {
+            params: {
+                productId: productId,
+                paymentMethodId: paymentMethodId,
+                start: start,
+                end: end
+            }
+        });
     }
 }

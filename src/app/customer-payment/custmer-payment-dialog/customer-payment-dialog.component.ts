@@ -69,7 +69,7 @@ export class CustomerPaymentDialogComponent implements OnInit {
         this.customerPayment.paymentMethodBalance = paymentMethod.balance;
     }
 
-    cancel(): void {
+    close(): void {
         this.dialogRef.close(undefined);
     }
 

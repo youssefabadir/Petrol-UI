@@ -94,7 +94,7 @@ export class PaymentMethodTransactionComponent implements OnInit {
         }
     }
 
-    cancel(): void {
+    close(): void {
         this.dialogRef.close();
     }
 

@@ -1,0 +1,39 @@
+<h1 mat-dialog-title
+    [ngClass]="{'title': Helper.translate.currentLang === 'ar'}">{{ 'SPECIFIC_PERIOD' | translate }}</h1>
+
+<mat-dialog-content dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
+    <form #form class="form">
+        <div class="div">
+            <product-loader [product]="product"
+                            (changeProduct)="handleProduct($event)">
+            </product-loader>
+
+            <payment-method-loader [paymentMethodId]="paymentMethod.id"
+                                   [paymentMethodName]="paymentMethod.name"
+                                   [paymentMethodBalance]="paymentMethod.balance"
+                                   (changePaymentMethod)="handlePaymentMethod($event)">
+            </payment-method-loader>
+        </div>
+
+        <div class="div">
+            <mat-form-field appearance="outline" class="specific-border">
+                <mat-date-range-input [rangePicker]="picker" class="black-font">
+                    <input matStartDate placeholder="{{ 'START_DATE' | translate }}" [(ngModel)]="startDate">
+                    <input matEndDate placeholder="{{ 'END_DATE' | translate }}" [(ngModel)]="endDate">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions dir="{{Helper.translate.currentLang === 'ar'? 'rtl' : 'ltr'}}">
+    <div class="actions">
+        <button mat-button (click)="close(undefined)">{{ 'CANCEL' | translate }}</button>
+        <button mat-raised-button color="primary" (click)="submit()"
+                [disabled]="startDate == undefined || endDate == undefined">
+            {{ 'VIEW' | translate }}
+        </button>
+    </div>
+</mat-dialog-actions>

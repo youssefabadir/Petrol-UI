@@ -9,18 +9,9 @@
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <div class="sub-card-header">
-                            <mat-form-field appearance="outline" class="specific-border">
-                                <mat-date-range-input [rangePicker]="picker" class="black-font">
-                                    <input matStartDate placeholder="{{ 'START_DATE' | translate }}"
-                                           [(ngModel)]="startDate"
-                                           (dateChange)="dateChange()">
-                                    <input matEndDate placeholder="{{ 'END_DATE' | translate }}" [(ngModel)]="endDate"
-                                           (dateChange)="dateChange()">
-                                </mat-date-range-input>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-date-range-picker #picker></mat-date-range-picker>
-                            </mat-form-field>
-
+                            <button mat-fab class="add-button" (click)="getFinancialSummary()">
+                                {{ 'SPECIFIC_PERIOD' | translate }}
+                            </button>
                             <button mat-fab class="clear-button" (click)="clearFilter()">
                                 {{ 'CLEAR_FILTER' | translate }}
                             </button>
@@ -112,8 +103,15 @@
     </div>
 </mat-dialog-content>
 
+<div dir="{{translate.currentLang === 'en'? 'ltr': 'rtl'}}"
+     style="display: flex; justify-content: space-between; flex-direction: row;">
+    <h2 [hidden]="financialSummary == undefined">{{ 'TOTAL_LITERS' | translate }} {{ financialSummary?.totalLiters }}</h2>
+    <h2 [hidden]="financialSummary == undefined">{{ 'TOTAL_PAYMENTS' | translate }} {{ financialSummary?.totalPayments }}</h2>
+    <h2 [hidden]="financialSummary == undefined">{{ 'TOTAL_BILLS' | translate }} {{ financialSummary?.totalBills }}</h2>
+</div>
+
 <mat-dialog-actions>
     <div dir="{{translate.currentLang === 'en'? 'ltr': 'rtl'}}" class="actions">
-        <button mat-button (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+        <button mat-button (click)="close()">{{ 'CANCEL' | translate }}</button>
     </div>
 </mat-dialog-actions>

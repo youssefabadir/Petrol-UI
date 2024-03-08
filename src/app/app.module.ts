@@ -54,6 +54,7 @@ import {ShipmentComponent} from './shipment/shipment.component';
 import {TruckTableComponent} from './truck/truck-table/truck-table.component';
 import {TruckDialogComponent} from './truck/truck-dialog/truck-dialog.component';
 import {ExpenseDialogComponent} from './shipment/expense-dialog/expense-dialog.component';
+import {FinancialSummaryDialogComponent} from './financial-summary-dialog/financial-summary-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -116,6 +117,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         TruckTableComponent,
         TruckDialogComponent,
         ExpenseDialogComponent,
+        FinancialSummaryDialogComponent,
 
     ],
     providers: [

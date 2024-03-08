@@ -46,7 +46,7 @@ export class ProductDialogComponent implements OnInit {
         }
     }
 
-    cancel(): void {
+    close(): void {
         this.dialogRef.close(undefined);
     }
 
