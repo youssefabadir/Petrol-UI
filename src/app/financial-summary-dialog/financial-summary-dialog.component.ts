@@ -59,7 +59,7 @@ export class FinancialSummaryDialogComponent implements OnInit {
                     endDate: this.endDate
                 });
             },
-            error: () => Helper.snackbar(Helper.translateKey('RETRIEVE_PAYMENTS_ERROR'), this.snackbar) // TODO: Implement error message
+            error: () => Helper.snackbar(Helper.translateKey('RETRIEVE_FINANCIAL_SUMMARY_ERROR'), this.snackbar)
         });
     }
 

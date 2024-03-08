@@ -113,6 +113,7 @@
     "RETRIEVE_CUSTOMER_TRANSACTION_ERROR": "Error occurred while retrieving customer transactions",
     "RETRIEVE_DISCOUNT_ERROR": "Error occurred while retrieving discounts data",
     "RETRIEVE_EXPENSE_ERROR": "Error occurred while retrieving expense",
+    "RETRIEVE_FINANCIAL_SUMMARY_ERROR": "Error occurred while retrieving financial summary",
     "RETRIEVE_OWNER_PAYMENT_ERROR": "Error occurred while retrieving owner payments",
     "RETRIEVE_PAYMENTS_ERROR": "Error occurred while retrieving payments data",
     "RETRIEVE_PAYMENT_METHOD_ERROR": "Error occurred while retrieving payment method data",

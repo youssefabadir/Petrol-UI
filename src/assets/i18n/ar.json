@@ -113,6 +113,7 @@
     "RETRIEVE_CUSTOMER_TRANSACTION_ERROR": "حدث خطأ أثناء استرداد معاملات العميل",
     "RETRIEVE_DISCOUNT_ERROR": "حدث خطأ أثناء استرداد بيانات الخصومات",
     "RETRIEVE_EXPENSE_ERROR": "حدث خطأ أثناء استرداد المصاريف",
+    "RETRIEVE_FINANCIAL_SUMMARY_ERROR": "حدث خطأ أثناء استرجاع الملخص المالي",
     "RETRIEVE_OWNER_PAYMENT_ERROR": "حدث خطأ أثناء استرداد مدفوعات المالك",
     "RETRIEVE_PAYMENTS_ERROR": "حدث خطأ أثناء استرداد بيانات المدفوعات",
     "RETRIEVE_PAYMENT_METHOD_ERROR": "حدث خطأ أثناء استرداد بيانات طريقة الدفع",
