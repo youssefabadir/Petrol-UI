@@ -32,7 +32,7 @@ export class OwnerPaymentTableComponent implements OnInit {
 
     sortBy: string = 'date'
 
-    order: string = 'asc'
+    order: string = 'desc'
 
     search: string = '';
 

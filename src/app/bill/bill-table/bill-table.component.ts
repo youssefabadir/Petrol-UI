@@ -30,7 +30,7 @@ export class BillTableComponent implements OnInit {
 
     sortBy: string = 'date'
 
-    order: string = 'asc'
+    order: string = 'desc'
 
     search: string = '';
 
@@ -77,20 +77,6 @@ export class BillTableComponent implements OnInit {
             }
         });
     }
-
-    /*edit(bill: Bill): void {
-        const dialogRef = this.dialog.open(BillDialogComponent,
-                {
-                    data: bill,
-                });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.search = '';
-                this.getData(this.search, this.pageNo, this.pageSize, this.sortBy, this.order, this.startDate, this.endDate);
-            }
-        });
-    }*/
 
     remove(row: Bill): void {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {

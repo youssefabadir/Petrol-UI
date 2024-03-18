@@ -33,7 +33,6 @@ export class BillDialogComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        //TODO: implement edit mapping
     }
 
     save(): void {

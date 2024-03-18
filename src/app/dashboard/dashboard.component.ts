@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
 
     billSortBy: string = 'date';
 
-    billOrder: string = 'asc';
+    billOrder: string = 'desc';
 
     customerPaymentPageNo: number = 0;
 
@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
 
     customerPaymentSortBy: string = 'date';
 
-    customerPaymentOrder: string = 'asc';
+    customerPaymentOrder: string = 'desc';
 
     ownerPaymentPageNo: number = 0;
 
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
 
     ownerPaymentSortBy: string = 'date';
 
-    ownerPaymentOrder: string = 'asc';
+    ownerPaymentOrder: string = 'desc';
 
     RegExp: RegExp = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 

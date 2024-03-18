@@ -31,7 +31,7 @@ export class CustomerPaymentTableComponent implements OnInit {
 
     sortBy: string = 'date'
 
-    order: string = 'asc'
+    order: string = 'desc'
 
     search: string = '';
 
